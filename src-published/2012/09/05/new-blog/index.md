@@ -1,6 +1,6 @@
 title: New Blog
 tags: [meta]
-comments:
+comments: https://github.com/jrburke/jrburke.com/issues/1
 ~
 I will do new posts from this site, [jrburke.com](http://jrburke.com/). There is
 a feed link in the header if you want to track this site in an feed reader.
