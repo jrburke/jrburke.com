@@ -53,8 +53,8 @@ costs, but this is my personal space, and I can afford to be a jerk about it her
 
 I got close to not needing any JavaScript, but ended up using it to load some fonts from
 [TypeKit](https://typekit.com/), and for using [Prism](http://prismjs.com/) for
-making pretty code samples. However, these are additive, and loaded async. If
-they fail, the content can still be read.
+making pretty code samples. However, if they fail to load,
+the content can still be read.
 
 While TypeKit does some tracking, I am fine with it since it is about paying
 font designers for their work, and I want to feel pretty. Or at the very least,
