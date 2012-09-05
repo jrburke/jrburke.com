@@ -2,5 +2,12 @@
   "url": "http://jrburke.com/",
   "title": "James Burke",
   "author": "James Burke",
-  "published": []
+  "published": [
+    {
+      "title": "New Blog",
+      "path": "2012/09/05/new-blog",
+      "postTime": 1346886396343,
+      "postIsoDate": "2012-09-05T23:06:36.343Z"
+    }
+  ]
 }

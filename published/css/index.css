@@ -1,0 +1,283 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: "adelle",Georgia,serif;
+    color: #221009;
+    background-color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "ratio-display",verdana,sans-serif;
+    font-weight: normal;
+    text-transform: lowercase;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    color: #221009;
+}
+
+.sectionContent h1,
+.sectionContent h2,
+.sectionContent h3,
+.sectionContent h4,
+.sectionContent h5,
+.sectionContent h6 {
+    margin-left: -1em;
+}
+
+.sectionContent h1:before,
+.sectionContent h2:before,
+.sectionContent h3:before,
+.sectionContent h4:before,
+.sectionContent h5:before,
+.sectionContent h6:before {
+    content: "> ";
+    color: #699476;
+}
+
+a {
+    text-decoration: none;
+    color: #a63c00;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #6c2700;
+}
+
+.header {
+    position: relative;
+    padding: 2em 0.2em;
+    background-color: #221009;
+    color: white;
+}
+
+.header h1 {
+    margin: 0 0 0 1em;
+    color: white;
+    background-color: #221009;
+}
+
+.header h1:before {
+    content: "<j> ";
+    color: #699476;
+}
+
+h1 a {
+    color: white;
+}
+
+.header .nav {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    text-align: right;
+    font-size: smaller;
+}
+
+.header .nav a {
+    display: block;
+}
+
+.sectionHeader {
+    position: relative;
+    padding: 1.2em 0;
+    background-color: #699476;
+    font-family: "ratio-display",verdana,sans-serif;
+}
+
+.sectionHeader h1 {
+    margin: 0 1em 0 1.8em;
+    color: white;
+    text-shadow: 0 1px #221009;
+}
+
+.sectionHeader h1:before {
+    content: "> ";
+    color: #221009;
+}
+
+.sectionHeader .datetime {
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em;
+    color: #a0baa8;
+    font-size: smaller;
+}
+
+.sectionContent {
+    margin: 2em 5.2em;
+}
+
+.summary {
+    margin: 2em 0 0 0;
+}
+
+.summary h2,
+.summary .datetime {
+    display: inline;
+}
+
+.summary h2 a {
+    color: #a63c00;
+}
+
+.summary .datetime {
+    color: gray;
+    font-size: smaller;
+}
+
+.separator {
+    margin: 0 0 1em 0;
+    color: gray;
+}
+
+.endmark {
+    width: 1em;
+    color: #699476;
+    margin: 2em auto;
+    font-family: "ratio-display",verdana,sans-serif;
+    font-weight: normal;
+    font-size: x-large;
+}
+
+/* media queries */
+
+@media (max-width: 480px) {
+
+    .header h1 {
+        margin: 0 0 0 0.2em;
+    }
+
+    .sectionHeader h1 {
+        margin: 0 0.2em;
+    }
+
+    .extendedTitle {
+        display: none;
+    }
+
+.sectionContent h1,
+.sectionContent h2,
+.sectionContent h3,
+.sectionContent h4,
+.sectionContent h5,
+.sectionContent h6 {
+    margin-left: 0;
+}
+
+    .sectionContent {
+        margin: 0 0.5em;
+    }
+}
+
+/* START PRISM */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code,
+pre {
+    border-radius: .5em;
+    color: #221009;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+/* Code blocks */
+pre {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code,
+pre {
+    background: #A8A0BA;
+}
+
+/* Inline code */
+:not(pre) > code {
+    padding: .1em;
+    border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #e0e0e0;
+}
+
+.token.punctuation {
+    color: #4C3D6E;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number {
+    color: #6E3D5F;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string {
+    color: #3D6E4C;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #6E4C3D;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+
+.token.regex,
+.token.important {
+    color: #e90;
+}
+
+.token.important {
+    font-weight: bold;
+}
+
+.token.entity {
+    cursor: help;
+}
+/* END PRISM */
