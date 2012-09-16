@@ -10,8 +10,8 @@ Interesting stuff, and helped me to better understand how macros might fit
 into JavaScript, at least at a technical level.
 
 My crude layman's explanation of macros: transpilers but only JS token
-types are used, versus having to make your own whole grammar, and limited to curlies
-as delimiters. These limitations are there in order to insert in a simplified
+types are used, versus having to make your own whole grammar, and constrained to <strike>curlies</strike>
+() {} [] as delimiters (thanks to Tim for the correction). These limitations are there in order to insert in a simplified
 parser (called the reader) between the usual JS lexer and parser stages.
 
 So macros seem to be useful when:
