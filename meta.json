@@ -2,7 +2,14 @@
   "url": "http://jrburke.com/",
   "title": "James Burke",
   "author": "James Burke",
+  "postUrlType": "date",
   "published": [
+    {
+      "title": "RequireJS 2.1.1 Released",
+      "path": "2012/10/14/requirejs-2.1.1-released",
+      "postTime": 1350278862805,
+      "postIsoDate": "2012-10-15T05:27:42.805Z"
+    },
     {
       "title": "volo 0.2.4 released",
       "path": "2012/10/05/volo-0.2.4-released",

@@ -4,12 +4,28 @@
     <title><![CDATA[James Burke]]></title>
     <link href="http://jrburke.com/atom.xml" rel="self"/>
     <link href="http://jrburke.com/"/>
-    <updated>2012-10-05T20:43:35.157Z</updated>
+    <updated>2012-10-15T05:27:42.805Z</updated>
     <id>http://jrburke.com/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.1 Released]]></title>
+        <link href="http://jrburke.com/2012/10/14/requirejs-2.1.1-released/"/>
+        <updated>2012-10-15T05:27:42.805Z</updated>
+        <id>http://jrburke.com/2012/10/14/requirejs-2.1.1-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.1 is available</a>.</p>
+
+<p>The main fix: enabling synchronous calls to requirejs to complete synchronously in Node. More info about the require behavior in 2.1 in <a href="https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.1#wiki-breaking-async">this section of the 2.1 upgrade doc</a>.</p>
+
+<p>Complete list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?milestone=21&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=19">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[volo 0.2.4 released]]></title>
         <link href="http://jrburke.com/2012/10/05/volo-0.2.4-released/"/>
