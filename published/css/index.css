@@ -13,7 +13,6 @@ html, body {
 h1, h2, h3, h4, h5, h6 {
     font-family: "ratio-display",verdana,sans-serif;
     font-weight: normal;
-    text-transform: lowercase;
 }
 
 h1 a,
@@ -31,17 +30,8 @@ h6 a {
 .sectionContent h4,
 .sectionContent h5,
 .sectionContent h6 {
+    font-weight: bold;
     margin-left: -1em;
-}
-
-.sectionContent h1:before,
-.sectionContent h2:before,
-.sectionContent h3:before,
-.sectionContent h4:before,
-.sectionContent h5:before,
-.sectionContent h6:before {
-    content: "> ";
-    color: #699476;
 }
 
 a {
@@ -215,22 +205,23 @@ pre {
     overflow: auto;
 }
 
-:not(pre) > code,
 pre {
-    background: #A8A0BA;
+    background: #A8A8A8;
 }
 
 /* Inline code */
 :not(pre) > code {
     padding: .1em;
     border-radius: .3em;
+    background: #dddddd;
+    font-size: smaller;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: #e0e0e0;
+    color: #f0f0f0;
 }
 
 .token.punctuation {

@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>James Burke</title>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="Referencing JavaScript. How should it be done? Is there an approach that works for module systems, package managers and project layouts?">
+
+    <title>Referencing JavaScript ~ James Burke</title>
+
+    <link rel="canonical" href="http://jrburke.com/2012/11/02/referencing-javascript/">
     <link href="http://jrburke.com/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link href="./img/favicon.png" rel="icon">
-<link href="./css/index.css" rel="stylesheet" type="text/css">
+<link href="../../../../img/favicon.png" rel="icon">
+<link href="../../../../css/index.css" rel="stylesheet" type="text/css">
 
-<script src="./js/index.js"></script>
+<script src="../../../../js/index.js"></script>
 <script type="text/javascript">
   (function() {
     var config = {
@@ -19,28 +25,26 @@
   })();
 </script>
 </head>
-<body class="index">
+<body class="post">
 
 <div class="header">
-    <h1><a href="./">James Burke</a></h1>
+    <h1><a href="../../../../">James Burke</a></h1>
 
     <div class="nav">
-        <a href="./about/">about</a>
-        <a href="./archives/">archives</a>
-        <a href="./tags/">tags</a>
+        <a href="../../../../about/">about</a>
+        <a href="../../../../archives/">archives</a>
+        <a href="../../../../tags/">tags</a>
         <a href="http://duckduckgo.com/?q=site%3Ajrburke.com">search</a>
             <a href="http://jrburke.com/atom.xml">feed</a>
     </div>
 </div>
-    <div class="section">
-        <div class="sectionHeader">
-            <h1 class="postTitle"><a href="2012/11/02/referencing-javascript/">Referencing JavaScript</a></h1>
-            <div class="datetime" data-datetime="2012-11-02T16:40:55.062Z">
-                Fri, 02 Nov 2012 16:40:55 GMT
-            </div>
-        </div>
-        <div class="sectionContent">
-            <p>Referencing JavaScript. How should it be done? Is there an approach that works for module systems, package managers and project layouts?</p>
+    <div class="sectionHeader">
+        <h1 class="postTitle">Referencing JavaScript</h1>
+        <div class="datetime" data-datetime="2012-11-02T16:40:55.062Z">Fri, 02 Nov 2012 16:40:55 GMT</div>
+    </div>
+
+    <div class="sectionContent">
+        <p>Referencing JavaScript. How should it be done? Is there an approach that works for module systems, package managers and project layouts?</p>
 
 <p>The following describes the approach in use by <a href="https://github.com/amdjs/amdjs-api/wiki">AMD</a>/<a href="http://requirejs.org">RequireJS</a> and <a href="http://volojs.org">volo</a>, but parts are found in other places like <a href="http://www.nodejs.org/">Node</a>, <a href="http://www.commonjs.org/">CommonJS</a> and <a href="http://dojotoolkit.org/">Dojo</a>.</p>
 
@@ -341,136 +345,11 @@ requirejs(['app/main']);
 <h2 id="summary">Summary</h2>
 
 <p>The above approach as been demonstrated to work, and it is in active use. While the "everything is a directory" and "build everything" do not seem like viable long range solutions, it would be great to hear of other solutions that work well in practice.</p>
-        </div>
+
+        <div class="separator">~</div>
+        <a href="https://github.com/jrburke/jrburke.com/issues/6">Comments</a>
     </div>
-    <div class="section">
-        <div class="sectionHeader">
-            <h1 class="postTitle"><a href="2012/10/14/requirejs-2.1.1-released/">RequireJS 2.1.1 Released</a></h1>
-            <div class="datetime" data-datetime="2012-10-15T05:27:42.805Z">
-                Mon, 15 Oct 2012 05:27:42 GMT
-            </div>
-        </div>
-        <div class="sectionContent">
-            <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.1 is available</a>.</p>
 
-<p>The main fix: enabling synchronous calls to requirejs to complete synchronously in Node. More info about the require behavior in 2.1 in <a href="https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.1#wiki-breaking-async">this section of the 2.1 upgrade doc</a>.</p>
-
-<p>Complete list of changes:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?milestone=21&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=19">Fixed r.js optimizer issues</a></li>
-</ul>
-        </div>
-    </div>
-    <div class="section">
-        <div class="sectionHeader">
-            <h1 class="postTitle"><a href="2012/10/05/volo-0.2.4-released/">volo 0.2.4 released</a></h1>
-            <div class="datetime" data-datetime="2012-10-05T20:43:35.157Z">
-                Fri, 05 Oct 2012 20:43:35 GMT
-            </div>
-        </div>
-        <div class="sectionContent">
-            <p>Just a small update for <a href="http://volojs.org">volo</a>, but it adds a simple
-<em>volo info</em> command and includes an alias for <em>install</em> that points to <em>add</em>.</p>
-
-<p>It also fixes an <a href="https://github.com/volojs/volo/issues/102">edge case bug</a>
-that is bad enough that you should upgrade to 0.2.4 as soon as possible.</p>
-
-<pre><code>npm install -g volo
-</code></pre>
-
-<p><a href="https://github.com/volojs/volo/issues?milestone=7&amp;page=1&amp;state=closed">List of fixed 0.2.4 issues</a>.</p>
-        </div>
-    </div>
-    <div class="section">
-        <div class="sectionHeader">
-            <h1 class="postTitle"><a href="2012/10/03/requirejs-2.1-released/">RequireJS 2.1 Released</a></h1>
-            <div class="datetime" data-datetime="2012-10-04T00:47:35.768Z">
-                Thu, 04 Oct 2012 00:47:35 GMT
-            </div>
-        </div>
-        <div class="sectionContent">
-            <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.0 is available</a>.</p>
-
-<p>This release refines some execution rules around cycles and transpilers, and
-how shimmed code can be wired up. There are a couple changes that may require
-modifications to your code when you upgrade.</p>
-
-<p>See
-<a href="https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.1">Upgrading to 2.1</a>
-for more information.</p>
-        </div>
-    </div>
-    <div class="section">
-        <div class="sectionHeader">
-            <h1 class="postTitle"><a href="2012/09/15/understanding-macro-use-cases-for-javascript/">Understanding macro use cases for JavaScript</a></h1>
-            <div class="datetime" data-datetime="2012-09-15T21:56:22.032Z">
-                Sat, 15 Sep 2012 21:56:22 GMT
-            </div>
-        </div>
-        <div class="sectionContent">
-            <p>I just watched <a href="https://air.mozilla.org/sweetjs/">this Mozilla video on some experimental work Tim Disney is doing
-for JS macros</a>. While
-watching it, I also read came across <a href="http://calculist.org/blog/2012/04/17/homoiconicity-isnt-the-point/">Dave Herman's homoiconicity post</a>.</p>
-
-<p>Interesting stuff, and helped me to better understand how macros might fit
-into JavaScript, at least at a technical level.</p>
-
-<p>My crude layman's explanation of macros: transpilers but only JS token
-types are used, versus having to make your own whole grammar, and constrained to <strike>curlies</strike>
-() {} [] as delimiters (thanks to Tim for the correction). These limitations are there in order to insert in a simplified
-parser (called the reader) between the usual JS lexer and parser stages.</p>
-
-<p>So macros seem to be useful when:</p>
-
-<ul>
-<li>you do not want a full transpiler, just some small syntax forms</li>
-<li>and using a function() to do the code reuse is not appropriate</li>
-</ul>
-
-<p>I am having trouble visualizing those use cases though. My initial reaction is
-that macros are something neat for a language enthusiast, but do not actually
-make coding, the sharing and reading of code, that much better, particularly
-since it involves a level of indirection that is subtle, the new grammar needs
-to be tracked down. I find this is the hardest part of understanding codebases,
-tracking down what different units of code are doing, where the definitions live.</p>
-
-<p>My first impulse is to say, "just make a function" that does
-what you want, using existing JS grammar.</p>
-
-<p>If a function is not enough, what you are probably wanting is a full custom
-language, so then a full grammar/transpiler makes sense.
-The use of transpilers are easier to call out in their use -- normally a different
-file extension, and by not being limited to JS token types/delimiters, you are
-more likely to create a terser grammar.</p>
-
-<p>I can see the need to make transpiler construction easier. And if someone wanted
-to create a "like JS but with some tweaks", maybe create something higher
-level than something like <a href="http://zaach.github.com/jison/">jison</a> to do that.
-I would have liked that when playing around with module syntax for JS, for
-example.</p>
-
-<p>So it is hard for me to see the case for macros, at least as described in
-that video. They seem to be a middle ground between functions and full
-transpilers whose benefits seem to be outweighed by making it more difficult
-to comprehend code written in "JavaScript".</p>
-
-<p>But I am trying to learn more about it. If anyone has pointers to the cases
-where macros shine and their use outweighs my perceived readability/code tracing
-costs, I would love to hear it. Feel free to leave a comment.</p>
-
-<p>However, do not comment with at "yeah macros are dumb". This is an exploration
-in enlightenment. I'm already skeptical of macros, so I do not need that
-reinforcement. I'm looking for more concrete use cases, pros and cons on specific
-points, not fear of change.</p>
-
-<p>Similarly, comments of the form "because, Language X has them and
-they are awesome" will likely not be informative. It is likely language X and
-JS do not share other properties and cultures that are in JS, like the
-propensity to create transpilers for JS. I want uses cases that for JS would not
-be solved via functions or a full transpiler.</p>
-        </div>
-    </div>
+    <div class="endmark">&lt;j&gt;</div>
 </body>
 </html>
