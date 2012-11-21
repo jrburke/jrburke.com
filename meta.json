@@ -5,6 +5,12 @@
   "postUrlType": "date",
   "published": [
     {
+      "title": "RequireJS 2.1.2 Released",
+      "path": "2012/11/21/requirejs-2.1.2-released",
+      "postTime": 1353539462650,
+      "postIsoDate": "2012-11-21T23:11:02.650Z"
+    },
+    {
       "title": "Referencing JavaScript",
       "path": "2012/11/02/referencing-javascript",
       "postTime": 1351874455062,

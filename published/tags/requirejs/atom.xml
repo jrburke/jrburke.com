@@ -4,12 +4,35 @@
     <title><![CDATA[James Burke -- requirejs]]></title>
     <link href="http://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/requirejs/"/>
-    <updated>2012-10-15T05:27:42.805Z</updated>
+    <updated>2012-11-21T23:11:02.650Z</updated>
     <id>http://jrburke.com/tags/requirejs/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.2 Released]]></title>
+        <link href="http://jrburke.com/2012/11/21/requirejs-2.1.2-released/"/>
+        <updated>2012-11-21T23:11:02.650Z</updated>
+        <id>http://jrburke.com/2012/11/21/requirejs-2.1.2-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.2 is available</a>.</p>
+
+<p>The big changes for this release are in the optimizer:</p>
+
+<ul>
+<li>The optimizer can now <a href="http://www.requirejs.org/docs/optimization.html#requirements">run in the browser</a>, to enable web-based custom builds of your library.</li>
+<li>"uglify2" is an allowed "optimize" value now, using UglifyJS 2.1.11.</li>
+<li>Experimental support for <a href="http://www.requirejs.org/docs/optimization.html#sourcemaps">source maps</a>.</li>
+<li>The optimizer runs faster now, and has some <a href="http://www.requirejs.org/docs/optimization.html#turbo">speed options</a>.</li>
+</ul>
+
+<p>Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?milestone=22&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=20">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.1 Released]]></title>
         <link href="http://jrburke.com/2012/10/14/requirejs-2.1.1-released/"/>

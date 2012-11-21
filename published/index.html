@@ -34,6 +34,33 @@
 </div>
     <div class="section">
         <div class="sectionHeader">
+            <h1 class="postTitle"><a href="2012/11/21/requirejs-2.1.2-released/">RequireJS 2.1.2 Released</a></h1>
+            <div class="datetime" data-datetime="2012-11-21T23:11:02.650Z">
+                Wed, 21 Nov 2012 23:11:02 GMT
+            </div>
+        </div>
+        <div class="sectionContent">
+            <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.2 is available</a>.</p>
+
+<p>The big changes for this release are in the optimizer:</p>
+
+<ul>
+<li>The optimizer can now <a href="http://www.requirejs.org/docs/optimization.html#requirements">run in the browser</a>, to enable web-based custom builds of your library.</li>
+<li>"uglify2" is an allowed "optimize" value now, using UglifyJS 2.1.11.</li>
+<li>Experimental support for <a href="http://www.requirejs.org/docs/optimization.html#sourcemaps">source maps</a>.</li>
+<li>The optimizer runs faster now, and has some <a href="http://www.requirejs.org/docs/optimization.html#turbo">speed options</a>.</li>
+</ul>
+
+<p>Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?milestone=22&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=20">Fixed r.js optimizer issues</a></li>
+</ul>
+        </div>
+    </div>
+    <div class="section">
+        <div class="sectionHeader">
             <h1 class="postTitle"><a href="2012/11/02/referencing-javascript/">Referencing JavaScript</a></h1>
             <div class="datetime" data-datetime="2012-11-02T16:40:55.062Z">
                 Fri, 02 Nov 2012 16:40:55 GMT
@@ -400,76 +427,6 @@ modifications to your code when you upgrade.</p>
 <p>See
 <a href="https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.1">Upgrading to 2.1</a>
 for more information.</p>
-        </div>
-    </div>
-    <div class="section">
-        <div class="sectionHeader">
-            <h1 class="postTitle"><a href="2012/09/15/understanding-macro-use-cases-for-javascript/">Understanding macro use cases for JavaScript</a></h1>
-            <div class="datetime" data-datetime="2012-09-15T21:56:22.032Z">
-                Sat, 15 Sep 2012 21:56:22 GMT
-            </div>
-        </div>
-        <div class="sectionContent">
-            <p>I just watched <a href="https://air.mozilla.org/sweetjs/">this Mozilla video on some experimental work Tim Disney is doing
-for JS macros</a>. While
-watching it, I also read came across <a href="http://calculist.org/blog/2012/04/17/homoiconicity-isnt-the-point/">Dave Herman's homoiconicity post</a>.</p>
-
-<p>Interesting stuff, and helped me to better understand how macros might fit
-into JavaScript, at least at a technical level.</p>
-
-<p>My crude layman's explanation of macros: transpilers but only JS token
-types are used, versus having to make your own whole grammar, and constrained to <strike>curlies</strike>
-() {} [] as delimiters (thanks to Tim for the correction). These limitations are there in order to insert in a simplified
-parser (called the reader) between the usual JS lexer and parser stages.</p>
-
-<p>So macros seem to be useful when:</p>
-
-<ul>
-<li>you do not want a full transpiler, just some small syntax forms</li>
-<li>and using a function() to do the code reuse is not appropriate</li>
-</ul>
-
-<p>I am having trouble visualizing those use cases though. My initial reaction is
-that macros are something neat for a language enthusiast, but do not actually
-make coding, the sharing and reading of code, that much better, particularly
-since it involves a level of indirection that is subtle, the new grammar needs
-to be tracked down. I find this is the hardest part of understanding codebases,
-tracking down what different units of code are doing, where the definitions live.</p>
-
-<p>My first impulse is to say, "just make a function" that does
-what you want, using existing JS grammar.</p>
-
-<p>If a function is not enough, what you are probably wanting is a full custom
-language, so then a full grammar/transpiler makes sense.
-The use of transpilers are easier to call out in their use -- normally a different
-file extension, and by not being limited to JS token types/delimiters, you are
-more likely to create a terser grammar.</p>
-
-<p>I can see the need to make transpiler construction easier. And if someone wanted
-to create a "like JS but with some tweaks", maybe create something higher
-level than something like <a href="http://zaach.github.com/jison/">jison</a> to do that.
-I would have liked that when playing around with module syntax for JS, for
-example.</p>
-
-<p>So it is hard for me to see the case for macros, at least as described in
-that video. They seem to be a middle ground between functions and full
-transpilers whose benefits seem to be outweighed by making it more difficult
-to comprehend code written in "JavaScript".</p>
-
-<p>But I am trying to learn more about it. If anyone has pointers to the cases
-where macros shine and their use outweighs my perceived readability/code tracing
-costs, I would love to hear it. Feel free to leave a comment.</p>
-
-<p>However, do not comment with at "yeah macros are dumb". This is an exploration
-in enlightenment. I'm already skeptical of macros, so I do not need that
-reinforcement. I'm looking for more concrete use cases, pros and cons on specific
-points, not fear of change.</p>
-
-<p>Similarly, comments of the form "because, Language X has them and
-they are awesome" will likely not be informative. It is likely language X and
-JS do not share other properties and cultures that are in JS, like the
-propensity to create transpilers for JS. I want uses cases that for JS would not
-be solved via functions or a full transpiler.</p>
         </div>
     </div>
 </body>
