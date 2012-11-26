@@ -17,7 +17,7 @@
         <id>http://jrburke.com/2012/11/26/volo-0.2.5-released/</id>
         <content type="html"><![CDATA[<p>This update for <a href="http://volojs.org">volo</a> is mostly about working well with the new <a href="http://developer.github.com/changes/2012-10-14-rate-limit-changes/">GitHub rate limit changes for unauthenticated requests</a>. 0.2.5 will use GitHub auth tokens if the non-token API limit has been reached.</p>
 
-<p>The other benefit with this approach, you can now pull down private repos via <code>volo create</code> and <code>volo add</code>!</p>
+<p>The other benefit with this approach, you can now pull down private repos via <a href="https://github.com/volojs/volo/blob/master/commands/create/doc.md">volo create</a> and <a href="https://github.com/volojs/volo/blob/master/commands/add/doc.md">volo add</a>!</p>
 
 <p>It is strongly recommended you upgrade to 0.2.5:</p>
 

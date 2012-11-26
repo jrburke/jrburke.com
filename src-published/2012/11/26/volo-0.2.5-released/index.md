@@ -4,7 +4,7 @@ comments: https://github.com/jrburke/jrburke.com/issues/8
 ~
 This update for [volo](http://volojs.org) is mostly about working well with the new [GitHub rate limit changes for unauthenticated requests](http://developer.github.com/changes/2012-10-14-rate-limit-changes/). 0.2.5 will use GitHub auth tokens if the non-token API limit has been reached.
 
-The other benefit with this approach, you can now pull down private repos via `volo create` and `volo add`!
+The other benefit with this approach, you can now pull down private repos via [volo create](https://github.com/volojs/volo/blob/master/commands/create/doc.md) and [volo add](https://github.com/volojs/volo/blob/master/commands/add/doc.md)!
 
 It is strongly recommended you upgrade to 0.2.5:
 
