@@ -4,12 +4,28 @@
     <title><![CDATA[James Burke -- volo]]></title>
     <link href="http://jrburke.com/tags/volo//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/volo/"/>
-    <updated>2012-10-05T20:43:35.157Z</updated>
+    <updated>2012-11-26T19:48:18.497Z</updated>
     <id>http://jrburke.com/tags/volo/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[volo 0.2.5 released]]></title>
+        <link href="http://jrburke.com/2012/11/26/volo-0.2.5-released/"/>
+        <updated>2012-11-26T19:48:18.497Z</updated>
+        <id>http://jrburke.com/2012/11/26/volo-0.2.5-released/</id>
+        <content type="html"><![CDATA[<p>This update for <a href="http://volojs.org">volo</a> is mostly about working well with the new <a href="http://developer.github.com/changes/2012-10-14-rate-limit-changes/">GitHub rate limit changes for unauthenticated requests</a>. 0.2.5 will use GitHub auth tokens if the non-token API limit has been reached.</p>
+
+<p>The other benefit with this approach, you can now pull down private repos via <code>volo create</code> and <code>volo add</code>!</p>
+
+<p>It is strongly recommended you upgrade to 0.2.5:</p>
+
+<pre><code>npm install -g volo
+</code></pre>
+
+<p><a href="https://github.com/volojs/volo/issues?milestone=8&amp;page=1&amp;state=closed">List of fixed 0.2.5 issues</a>.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[volo 0.2.4 released]]></title>
         <link href="http://jrburke.com/2012/10/05/volo-0.2.4-released/"/>
