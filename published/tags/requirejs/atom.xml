@@ -4,12 +4,37 @@
     <title><![CDATA[James Burke -- requirejs]]></title>
     <link href="http://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/requirejs/"/>
-    <updated>2012-11-21T23:11:02.650Z</updated>
+    <updated>2013-01-22T18:31:12.519Z</updated>
     <id>http://jrburke.com/tags/requirejs/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.3 Released]]></title>
+        <link href="http://jrburke.com/2013/01/22/requirejs-2.1.3-released/"/>
+        <updated>2013-01-22T18:31:12.519Z</updated>
+        <id>http://jrburke.com/2013/01/22/requirejs-2.1.3-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.3 is available</a>.</p>
+
+<p>Maintenance release. A change that may be noticeable:</p>
+
+<p><a href="http://requirejs.org/docs/api.html#modulenotes-urls">require.toUrl()</a> now correctly generates URLs for string values passed to it without an extension. Previous versions of toUrl() would append a ".js" extension automatically. If you relied on that behavior, when you update to 2.1.3, then you may need to do a code change to append the .js extension yourself:</p>
+
+<pre><code>require.toUrl('some/value') + '.js'
+</code></pre>
+
+<p>The text plugin has been updated to also work with this change, so if you want to generate non-extension paths for text resources, be sure to upgrade to the <a href="https://raw.github.com/requirejs/text/latest/text.js">2.0.4 version of text.js</a>.</p>
+
+<p>Normal use of toUrl with a value that has an extension continues to work the same.</p>
+
+<p>Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?milestone=24&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=21">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.2 Released]]></title>
         <link href="http://jrburke.com/2012/11/21/requirejs-2.1.2-released/"/>

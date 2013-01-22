@@ -34,6 +34,35 @@
 </div>
     <div class="section">
         <div class="sectionHeader">
+            <h1 class="postTitle"><a href="2013/01/22/requirejs-2.1.3-released/">RequireJS 2.1.3 Released</a></h1>
+            <div class="datetime" data-datetime="2013-01-22T18:31:12.519Z">
+                Tue, 22 Jan 2013 18:31:12 GMT
+            </div>
+        </div>
+        <div class="sectionContent">
+            <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.3 is available</a>.</p>
+
+<p>Maintenance release. A change that may be noticeable:</p>
+
+<p><a href="http://requirejs.org/docs/api.html#modulenotes-urls">require.toUrl()</a> now correctly generates URLs for string values passed to it without an extension. Previous versions of toUrl() would append a ".js" extension automatically. If you relied on that behavior, when you update to 2.1.3, then you may need to do a code change to append the .js extension yourself:</p>
+
+<pre><code>require.toUrl('some/value') + '.js'
+</code></pre>
+
+<p>The text plugin has been updated to also work with this change, so if you want to generate non-extension paths for text resources, be sure to upgrade to the <a href="https://raw.github.com/requirejs/text/latest/text.js">2.0.4 version of text.js</a>.</p>
+
+<p>Normal use of toUrl with a value that has an extension continues to work the same.</p>
+
+<p>Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?milestone=24&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=21">Fixed r.js optimizer issues</a></li>
+</ul>
+        </div>
+    </div>
+    <div class="section">
+        <div class="sectionHeader">
             <h1 class="postTitle"><a href="2012/11/26/volo-0.2.5-released/">volo 0.2.5 released</a></h1>
             <div class="datetime" data-datetime="2012-11-26T19:48:18.497Z">
                 Mon, 26 Nov 2012 19:48:18 GMT
@@ -408,26 +437,6 @@ requirejs(['app/main']);
 <li><a href="https://github.com/jrburke/requirejs/issues?milestone=21&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
 <li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=19">Fixed r.js optimizer issues</a></li>
 </ul>
-        </div>
-    </div>
-    <div class="section">
-        <div class="sectionHeader">
-            <h1 class="postTitle"><a href="2012/10/05/volo-0.2.4-released/">volo 0.2.4 released</a></h1>
-            <div class="datetime" data-datetime="2012-10-05T20:43:35.157Z">
-                Fri, 05 Oct 2012 20:43:35 GMT
-            </div>
-        </div>
-        <div class="sectionContent">
-            <p>Just a small update for <a href="http://volojs.org">volo</a>, but it adds a simple
-<em>volo info</em> command and includes an alias for <em>install</em> that points to <em>add</em>.</p>
-
-<p>It also fixes an <a href="https://github.com/volojs/volo/issues/102">edge case bug</a>
-that is bad enough that you should upgrade to 0.2.4 as soon as possible.</p>
-
-<pre><code>npm install -g volo
-</code></pre>
-
-<p><a href="https://github.com/volojs/volo/issues?milestone=7&amp;page=1&amp;state=closed">List of fixed 0.2.4 issues</a>.</p>
         </div>
     </div>
 </body>
