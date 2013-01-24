@@ -34,6 +34,25 @@
 </div>
     <div class="section">
         <div class="sectionHeader">
+            <h1 class="postTitle"><a href="2013/01/23/requirejs-2.1.4-released/">RequireJS 2.1.4 Released</a></h1>
+            <div class="datetime" data-datetime="2013-01-24T02:08:26.417Z">
+                Thu, 24 Jan 2013 02:08:26 GMT
+            </div>
+        </div>
+        <div class="sectionContent">
+            <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.4 is available</a>.</p>
+
+<p>Quick release for a bug that slipped in the 2.1.3 release in the r.js optimizer. So even though require.js now has a 2.1.4 version, it is the same as 2.1.3, and the optimizer is the same as 2.1.3 except for this one fix:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/r.js/issues/356">Bug 356</a>: cssPrefix normalization always needs to happen</li>
+</ul>
+
+<p>Without this fix, in some cases 2.1.3 would insert "undefined" in some optimized CSS files, making them unusable.</p>
+        </div>
+    </div>
+    <div class="section">
+        <div class="sectionHeader">
             <h1 class="postTitle"><a href="2013/01/22/requirejs-2.1.3-released/">RequireJS 2.1.3 Released</a></h1>
             <div class="datetime" data-datetime="2013-01-22T18:31:12.519Z">
                 Tue, 22 Jan 2013 18:31:12 GMT
@@ -417,26 +436,6 @@ requirejs(['app/main']);
 <h2 id="summary">Summary</h2>
 
 <p>The above approach as been demonstrated to work, and it is in active use. While the "everything is a directory" and "build everything" do not seem like viable long range solutions, it would be great to hear of other solutions that work well in practice.</p>
-        </div>
-    </div>
-    <div class="section">
-        <div class="sectionHeader">
-            <h1 class="postTitle"><a href="2012/10/14/requirejs-2.1.1-released/">RequireJS 2.1.1 Released</a></h1>
-            <div class="datetime" data-datetime="2012-10-15T05:27:42.805Z">
-                Mon, 15 Oct 2012 05:27:42 GMT
-            </div>
-        </div>
-        <div class="sectionContent">
-            <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.1 is available</a>.</p>
-
-<p>The main fix: enabling synchronous calls to requirejs to complete synchronously in Node. More info about the require behavior in 2.1 in <a href="https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.1#wiki-breaking-async">this section of the 2.1 upgrade doc</a>.</p>
-
-<p>Complete list of changes:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?milestone=21&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=19">Fixed r.js optimizer issues</a></li>
-</ul>
         </div>
     </div>
 </body>
