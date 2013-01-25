@@ -4,12 +4,26 @@
     <title><![CDATA[James Burke -- volo]]></title>
     <link href="http://jrburke.com/tags/volo//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/volo/"/>
-    <updated>2012-11-26T19:48:18.497Z</updated>
+    <updated>2013-01-25T02:11:25.743Z</updated>
     <id>http://jrburke.com/tags/volo/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[volo 0.2.7 released]]></title>
+        <link href="http://jrburke.com/2013/01/24/volo-0.2.7-released/"/>
+        <updated>2013-01-25T02:11:25.743Z</updated>
+        <id>http://jrburke.com/2013/01/24/volo-0.2.7-released/</id>
+        <content type="html"><![CDATA[<p>A maintenance release for <a href="http://volojs.org">volo</a> that fixes some issues around branch fetching and proper ordering of version tags. <a href="https://github.com/volojs/volo/issues?milestone=10&amp;page=1&amp;state=closed">List of fixed 0.2.7 issues</a>.</p>
+
+<p>Upgrading is recommended:</p>
+
+<pre><code>npm install -g volo
+</code></pre>
+
+<p>Also, if you have a GitHub repo that can be used as a <code>volo create</code> project template, feel free to add it to the <a href="https://github.com/volojs/volo/wiki/Create-templates">create template directory</a>.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[volo 0.2.5 released]]></title>
         <link href="http://jrburke.com/2012/11/26/volo-0.2.5-released/"/>
