@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="[RequireJS 2.1.5 is available](http:&#x2F;&#x2F;www.requirejs.org&#x2F;docs&#x2F;download.html).">
+
+    <title>RequireJS 2.1.5 Released ~ James Burke</title>
+
+    <link rel="canonical" href="http://jrburke.com/2013/03/03/requirejs-2.1.5-released/">
+    <link href="http://jrburke.com/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="../../../../img/favicon.png" rel="icon">
+<link href="../../../../css/index.css" rel="stylesheet" type="text/css">
+
+<script src="../../../../js/index.js"></script>
+<script type="text/javascript">
+  (function() {
+    var config = {
+      kitId: 'mun6ekq',
+      scriptTimeout: 3000
+    };
+    var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+  })();
+</script>
+</head>
+<body class="post">
+
+<div class="header">
+    <h1><a href="../../../../">James Burke</a></h1>
+
+    <div class="nav">
+        <a href="../../../../about/">about</a>
+        <a href="../../../../archives/">archives</a>
+        <a href="../../../../tags/">tags</a>
+        <a href="http://duckduckgo.com/?q=site%3Ajrburke.com">search</a>
+            <a href="http://jrburke.com/atom.xml">feed</a>
+    </div>
+</div>
+    <div class="sectionHeader">
+        <h1 class="postTitle">RequireJS 2.1.5 Released</h1>
+        <div class="datetime" data-datetime="2013-03-04T07:41:27.338Z">Mon, 04 Mar 2013 07:41:27 GMT</div>
+    </div>
+
+    <div class="sectionContent">
+        <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.5 is available</a>.</p>
+
+<p>Biggest change is support for running the optimizer and loading AMD modules in
+<a href="https://developer.mozilla.org/en-US/docs/XPConnect/xpcshell">xpcshell</a>. It is a bit tricky to get xpcshell on your machine. It normally means creating a debug build of Firefox. But if you have a build or test environments built around xpcshell, RequireJS and the optimizer now run in that environment.</p>
+
+<p>I tried to get <a href="https://github.com/jrburke/r.js/issues/201">r.js to work in Windows Script Host</a>, but unfortunately, cscript is too limited to be useful.</p>
+
+<p>If someone else knows how to run JS on the Windows command line that has access to file IO natively on Windows, please let me know in that issue. However, if it means downloading some sort of binary, I am more likely to discard that approach and encourage developers to take the already available node path for Windows.</p>
+
+<p>Similarly, I wish <a href="https://trac.webkit.org/wiki/JSC">JSC</a> on OS X had a way to access the file system. If it did, it would be easy to write an adapter for it. However, JSC seems limited to just stdin/stdout.</p>
+
+<p>Full list of changes for 2.1.5:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=26&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?milestone=23&amp;state=closed">Fixed r.js optimizer issues</a></li>
+</ul>
+
+        <div class="separator">~</div>
+        <a href="https://github.com/jrburke/jrburke.com/issues/12">Comments</a>
+    </div>
+
+    <div class="endmark">&lt;j&gt;</div>
+</body>
+</html>

@@ -4,12 +4,35 @@
     <title><![CDATA[James Burke -- requirejs]]></title>
     <link href="http://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/requirejs/"/>
-    <updated>2013-01-24T02:08:26.417Z</updated>
+    <updated>2013-03-04T07:41:27.338Z</updated>
     <id>http://jrburke.com/tags/requirejs/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.5 Released]]></title>
+        <link href="http://jrburke.com/2013/03/03/requirejs-2.1.5-released/"/>
+        <updated>2013-03-04T07:41:27.338Z</updated>
+        <id>http://jrburke.com/2013/03/03/requirejs-2.1.5-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.5 is available</a>.</p>
+
+<p>Biggest change is support for running the optimizer and loading AMD modules in
+<a href="https://developer.mozilla.org/en-US/docs/XPConnect/xpcshell">xpcshell</a>. It is a bit tricky to get xpcshell on your machine. It normally means creating a debug build of Firefox. But if you have a build or test environments built around xpcshell, RequireJS and the optimizer now run in that environment.</p>
+
+<p>I tried to get <a href="https://github.com/jrburke/r.js/issues/201">r.js to work in Windows Script Host</a>, but unfortunately, cscript is too limited to be useful.</p>
+
+<p>If someone else knows how to run JS on the Windows command line that has access to file IO natively on Windows, please let me know in that issue. However, if it means downloading some sort of binary, I am more likely to discard that approach and encourage developers to take the already available node path for Windows.</p>
+
+<p>Similarly, I wish <a href="https://trac.webkit.org/wiki/JSC">JSC</a> on OS X had a way to access the file system. If it did, it would be easy to write an adapter for it. However, JSC seems limited to just stdin/stdout.</p>
+
+<p>Full list of changes for 2.1.5:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=26&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?milestone=23&amp;state=closed">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.4 Released]]></title>
         <link href="http://jrburke.com/2013/01/23/requirejs-2.1.4-released/"/>
@@ -88,21 +111,6 @@
 <li><a href="https://github.com/jrburke/requirejs/issues?milestone=21&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
 <li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=19">Fixed r.js optimizer issues</a></li>
 </ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1 Released]]></title>
-        <link href="http://jrburke.com/2012/10/03/requirejs-2.1-released/"/>
-        <updated>2012-10-04T00:47:35.768Z</updated>
-        <id>http://jrburke.com/2012/10/03/requirejs-2.1-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.0 is available</a>.</p>
-
-<p>This release refines some execution rules around cycles and transpilers, and
-how shimmed code can be wired up. There are a couple changes that may require
-modifications to your code when you upgrade.</p>
-
-<p>See
-<a href="https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.1">Upgrading to 2.1</a>
-for more information.</p>]]></content>
     </entry>
 
 </feed>
