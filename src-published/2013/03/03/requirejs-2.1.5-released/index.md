@@ -6,7 +6,7 @@ comments: https://github.com/jrburke/jrburke.com/issues/12
 [RequireJS 2.1.5 is available](http://www.requirejs.org/docs/download.html).
 
 Biggest change is support for running the optimizer and loading AMD modules in
-[xpcshell](https://developer.mozilla.org/en-US/docs/XPConnect/xpcshell). It is a bit tricky to get xpcshell on your machine. It normally means creating a debug build of Firefox. But if you have a build or test environments built around xpcshell, RequireJS and the optimizer now run in that environment.
+[xpcshell](https://developer.mozilla.org/en-US/docs/XPConnect/xpcshell). It is a bit tricky to get xpcshell on your machine. It normally means creating a debug build of Firefox. But if you have a build or test environment built around xpcshell, RequireJS and the optimizer now run in that environment.
 
 I tried to get [r.js to work in Windows Script Host](https://github.com/jrburke/r.js/issues/201), but unfortunately, cscript is too limited to be useful.
 
