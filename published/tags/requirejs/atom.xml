@@ -4,12 +4,30 @@
     <title><![CDATA[James Burke -- requirejs]]></title>
     <link href="http://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/requirejs/"/>
-    <updated>2013-03-04T07:41:27.338Z</updated>
+    <updated>2013-05-11T04:16:17.026Z</updated>
     <id>http://jrburke.com/tags/requirejs/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.6 Released]]></title>
+        <link href="http://jrburke.com/2013/05/10/requirejs-2.1.6-released/"/>
+        <updated>2013-05-11T04:16:17.026Z</updated>
+        <id>http://jrburke.com/2013/05/10/requirejs-2.1.6-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.6 is available</a>.</p>
+
+<p><a href="http://www.requirejs.org/docs/optimization.html#sourcemaps">Source map support</a> has been expanded. Previously, it was just supported for going from minified, bundled code to the unminified, bundled code. If <strong>optimize: 'uglify2'</strong> is used, it will now go back to the separated, unbundled files.</p>
+
+<p>Source map support is still considered experimental though, so you may find bugs. If you find one, file an <a href="https://github.com/jrburke/r.js/issues">r.js issue</a>, ideally with a test case.</p>
+
+<p>Full list of changes for 2.1.6:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=27&amp;page=1&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?milestone=25&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.5 Released]]></title>
         <link href="http://jrburke.com/2013/03/03/requirejs-2.1.5-released/"/>
@@ -94,22 +112,6 @@
 <ul>
 <li><a href="https://github.com/jrburke/requirejs/issues?milestone=22&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
 <li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=20">Fixed r.js optimizer issues</a></li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1.1 Released]]></title>
-        <link href="http://jrburke.com/2012/10/14/requirejs-2.1.1-released/"/>
-        <updated>2012-10-15T05:27:42.805Z</updated>
-        <id>http://jrburke.com/2012/10/14/requirejs-2.1.1-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.1 is available</a>.</p>
-
-<p>The main fix: enabling synchronous calls to requirejs to complete synchronously in Node. More info about the require behavior in 2.1 in <a href="https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.1#wiki-breaking-async">this section of the 2.1 upgrade doc</a>.</p>
-
-<p>Complete list of changes:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?milestone=21&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=19">Fixed r.js optimizer issues</a></li>
 </ul>]]></content>
     </entry>
 

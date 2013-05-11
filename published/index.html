@@ -34,6 +34,28 @@
 </div>
     <div class="section">
         <div class="sectionHeader">
+            <h1 class="postTitle"><a href="2013/05/10/requirejs-2.1.6-released/">RequireJS 2.1.6 Released</a></h1>
+            <div class="datetime" data-datetime="2013-05-11T04:16:17.026Z">
+                Sat, 11 May 2013 04:16:17 GMT
+            </div>
+        </div>
+        <div class="sectionContent">
+            <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.6 is available</a>.</p>
+
+<p><a href="http://www.requirejs.org/docs/optimization.html#sourcemaps">Source map support</a> has been expanded. Previously, it was just supported for going from minified, bundled code to the unminified, bundled code. If <strong>optimize: 'uglify2'</strong> is used, it will now go back to the separated, unbundled files.</p>
+
+<p>Source map support is still considered experimental though, so you may find bugs. If you find one, file an <a href="https://github.com/jrburke/r.js/issues">r.js issue</a>, ideally with a test case.</p>
+
+<p>Full list of changes for 2.1.6:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=27&amp;page=1&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?milestone=25&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
+</ul>
+        </div>
+    </div>
+    <div class="section">
+        <div class="sectionHeader">
             <h1 class="postTitle"><a href="2013/03/03/requirejs-2.1.5-released/">RequireJS 2.1.5 Released</a></h1>
             <div class="datetime" data-datetime="2013-03-04T07:41:27.338Z">
                 Mon, 04 Mar 2013 07:41:27 GMT
@@ -123,26 +145,6 @@
 <li><a href="https://github.com/jrburke/requirejs/issues?milestone=24&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
 <li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=21">Fixed r.js optimizer issues</a></li>
 </ul>
-        </div>
-    </div>
-    <div class="section">
-        <div class="sectionHeader">
-            <h1 class="postTitle"><a href="2012/11/26/volo-0.2.5-released/">volo 0.2.5 released</a></h1>
-            <div class="datetime" data-datetime="2012-11-26T19:48:18.497Z">
-                Mon, 26 Nov 2012 19:48:18 GMT
-            </div>
-        </div>
-        <div class="sectionContent">
-            <p>This update for <a href="http://volojs.org">volo</a> is mostly about working well with the new <a href="http://developer.github.com/changes/2012-10-14-rate-limit-changes/">GitHub rate limit changes for unauthenticated requests</a>. 0.2.5 will use GitHub auth tokens if the non-token API limit has been reached.</p>
-
-<p>The other benefit with this approach, you can now pull down private repos via <a href="https://github.com/volojs/volo/blob/master/commands/create/doc.md">volo create</a> and <a href="https://github.com/volojs/volo/blob/master/commands/add/doc.md">volo add</a>!</p>
-
-<p>It is strongly recommended you upgrade to 0.2.5:</p>
-
-<pre><code>npm install -g volo
-</code></pre>
-
-<p><a href="https://github.com/volojs/volo/issues?milestone=8&amp;page=1&amp;state=closed">List of fixed 0.2.5 issues</a>.</p>
         </div>
     </div>
 </body>
