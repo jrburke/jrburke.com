@@ -5,6 +5,12 @@
   "postUrlType": "date",
   "published": [
     {
+      "title": "volo 0.3.0 released",
+      "path": "2013/06/05/volo-0.3.0-released",
+      "postTime": 1370492372680,
+      "postIsoDate": "2013-06-06T04:19:32.680Z"
+    },
+    {
       "title": "RequireJS 2.1.6 Released",
       "path": "2013/05/10/requirejs-2.1.6-released",
       "postTime": 1368245777026,

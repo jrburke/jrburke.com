@@ -4,12 +4,42 @@
     <title><![CDATA[James Burke -- volo]]></title>
     <link href="http://jrburke.com/tags/volo//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/volo/"/>
-    <updated>2013-01-25T02:11:25.743Z</updated>
+    <updated>2013-06-06T04:19:32.680Z</updated>
     <id>http://jrburke.com/tags/volo/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[volo 0.3.0 released]]></title>
+        <link href="http://jrburke.com/2013/06/05/volo-0.3.0-released/"/>
+        <updated>2013-06-06T04:19:32.680Z</updated>
+        <id>http://jrburke.com/2013/06/05/volo-0.3.0-released/</id>
+        <content type="html"><![CDATA[<p>A new release for <a href="http://volojs.org">volo</a> is out that adds the following:</p>
+
+<ul>
+<li><strong>Colorized output</strong>: just a bit of color. Nothing crazy. Also the markdown help files are now a bit prettier thanks to an approach I first about from <a href="https://github.com/gtanner">Gord Tanner</a>.</li>
+<li><strong>volo.ignore</strong>: For your library, you can set a <a href="https://github.com/volojs/volo/wiki/Library-best-practices#wiki-voloignore">volo.ignore</a> property for files/directories that should not be part of the installed dependency.</li>
+<li><strong>remove command</strong>: There is now an explicit remove command. It will remove a dependency from the volo.dependencies in package.json and remove the file(s) on disk.</li>
+<li><strong>update command</strong>: Just an alias to <code>add -f</code>.</li>
+</ul>
+
+<p>Some internal dependencies were updated. One of them was <a href="https://github.com/kriskowal/q">Q</a>, going from a 0.8 version to a 0.9 version. As part of that update, some of its APIs changed, so if you <code>v.require('q')</code> in your volofile, you may need to update your code. The only changes I needed to do internally:</p>
+
+<ul>
+<li><code>q.call</code> is now <code>q.fcall</code>. If you need to support older and newer volo installs, you can use <code>q.fcall || q.call)</code> in your volofiles to be forward and backward compatible.</li>
+<li><code>q.end</code> is now <code>q.done</code>.</li>
+</ul>
+
+<p>See the full set of <a href="https://github.com/kriskowal/q/blob/master/CHANGES.md#090">0.9 Q API</a> changes.</p>
+
+<p><a href="https://github.com/volojs/volo/issues?milestone=13&amp;page=1&amp;state=closed">Full list of fixed volo 0.3.0 issues</a>.</p>
+
+<p>To upgrade to the latest release:</p>
+
+<pre><code>npm install -g volo
+</code></pre>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[volo 0.2.7 released]]></title>
         <link href="http://jrburke.com/2013/01/24/volo-0.2.7-released/"/>
