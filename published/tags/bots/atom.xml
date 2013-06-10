@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-    <title><![CDATA[James Burke]]></title>
-    <link href="http://jrburke.com/atom.xml" rel="self"/>
-    <link href="http://jrburke.com/"/>
+    <title><![CDATA[James Burke -- bots]]></title>
+    <link href="http://jrburke.com/tags/bots//atom.xml" rel="self"/>
+    <link href="http://jrburke.com/tags/bots/"/>
     <updated>2013-06-10T04:11:55.600Z</updated>
-    <id>http://jrburke.com/</id>
+    <id>http://jrburke.com/tags/bots/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
@@ -80,91 +80,6 @@
 <p>It would be fine to hear about approaches use a tiny web server hooked up to the Arduino that receives connections over Bluetooth or WiFi, but I consider that a secondary goal as it involves more moving parts. Definitely interesting, but I really want to focus on hooking up the mobile device directly to the Arduino. The possibility of using the mobile device sensors with the Arduino, and using HTML/JS/CSS to drive the logic is something I really want to see in action.</p>
 
 <p>So, leave a comment via the link below, or if you have practical steps for <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a>, comment in that bug.</p>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[volo 0.3.0 released]]></title>
-        <link href="http://jrburke.com/2013/06/05/volo-0.3.0-released/"/>
-        <updated>2013-06-06T04:19:32.680Z</updated>
-        <id>http://jrburke.com/2013/06/05/volo-0.3.0-released/</id>
-        <content type="html"><![CDATA[<p>A new release for <a href="http://volojs.org">volo</a> is out that adds the following:</p>
-
-<ul>
-<li><strong>Colorized output</strong>: just a bit of color. Nothing crazy. Also the markdown help files are now a bit prettier thanks to an approach I first about from <a href="https://github.com/gtanner">Gord Tanner</a>.</li>
-<li><strong>volo.ignore</strong>: For your library, you can set a <a href="https://github.com/volojs/volo/wiki/Library-best-practices#wiki-voloignore">volo.ignore</a> property for files/directories that should not be part of the installed dependency.</li>
-<li><strong>remove command</strong>: There is now an explicit remove command. It will remove a dependency from the volo.dependencies in package.json and remove the file(s) on disk.</li>
-<li><strong>update command</strong>: Just an alias to <code>add -f</code>.</li>
-</ul>
-
-<p>Some internal dependencies were updated. One of them was <a href="https://github.com/kriskowal/q">Q</a>, going from a 0.8 version to a 0.9 version. As part of that update, some of its APIs changed, so if you <code>v.require('q')</code> in your volofile, you may need to update your code. The only changes I needed to do internally:</p>
-
-<ul>
-<li><code>q.call</code> is now <code>q.fcall</code>. If you need to support older and newer volo installs, you can use <code>q.fcall || q.call)</code> in your volofiles to be forward and backward compatible.</li>
-<li><code>q.end</code> is now <code>q.done</code>.</li>
-</ul>
-
-<p>See the full set of <a href="https://github.com/kriskowal/q/blob/master/CHANGES.md#090">0.9 Q API</a> changes.</p>
-
-<p><a href="https://github.com/volojs/volo/issues?milestone=13&amp;page=1&amp;state=closed">Full list of fixed volo 0.3.0 issues</a>.</p>
-
-<p>To upgrade to the latest release:</p>
-
-<pre><code>npm install -g volo
-</code></pre>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1.6 Released]]></title>
-        <link href="http://jrburke.com/2013/05/10/requirejs-2.1.6-released/"/>
-        <updated>2013-05-11T04:16:17.026Z</updated>
-        <id>http://jrburke.com/2013/05/10/requirejs-2.1.6-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.6 is available</a>.</p>
-
-<p><a href="http://www.requirejs.org/docs/optimization.html#sourcemaps">Source map support</a> has been expanded. Previously, it was just supported for going from minified, bundled code to the unminified, bundled code. If <strong>optimize: 'uglify2'</strong> is used, it will now go back to the separated, unbundled files.</p>
-
-<p>Source map support is still considered experimental though, so you may find bugs. If you find one, file an <a href="https://github.com/jrburke/r.js/issues">r.js issue</a>, ideally with a test case.</p>
-
-<p>Full list of changes for 2.1.6:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=27&amp;page=1&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?milestone=25&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1.5 Released]]></title>
-        <link href="http://jrburke.com/2013/03/03/requirejs-2.1.5-released/"/>
-        <updated>2013-03-04T07:41:27.338Z</updated>
-        <id>http://jrburke.com/2013/03/03/requirejs-2.1.5-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.5 is available</a>.</p>
-
-<p>Biggest change is support for running the optimizer and loading AMD modules in
-<a href="https://developer.mozilla.org/en-US/docs/XPConnect/xpcshell">xpcshell</a>. It is a bit tricky to get xpcshell on your machine. It normally means creating a debug build of Firefox. But if you have a build or test environment built around xpcshell, RequireJS and the optimizer now run in that environment.</p>
-
-<p>I tried to get <a href="https://github.com/jrburke/r.js/issues/201">r.js to work in Windows Script Host</a>, but unfortunately, cscript is too limited to be useful.</p>
-
-<p>If someone else knows how to run JS on the Windows command line that has access to file IO natively on Windows, please let me know in that issue. However, if it means downloading some sort of binary, I am more likely to discard that approach and encourage developers to take the already available node path for Windows.</p>
-
-<p>Similarly, I wish <a href="https://trac.webkit.org/wiki/JSC">JSC</a> on OS X had a way to access the file system. If it did, it would be easy to write an adapter for it. However, JSC seems limited to just stdin/stdout.</p>
-
-<p>Full list of changes for 2.1.5:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=26&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?milestone=23&amp;state=closed">Fixed r.js optimizer issues</a></li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[volo 0.2.7 released]]></title>
-        <link href="http://jrburke.com/2013/01/24/volo-0.2.7-released/"/>
-        <updated>2013-01-25T02:11:25.743Z</updated>
-        <id>http://jrburke.com/2013/01/24/volo-0.2.7-released/</id>
-        <content type="html"><![CDATA[<p>A maintenance release for <a href="http://volojs.org">volo</a> that fixes some issues around branch fetching and proper ordering of version tags. <a href="https://github.com/volojs/volo/issues?milestone=10&amp;page=1&amp;state=closed">List of fixed 0.2.7 issues</a>.</p>
-
-<p>Upgrading is recommended:</p>
-
-<pre><code>npm install -g volo
-</code></pre>
-
-<p>Also, if you have a GitHub repo that can be used as a <code>volo create</code> project template, feel free to add it to the <a href="https://github.com/volojs/volo/wiki/Create-templates">create template directory</a>.</p>]]></content>
     </entry>
 
 </feed>

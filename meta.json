@@ -5,6 +5,12 @@
   "postUrlType": "date",
   "published": [
     {
+      "title": "Browser-driven Arduino bots",
+      "path": "2013/06/09/browser-driven-arduino-bots",
+      "postTime": 1370837515600,
+      "postIsoDate": "2013-06-10T04:11:55.600Z"
+    },
+    {
       "title": "volo 0.3.0 released",
       "path": "2013/06/05/volo-0.3.0-released",
       "postTime": 1370492372680,
