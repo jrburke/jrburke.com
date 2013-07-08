@@ -4,12 +4,33 @@
     <title><![CDATA[James Burke -- requirejs]]></title>
     <link href="http://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/requirejs/"/>
-    <updated>2013-05-11T04:16:17.026Z</updated>
+    <updated>2013-07-08T05:27:58.444Z</updated>
     <id>http://jrburke.com/tags/requirejs/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.7 Released]]></title>
+        <link href="http://jrburke.com/2013/07/07/requirejs-2.1.7-released/"/>
+        <updated>2013-07-08T05:27:58.444Z</updated>
+        <id>http://jrburke.com/2013/07/07/requirejs-2.1.7-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.7 is available</a>.</p>
+
+<p>The main changes for this release:</p>
+
+<ul>
+<li>For xpcshell, the optimizer uses the built in Reflect parser API instead of Esprima. xpcshell, on Linux and Windows in particular, has a constrained stack, and normal Esprima use was not possible. To accommodate this change, some of the parsing approaches used internally by r.js moved away from token scanning to tree walking. The only visible output change you may see is different use of space characters in transformed code.</li>
+<li>The source map support was updated to use the new //# syntax as specified by the spec. This change is still making its way through the browsers, so if you need source map or sourceURL support with 2.1.7, you may need to use Firefox Aurora or Chrome Canary channels. The browser support levels should get better in around six weeks time.</li>
+</ul>
+
+<p>Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=28&amp;page=1&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?milestone=26&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.6 Released]]></title>
         <link href="http://jrburke.com/2013/05/10/requirejs-2.1.6-released/"/>
@@ -89,29 +110,6 @@
 <ul>
 <li><a href="https://github.com/jrburke/requirejs/issues?milestone=24&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
 <li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=21">Fixed r.js optimizer issues</a></li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1.2 Released]]></title>
-        <link href="http://jrburke.com/2012/11/21/requirejs-2.1.2-released/"/>
-        <updated>2012-11-21T23:11:02.650Z</updated>
-        <id>http://jrburke.com/2012/11/21/requirejs-2.1.2-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.2 is available</a>.</p>
-
-<p>The big changes for this release are in the optimizer:</p>
-
-<ul>
-<li>The optimizer can now <a href="http://www.requirejs.org/docs/optimization.html#requirements">run in the browser</a>, to enable web-based custom builds of your library.</li>
-<li>"uglify2" is an allowed "optimize" value now, using UglifyJS 2.1.11.</li>
-<li>Experimental support for <a href="http://www.requirejs.org/docs/optimization.html#sourcemaps">source maps</a>.</li>
-<li>The optimizer runs faster now, and has some <a href="http://www.requirejs.org/docs/optimization.html#turbo">speed options</a>.</li>
-</ul>
-
-<p>Full list of changes:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?milestone=22&amp;sort=created&amp;direction=desc&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?sort=created&amp;direction=desc&amp;state=closed&amp;page=1&amp;milestone=20">Fixed r.js optimizer issues</a></li>
 </ul>]]></content>
     </entry>
 

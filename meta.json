@@ -5,6 +5,12 @@
   "postUrlType": "date",
   "published": [
     {
+      "title": "RequireJS 2.1.7 Released",
+      "path": "2013/07/07/requirejs-2.1.7-released",
+      "postTime": 1373261278444,
+      "postIsoDate": "2013-07-08T05:27:58.444Z"
+    },
+    {
       "title": "Browser-driven Arduino bots",
       "path": "2013/06/09/browser-driven-arduino-bots",
       "postTime": 1370837515600,
