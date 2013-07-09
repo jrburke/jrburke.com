@@ -4,12 +4,21 @@
     <title><![CDATA[James Burke]]></title>
     <link href="http://jrburke.com/atom.xml" rel="self"/>
     <link href="http://jrburke.com/"/>
-    <updated>2013-07-08T05:27:58.444Z</updated>
+    <updated>2013-07-09T06:55:25.899Z</updated>
     <id>http://jrburke.com/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.8 Released]]></title>
+        <link href="http://jrburke.com/2013/07/08/requirejs-2.1.8-released/"/>
+        <updated>2013-07-09T06:55:25.899Z</updated>
+        <id>http://jrburke.com/2013/07/08/requirejs-2.1.8-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.8 is available</a>.</p>
+
+<p>A small release to fix an optimizer issue with <a href="https://github.com/jrburke/r.js/issues/476">parsing config calls for modifications</a>.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.7 Released]]></title>
         <link href="http://jrburke.com/2013/07/07/requirejs-2.1.7-released/"/>
@@ -148,29 +157,6 @@
 <ul>
 <li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=27&amp;page=1&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
 <li><a href="https://github.com/jrburke/r.js/issues?milestone=25&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1.5 Released]]></title>
-        <link href="http://jrburke.com/2013/03/03/requirejs-2.1.5-released/"/>
-        <updated>2013-03-04T07:41:27.338Z</updated>
-        <id>http://jrburke.com/2013/03/03/requirejs-2.1.5-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.5 is available</a>.</p>
-
-<p>Biggest change is support for running the optimizer and loading AMD modules in
-<a href="https://developer.mozilla.org/en-US/docs/XPConnect/xpcshell">xpcshell</a>. It is a bit tricky to get xpcshell on your machine. It normally means creating a debug build of Firefox. But if you have a build or test environment built around xpcshell, RequireJS and the optimizer now run in that environment.</p>
-
-<p>I tried to get <a href="https://github.com/jrburke/r.js/issues/201">r.js to work in Windows Script Host</a>, but unfortunately, cscript is too limited to be useful.</p>
-
-<p>If someone else knows how to run JS on the Windows command line that has access to file IO natively on Windows, please let me know in that issue. However, if it means downloading some sort of binary, I am more likely to discard that approach and encourage developers to take the already available node path for Windows.</p>
-
-<p>Similarly, I wish <a href="https://trac.webkit.org/wiki/JSC">JSC</a> on OS X had a way to access the file system. If it did, it would be easy to write an adapter for it. However, JSC seems limited to just stdin/stdout.</p>
-
-<p>Full list of changes for 2.1.5:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=26&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?milestone=23&amp;state=closed">Fixed r.js optimizer issues</a></li>
 </ul>]]></content>
     </entry>
 
