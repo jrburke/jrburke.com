@@ -4,12 +4,28 @@
     <title><![CDATA[James Burke]]></title>
     <link href="http://jrburke.com/atom.xml" rel="self"/>
     <link href="http://jrburke.com/"/>
-    <updated>2013-07-09T06:55:25.899Z</updated>
+    <updated>2013-10-14T22:19:45.191Z</updated>
     <id>http://jrburke.com/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.9 Released]]></title>
+        <link href="http://jrburke.com/2013/10/14/requirejs-2.1.9-released/"/>
+        <updated>2013-10-14T22:19:45.191Z</updated>
+        <id>http://jrburke.com/2013/10/14/requirejs-2.1.9-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.9 is available</a>.</p>
+
+<p>Mainly a maintenance release to fix bugs. There is a new <a href="http://requirejs.org/docs/api.html#config-skipDataMain">skipDataMain</a> option in require.js to avoid the data-main work, which can be useful for browser extensions that should let the main content page's requirejs handle the data-main.</p>
+
+<p>Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?milestone=31&amp;page=1&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?milestone=28&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.8 Released]]></title>
         <link href="http://jrburke.com/2013/07/08/requirejs-2.1.8-released/"/>
@@ -140,24 +156,6 @@
 
 <pre><code>npm install -g volo
 </code></pre>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1.6 Released]]></title>
-        <link href="http://jrburke.com/2013/05/10/requirejs-2.1.6-released/"/>
-        <updated>2013-05-11T04:16:17.026Z</updated>
-        <id>http://jrburke.com/2013/05/10/requirejs-2.1.6-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.6 is available</a>.</p>
-
-<p><a href="http://www.requirejs.org/docs/optimization.html#sourcemaps">Source map support</a> has been expanded. Previously, it was just supported for going from minified, bundled code to the unminified, bundled code. If <strong>optimize: 'uglify2'</strong> is used, it will now go back to the separated, unbundled files.</p>
-
-<p>Source map support is still considered experimental though, so you may find bugs. If you find one, file an <a href="https://github.com/jrburke/r.js/issues">r.js issue</a>, ideally with a test case.</p>
-
-<p>Full list of changes for 2.1.6:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=27&amp;page=1&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?milestone=25&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
-</ul>]]></content>
     </entry>
 
 </feed>
