@@ -4,12 +4,35 @@
     <title><![CDATA[James Burke -- requirejs]]></title>
     <link href="http://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/requirejs/"/>
-    <updated>2013-10-14T22:19:45.191Z</updated>
+    <updated>2014-01-09T00:32:28.649Z</updated>
     <id>http://jrburke.com/tags/requirejs/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.10 Released]]></title>
+        <link href="http://jrburke.com/2014/01/08/requirejs-2.1.10-released/"/>
+        <updated>2014-01-09T00:32:28.649Z</updated>
+        <id>http://jrburke.com/2014/01/08/requirejs-2.1.10-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.10 is available</a>.</p>
+
+<p>Mainly a maintenance release, and improves some cases when reusing code that was installed via npm. There are two new config options for the loader too:</p>
+
+<ul>
+<li><a href="http://requirejs.org/docs/api.html#config-nodeIdCompat">nodeIdCompat</a>: some node modules installed by npm use module IDs like <code>example.js</code> and <code>example</code> interchangeably. Setting this config option to true will accommodate that style. <a href="https://github.com/jrburke/almond">almond</a> 0.2.9+ also supports this option.</li>
+<li><a href="http://requirejs.org/docs/api.html#config-bundles">bundles</a>: a more compact way to list a set of module IDs belonging to a bundle ID, and supports loader plugin resource IDs.</li>
+</ul>
+
+<p>And for the optimizer, the <a href="http://requirejs.org/docs/optimization.html#mainConfigFile">mainConfigFile</a> option can now take an array of file paths that have configs in them. Later values take precedent over earlier values.</p>
+
+<p>Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?milestone=32&amp;page=1&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?milestone=29&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.9 Released]]></title>
         <link href="http://jrburke.com/2013/10/14/requirejs-2.1.9-released/"/>
@@ -72,29 +95,6 @@
 <ul>
 <li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=27&amp;page=1&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
 <li><a href="https://github.com/jrburke/r.js/issues?milestone=25&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1.5 Released]]></title>
-        <link href="http://jrburke.com/2013/03/03/requirejs-2.1.5-released/"/>
-        <updated>2013-03-04T07:41:27.338Z</updated>
-        <id>http://jrburke.com/2013/03/03/requirejs-2.1.5-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.5 is available</a>.</p>
-
-<p>Biggest change is support for running the optimizer and loading AMD modules in
-<a href="https://developer.mozilla.org/en-US/docs/XPConnect/xpcshell">xpcshell</a>. It is a bit tricky to get xpcshell on your machine. It normally means creating a debug build of Firefox. But if you have a build or test environment built around xpcshell, RequireJS and the optimizer now run in that environment.</p>
-
-<p>I tried to get <a href="https://github.com/jrburke/r.js/issues/201">r.js to work in Windows Script Host</a>, but unfortunately, cscript is too limited to be useful.</p>
-
-<p>If someone else knows how to run JS on the Windows command line that has access to file IO natively on Windows, please let me know in that issue. However, if it means downloading some sort of binary, I am more likely to discard that approach and encourage developers to take the already available node path for Windows.</p>
-
-<p>Similarly, I wish <a href="https://trac.webkit.org/wiki/JSC">JSC</a> on OS X had a way to access the file system. If it did, it would be easy to write an adapter for it. However, JSC seems limited to just stdin/stdout.</p>
-
-<p>Full list of changes for 2.1.5:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?direction=desc&amp;milestone=26&amp;sort=created&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?milestone=23&amp;state=closed">Fixed r.js optimizer issues</a></li>
 </ul>]]></content>
     </entry>
 

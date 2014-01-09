@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="[RequireJS 2.1.10 is available](http:&#x2F;&#x2F;www.requirejs.org&#x2F;docs&#x2F;download.html).">
+
+    <title>RequireJS 2.1.10 Released ~ James Burke</title>
+
+    <link rel="canonical" href="http://jrburke.com/2014/01/08/requirejs-2.1.10-released/">
+    <link href="http://jrburke.com/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="../../../../img/favicon.png" rel="icon">
+<link href="../../../../css/index.css" rel="stylesheet" type="text/css">
+
+<script src="../../../../js/index.js"></script>
+<script type="text/javascript">
+  (function() {
+    var config = {
+      kitId: 'mun6ekq',
+      scriptTimeout: 3000
+    };
+    var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+  })();
+</script>
+</head>
+<body class="post">
+
+<div class="header">
+    <h1><a href="../../../../">James Burke</a></h1>
+
+    <div class="nav">
+        <a href="../../../../about/">about</a>
+        <a href="../../../../archives/">archives</a>
+        <a href="../../../../tags/">tags</a>
+        <a href="http://duckduckgo.com/?q=site%3Ajrburke.com">search</a>
+            <a href="http://jrburke.com/atom.xml">feed</a>
+    </div>
+</div>
+    <div class="sectionHeader">
+        <h1 class="postTitle">RequireJS 2.1.10 Released</h1>
+        <div class="datetime" data-datetime="2014-01-09T00:32:28.649Z">Thu, 09 Jan 2014 00:32:28 GMT</div>
+    </div>
+
+    <div class="sectionContent">
+        <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.10 is available</a>.</p>
+
+<p>Mainly a maintenance release, and improves some cases when reusing code that was installed via npm. There are two new config options for the loader too:</p>
+
+<ul>
+<li><a href="http://requirejs.org/docs/api.html#config-nodeIdCompat">nodeIdCompat</a>: some node modules installed by npm use module IDs like <code>example.js</code> and <code>example</code> interchangeably. Setting this config option to true will accommodate that style. <a href="https://github.com/jrburke/almond">almond</a> 0.2.9+ also supports this option.</li>
+<li><a href="http://requirejs.org/docs/api.html#config-bundles">bundles</a>: a more compact way to list a set of module IDs belonging to a bundle ID, and supports loader plugin resource IDs.</li>
+</ul>
+
+<p>And for the optimizer, the <a href="http://requirejs.org/docs/optimization.html#mainConfigFile">mainConfigFile</a> option can now take an array of file paths that have configs in them. Later values take precedent over earlier values.</p>
+
+<p>Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/requirejs/issues?milestone=32&amp;page=1&amp;state=closed">Fixed require.js issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?milestone=29&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
+</ul>
+
+        <div class="separator">~</div>
+        <a href="https://github.com/jrburke/jrburke.com/issues/19">Comments</a>
+    </div>
+
+    <div class="endmark">&lt;j&gt;</div>
+</body>
+</html>
