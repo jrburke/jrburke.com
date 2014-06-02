@@ -5,6 +5,12 @@
   "postUrlType": "date",
   "published": [
     {
+      "title": "RequireJS 2.1.14 Released",
+      "path": "2014/06/02/requirejs-2.1.14-released",
+      "postTime": 1401728332221,
+      "postIsoDate": "2014-06-02T16:58:52.221Z"
+    },
+    {
       "title": "RequireJS 2.1.13 Released",
       "path": "2014/05/27/requirejs-2.1.13-released",
       "postTime": 1401209670242,

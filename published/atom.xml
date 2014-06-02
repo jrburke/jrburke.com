@@ -4,12 +4,21 @@
     <title><![CDATA[James Burke]]></title>
     <link href="http://jrburke.com/atom.xml" rel="self"/>
     <link href="http://jrburke.com/"/>
-    <updated>2014-05-27T16:54:30.242Z</updated>
+    <updated>2014-06-02T16:58:52.221Z</updated>
     <id>http://jrburke.com/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.14 Released]]></title>
+        <link href="http://jrburke.com/2014/06/02/requirejs-2.1.14-released/"/>
+        <updated>2014-06-02T16:58:52.221Z</updated>
+        <id>http://jrburke.com/2014/06/02/requirejs-2.1.14-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.14 is available</a>.</p>
+
+<p>A couple more regression fixes for 2.1.12. One to <a href="https://github.com/jrburke/requirejs/issues/1131">fix nested plugin ID normalization</a>, like "pluginA!pluginbB!resource", and one for the <a href="https://github.com/jrburke/requirejs/issues/1133">optimizer incorrectly detecting UMD wrapped code</a>.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.13 Released]]></title>
         <link href="http://jrburke.com/2014/05/27/requirejs-2.1.13-released/"/>
@@ -72,22 +81,6 @@
 <ul>
 <li><a href="https://github.com/jrburke/requirejs/issues?milestone=32&amp;page=1&amp;state=closed">Fixed require.js issues</a></li>
 <li><a href="https://github.com/jrburke/r.js/issues?milestone=29&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1.9 Released]]></title>
-        <link href="http://jrburke.com/2013/10/14/requirejs-2.1.9-released/"/>
-        <updated>2013-10-14T22:19:45.191Z</updated>
-        <id>http://jrburke.com/2013/10/14/requirejs-2.1.9-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.9 is available</a>.</p>
-
-<p>Mainly a maintenance release to fix bugs. There is a new <a href="http://requirejs.org/docs/api.html#config-skipDataMain">skipDataMain</a> option in require.js to avoid the data-main work, which can be useful for browser extensions that should let the main content page's requirejs handle the data-main.</p>
-
-<p>Full list of changes:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?milestone=31&amp;page=1&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?milestone=28&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
 </ul>]]></content>
     </entry>
 
