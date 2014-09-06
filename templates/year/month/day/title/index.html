@@ -23,11 +23,15 @@
         {{&htmlContent}}
 
         {{#headers.comments}}
-        <div class="separator">~</div>
+        <div class="separator">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="0" x2="100" y2="0" stroke="black" stroke-width="5"/>
+          </svg>
+        </div>
         <a href="{{&headers.comments}}">Comments</a>
         {{/headers.comments}}
     </div>
-
-    <div class="endmark">&lt;j&gt;</div>
+    {{> footer}}
+    
 </body>
 </html>
