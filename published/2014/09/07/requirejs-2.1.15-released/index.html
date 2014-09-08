@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="author" content="">
-    <meta name="description" content="RequireJS 2.1.9 is available.">
+    <meta name="description" content="RequireJS 2.1.15 is available.">
 
-    <title>RequireJS 2.1.9 Released ~ James Burke</title>
+    <title>RequireJS 2.1.15 Released ~ James Burke</title>
 
-    <link rel="canonical" href="http://jrburke.com/2013/10/14/requirejs-2.1.9-released/">
+    <link rel="canonical" href="http://jrburke.com/2014/09/07/requirejs-2.1.15-released/">
     <link href="http://jrburke.com/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,24 +39,21 @@
     </div>
 </div>
     <div class="sectionHeader">
-        <h1 class="postTitle">RequireJS 2.1.9 Released</h1>
-        <div class="datetime" data-datetime="2013-10-14T22:19:45.191Z">Mon, 14 Oct 2013 22:19:45 GMT</div>
+        <h1 class="postTitle">RequireJS 2.1.15 Released</h1>
+        <div class="datetime" data-datetime="2014-09-08T01:15:05.458Z">Mon, 08 Sep 2014 01:15:05 GMT</div>
     </div>
 
     <div class="sectionContent">
-        <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.9 is available</a>.</p>
+        <p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.15 is available</a>.</p>
 
-<p>Mainly a maintenance release to fix bugs. There is a new <a href="http://requirejs.org/docs/api.html#config-skipDataMain">skipDataMain</a> option in require.js to avoid the data-main work, which can be useful for browser extensions that should let the main content page's requirejs handle the data-main.</p>
-
-<p>Full list of changes:</p>
+<p>Mainly fixes a regression from 2.1.14 in the r.js optimizer where <a href="https://github.com/jrburke/r.js/issues/704">some define() calls were not found</a>. The most common manifestations of the bug would be either an extra <code>define('jquery', function(){})</code> in the build output or namespaced builds not working. The fixes for 2.1.15 are just in the optimizer. Full list of changes:</p>
 
 <ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?milestone=31&amp;page=1&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?milestone=28&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
+<li><a href="https://github.com/jrburke/r.js/issues?q=milestone%3A2.1.15+is%3Aclosed">Fixed r.js optimizer issues</a></li>
 </ul>
 
         <div class="separator">~</div>
-        <a href="https://github.com/jrburke/jrburke.com/issues/18">Comments</a>
+        <a href="https://github.com/jrburke/jrburke.com/issues/24">Comments</a>
     </div>
 
     <div class="endmark">&lt;j&gt;</div>

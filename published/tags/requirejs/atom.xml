@@ -4,12 +4,25 @@
     <title><![CDATA[James Burke -- requirejs]]></title>
     <link href="http://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
     <link href="http://jrburke.com/tags/requirejs/"/>
-    <updated>2014-06-02T16:58:52.221Z</updated>
+    <updated>2014-09-08T01:15:05.458Z</updated>
     <id>http://jrburke.com/tags/requirejs/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.15 Released]]></title>
+        <link href="http://jrburke.com/2014/09/07/requirejs-2.1.15-released/"/>
+        <updated>2014-09-08T01:15:05.458Z</updated>
+        <id>http://jrburke.com/2014/09/07/requirejs-2.1.15-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.15 is available</a>.</p>
+
+<p>Mainly fixes a regression from 2.1.14 in the r.js optimizer where <a href="https://github.com/jrburke/r.js/issues/704">some define() calls were not found</a>. The most common manifestations of the bug would be either an extra <code>define('jquery', function(){})</code> in the build output or namespaced builds not working. The fixes for 2.1.15 are just in the optimizer. Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/r.js/issues?q=milestone%3A2.1.15+is%3Aclosed">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.14 Released]]></title>
         <link href="http://jrburke.com/2014/06/02/requirejs-2.1.14-released/"/>
@@ -58,29 +71,6 @@
 <ul>
 <li><a href="https://github.com/jrburke/requirejs/issues?milestone=33&amp;page=1&amp;state=closed">Fixed require.js issues</a></li>
 <li><a href="https://github.com/jrburke/r.js/issues?milestone=30&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
-</ul>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RequireJS 2.1.10 Released]]></title>
-        <link href="http://jrburke.com/2014/01/08/requirejs-2.1.10-released/"/>
-        <updated>2014-01-09T00:32:28.649Z</updated>
-        <id>http://jrburke.com/2014/01/08/requirejs-2.1.10-released/</id>
-        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.10 is available</a>.</p>
-
-<p>Mainly a maintenance release, and improves some cases when reusing code that was installed via npm. There are two new config options for the loader too:</p>
-
-<ul>
-<li><a href="http://requirejs.org/docs/api.html#config-nodeIdCompat">nodeIdCompat</a>: some node modules installed by npm use module IDs like <code>example.js</code> and <code>example</code> interchangeably. Setting this config option to true will accommodate that style. <a href="https://github.com/jrburke/almond">almond</a> 0.2.9+ also supports this option.</li>
-<li><a href="http://requirejs.org/docs/api.html#config-bundles">bundles</a>: a more compact way to list a set of module IDs belonging to a bundle ID, and supports loader plugin resource IDs.</li>
-</ul>
-
-<p>And for the optimizer, the <a href="http://requirejs.org/docs/optimization.html#mainConfigFile">mainConfigFile</a> option can now take an array of file paths that have configs in them. Later values take precedent over earlier values.</p>
-
-<p>Full list of changes:</p>
-
-<ul>
-<li><a href="https://github.com/jrburke/requirejs/issues?milestone=32&amp;page=1&amp;state=closed">Fixed require.js issues</a></li>
-<li><a href="https://github.com/jrburke/r.js/issues?milestone=29&amp;page=1&amp;state=closed">Fixed r.js optimizer issues</a></li>
 </ul>]]></content>
     </entry>
 
