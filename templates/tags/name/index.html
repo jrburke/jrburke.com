@@ -17,12 +17,14 @@
 
             <div class="summary">
                 <h2><a href="../../{{&path}}/">{{title}}</a></h2>
-                <div class="datetime" data-datetime="{{postIsoDate}}">~ {{postDateString}}</div>
+                <div class="datetime" data-datetime="{{postIsoDate}}">{{postDateString}}</div>
             </div>
-            <div class="description">{{description}} <a href="../../{{&path}}/">&gt;</a></div>
+            <div class="description">{{description}} <a href="../../{{&path}}/">&gt;&gt;</a></div>
 
         {{/published}}
          </div>
      </div>
+     {{> footer}}
+     
 </body>
 </html>
