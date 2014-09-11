@@ -24,31 +24,39 @@
     
     .flexContainer1 {
       display: -webkit-flex; /* Safari */
+      display: -ms-flexbox; /* Tweener IE 10 */
       display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
       
       -webkit-flex-direction: row;
+      -ms-flex-direction: row;
       flex-direction: row; /* COMBINED flex-flow: row nowrap; */
       
       -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
       flex-wrap: nowrap; /* COMBINED flex-flow: row nowrap; */
       
       -webkit-justify-content: flex-start;
+      -ms-justify-content: flex-start;
       justify-content: flex-start;
     }
     
     #flexItem1 {
       -webkit-order: 1; /* Safari */
+      -ms-flex-order: 1; /* Tweener IE 10 */
       order: 1; /* NEW, Spec - Opera 12.1, Firefox 20+ */
       
       -webkit-flex: 0 1 auto; /* flex-grow flex-shrink flex-basis DEFAULTS are 0 1 auto respectively */
+      -ms-flex: 0 1 auto;
       flex: 0 1 auto;
     }
     
     #flexItem2 {
       -webkit-order: 2;
+      -ms-flex-order: 2;
       order: 2;
       
       -webkit-flex: 2 3 auto;
+      -ms-flex: 2 3 auto;
       flex: 2 3 auto;
       
       margin-top: -1em;
@@ -59,6 +67,7 @@
     
         .flexContainer1 {
             -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
             flex-wrap: wrap;
         }
         #flexItem2 {
@@ -90,11 +99,9 @@
     <nav>
       <div class="topBar">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 24">
-          <rect class="orange" width="980" height="8"/ x="0" y="0">
-<!--
-          <path d="M0 0 L921 0 L930 8 H8 0 Z" class="orange"/>
-          <polygon points="935,0 957,20 980,0" class="orange" />
--->
+                    <!-- <rect class="orange" width="980" height="8"/ x="0" y="0"> -->
+          <path d="M0 0 L921 0 L930 8 H8 0 Z" class="orange" />
+          <polygon id="navArrow" points="935,0 957,20 980,0" class="orange"/>
         </svg>
       </div>
       
