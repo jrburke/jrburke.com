@@ -44,13 +44,12 @@ section, article, aside, footer, header, nav, hgroup {
 }
 
 .blue {
-  fill: #4971B3;
+  fill: #4971b3;
 }
 
 .jrbLogo {
   width: 100%;
   max-width: 980px;
-  /* height: auto; */
   max-height: 324px;
 }
 
@@ -61,27 +60,37 @@ section, article, aside, footer, header, nav, hgroup {
 .topBar {
   width: 100%;
   max-width: 980px;
-  height: 100%;
-  max-height: 24px;
+  height: 24px;
 }
+
+/*
+#navArrow:hover {
+  fill: #4971b3;
+}
+*/
 
 .menuContainer {
   width: 100%;
   max-width: 980px;
   
-  display: -webkit-flex;
+  display: -webkit-flex; /* Safari */
+  display: -ms-flexbox; /* Tweener: IE 10 */
   display: flex;
   
-  -webkit-flex-direction: row; /* Safari */
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
   flex-direction: row;
   
   -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   
   -webkit-justify-content: center;
+  -ms-justify-content: center;
   justify-content: center;
   
   -webkit-align-items: flex-start;
+  -ms-align-items: flex-start;
   align-items: flex-start;
 }
 
@@ -103,9 +112,7 @@ section, article, aside, footer, header, nav, hgroup {
 .itemPointer {
   width: 100%;
   max-width: 980px;
-  height: 100%;
-  max-height: 22px;
-  padding-top: 5px;
+  height: 22px;
 }
 
 h1 a,
@@ -141,7 +148,6 @@ a:hover {
 
 .sectionContent {
     margin: 1em 0;
-    /* width: inherit; */
 }
 
 .summary {
@@ -169,7 +175,7 @@ a:hover {
 }
 
 .footer svg a {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 /* media queries */
