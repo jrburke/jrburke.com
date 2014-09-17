@@ -1,4 +1,17 @@
 /**
+   Nav menu bar expand/collapse functionality
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  function displayMenu(evt) {
+    document.getElementById('navMenu').classList.toggle('closed');
+  }
+  var p = document.getElementById('navArrow');
+  p.addEventListener('click', displayMenu, false);
+  
+}, false);
+
+
+/**
  * Prism: Lightweight, robust, elegant syntax highlighting
  * MIT license http://www.opensource.org/licenses/mit-license.php/
  * @author Lea Verou http://lea.verou.me
