@@ -1,6 +1,4 @@
-
 <div class="header">
-
     <div class="jrbLogo"> 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 560 980 324">
           <a xlink:href="{{&rootPath}}/" title="home">    
@@ -14,16 +12,16 @@
               <text x="331.3832" y="737.5167" class="emphasized" font-size="108.4101">james burke</text>
           </a>
         </svg>
-    </div>      
-    
+    </div>        
     <nav id="navMenu" class="closed">
       <div class="topBar">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 24">
-          <path d="M0 0 L921 0 L930 8 H8 0 Z" class="highlight" />
-          <polygon id="navArrow" points="935,0 957,20 980,0" class="highlight"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 24" class="topBarItem1">
+          <path d="M0 0 L921 0 L930 8 H8 0 Z" class="highlight"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 24" class="topBarItem2">
+          <polygon id="navArrow" points="0,0 23,24 45,0" class="highlight"/>
         </svg>
       </div>
-
       <div class="bottomSection">   
         <div class="menuContainer">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.172 36" class="menuItem"> <!-- ABOUT -->
@@ -31,7 +29,6 @@
               <text transform="matrix(1 0 0 1 -2.5113 35.9203)" class="emphasized icon" font-size="46">i</text>
             </a>
           </svg>
-  
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" class="menuItem">  <!-- ARCHIVES -->
             <a xlink:href="{{&rootPath}}/archives/" title="archives">  
               <rect width="33" height="33" class="icon"/>
@@ -40,21 +37,18 @@
               <circle class="iconWhiteSpace" cx="16.561" cy="24.484" r="1.501"/>
             </a>       
           </svg>
-          
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.02 53.046" class="menuItem"> <!-- TAGS -->
             <a xlink:href="{{&rootPath}}/tags/" title="tags">  
               <polygon class="icon" points="53.02,14.849 38.171,0 23.718,5.993 0,29.711 23.335,53.046 47.053,29.328 "/>
               <circle class="iconWhiteSpace" cx="38.777" cy="14.104" r="4.001"/>
             </a>
           </svg>
-         
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.233 36.608" class="menuItem">  <!-- SEARCH -->
             <a xlink:href="http://duckduckgo.com/?q=site%3A{{blogDomain}}" title="search">
               <circle class="iconSearch" cx="15.5" cy="15.5" r="13"/>
               <rect x="22.787" y="28.21" transform="matrix(0.7071 0.7071 -0.7071 0.7071 30.1001 -12.248)" width="14.096" height="4" class="icon"/>
             </a>
           </svg>       
-          
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.006 34.006" class="menuItem"> <!-- FEEDS -->
             {{#atomUrl}}
               <a xlink:href="{{&atomUrl}}" title="feeds">
@@ -65,31 +59,12 @@
               </a>
             {{/atomUrl}}
           </svg>
-        </div>
-        
+        </div>  
         <div class="bottomBar">      
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
               <rect class="highlight" width="980" height="8"/ x="0" y="14">
           </svg>
         </div>
-      </div> <!-- END bottomSection -->   
-<!--
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
-            <polygon class="highlight" points="47,66 97,0 147,66" id="aboutPointer"/>
-            <rect class="highlight" width="980" height="8"/ x="0" y="14">
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
-            <polygon class="highlight" points="247,66 297,0 347,66" id="archivesPointer"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
-            <polygon class="highlight" points="447,66 497,0 547,66" id="tagsPointer"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
-            <polygon class="highlight" points="647,66 697,0 747,66" id="searchPointer"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
-            <polygon class="highlight" points="847,66 897,0 947,66" id="feedsPointer"/>
-        </svg> 
--->   
+      </div> <!-- END bottomSection -->  
     </nav>
 </div>
