@@ -5,6 +5,12 @@
   "postUrlType": "date",
   "published": [
     {
+      "title": "How to know when ES modules are done",
+      "path": "2015/02/13/how-to-know-when-es-modules-are-done",
+      "postTime": 1423864148820,
+      "postIsoDate": "2015-02-13T21:49:08.820Z"
+    },
+    {
       "title": "RequireJS 2.1.15 Released",
       "path": "2014/09/07/requirejs-2.1.15-released",
       "postTime": 1410138905458,

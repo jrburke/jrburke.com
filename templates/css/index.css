@@ -31,7 +31,7 @@ section, article, aside, footer, header, nav, hgroup {
 .jrbLogo svg a {
   text-decoration: none;
 }
-.logoDot, .highlight { 
+.logoDot, .highlight {
   fill: #FFAC00; /* orange */
 }
 .logoDotSpace, .iconWhiteSpace {
@@ -86,7 +86,7 @@ section, article, aside, footer, header, nav, hgroup {
 }
 .menuContainer {
   width: 100%;
-  max-width: 882px;  
+  max-width: 882px;
   display: -webkit-flex; /* Safari */
   display: -ms-flexbox; /* Tweener: IE 10 */
   display: flex;
@@ -95,7 +95,7 @@ section, article, aside, footer, header, nav, hgroup {
   flex-direction: row;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;  
+  flex-wrap: nowrap;
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
@@ -157,7 +157,7 @@ a:hover {
   margin-left: 1em;
 }
 .sectionHeader h1, .sectionHeader .datetime {
-  display: inline; 
+  display: inline;
 }
 .sectionContent {
   margin: 1em 0;
@@ -224,7 +224,7 @@ a:hover {
  * Based on dabblet (http://dabblet.com)
  * @author Lea Verou
  */
- 
+
 code,
 pre {
     border-radius: .5em;
@@ -253,7 +253,7 @@ pre {
 }
 
 pre {
-    background: #A8A8A8;
+    background: #c8c8c8;
 }
 
 /* Inline code */
