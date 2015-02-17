@@ -91,7 +91,7 @@ define('app', function(require, exports, module) {
 });
 ```
 
-For CJS, there are conventions for doing this via tools like browserify and webpack, but they are much less declarative. The module IDs are could be converted to array indices/numbers. This makes dynamic module loading harder.
+For CJS, there are conventions for doing this via tools like browserify and webpack, but they are much less declarative. The module IDs are converted to array indices/numbers. This makes dynamic module loading harder.
 
 For ES there is nothing for this. The last I heard, the hope was for capabilities like HTTP2 and zip bundles so that no new language syntax is needed, however I believe [that is not sufficient](https://github.com/jrburke/module/blob/master/docs/inlining.md).
 
