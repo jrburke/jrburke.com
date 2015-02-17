@@ -41,7 +41,7 @@ define(function(require, exports, module) {
 });
 ```
 
-In CommonJS and Node (for shorthand's sake referred to has "CJS" for the rest of this post), there is a similar idea, just without the define() wrapper.
+In CommonJS and Node (for shorthand's sake referred to as "CJS" for the rest of this post), there is a similar idea, just without the define() wrapper.
 
 It is a bit more nuanced in CJS systems: the require(StringLiteral) calls are not parsed prior to execution, one of the major reasons that format is not fully suitable for a full module system on the front end, where async networking is involved. You can get some front end functionality by using something like browserify or webpack to do the static search for dependencies, but just for bundling. Fine enough for libraries but starts to break down on the app level where you want to incrementally load functionality as the user goes to use it, use a dynamic router.
 
@@ -91,7 +91,7 @@ define('app', function(require, exports, module) {
 });
 ```
 
-For CJS, there are conventions for doing this via tools like browserify and webpack, but they are much less declarative. The module IDs are could be converted to array indices/numbers. This makes dynamic module loading harder.
+For CJS, there are conventions for doing this via tools like browserify and webpack, but they are much less declarative. The module IDs are converted to array indices/numbers. This makes dynamic module loading harder.
 
 For ES there is nothing for this. The last I heard, the hope was for capabilities like HTTP2 and zip bundles so that no new language syntax is needed, however I believe [that is not sufficient](https://github.com/jrburke/module/blob/master/docs/inlining.md).
 
