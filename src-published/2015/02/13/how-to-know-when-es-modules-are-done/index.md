@@ -41,7 +41,7 @@ define(function(require, exports, module) {
 });
 ```
 
-In CommonJS and Node (for shorthand's sake referred to has "CJS" for the rest of this post), there is a similar idea, just without the define() wrapper.
+In CommonJS and Node (for shorthand's sake referred to as "CJS" for the rest of this post), there is a similar idea, just without the define() wrapper.
 
 It is a bit more nuanced in CJS systems: the require(StringLiteral) calls are not parsed prior to execution, one of the major reasons that format is not fully suitable for a full module system on the front end, where async networking is involved. You can get some front end functionality by using something like browserify or webpack to do the static search for dependencies, but just for bundling. Fine enough for libraries but starts to break down on the app level where you want to incrementally load functionality as the user goes to use it, use a dynamic router.
 
