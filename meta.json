@@ -5,6 +5,12 @@
   "postUrlType": "date",
   "published": [
     {
+      "title": "amodro-trace and AMD loaders",
+      "path": "2015/04/09/amodro-trace-and-amd-loaders",
+      "postTime": 1428611195414,
+      "postIsoDate": "2015-04-09T20:26:35.414Z"
+    },
+    {
       "title": "How to know when ES modules are done",
       "path": "2015/02/13/how-to-know-when-es-modules-are-done",
       "postTime": 1423864148820,
