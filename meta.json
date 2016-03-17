@@ -5,6 +5,12 @@
   "postUrlType": "date",
   "published": [
     {
+      "title": "RequireJS 2.2, alameda 1.0 released",
+      "path": "2016/03/17/requirejs-2.2-alameda-1.0-released",
+      "postTime": 1458242542207,
+      "postIsoDate": "2016-03-17T19:22:22.207Z"
+    },
+    {
       "title": "Template strings, components, models and events",
       "path": "2016/01/19/template-strings-components-models-and-events",
       "postTime": 1453271195443,
