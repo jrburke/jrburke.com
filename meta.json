@@ -5,6 +5,12 @@
   "postUrlType": "date",
   "published": [
     {
+      "title": "The next episode",
+      "path": "2016/04/19/the-next-episode",
+      "postTime": 1461101886249,
+      "postIsoDate": "2016-04-19T21:38:06.249Z"
+    },
+    {
       "title": "RequireJS 2.2, alameda 1.0 released",
       "path": "2016/03/17/requirejs-2.2-alameda-1.0-released",
       "postTime": 1458242542207,
