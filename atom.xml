@@ -2,19 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[James Burke]]></title>
-    <link href="http://jrburke.com/atom.xml" rel="self"/>
-    <link href="http://jrburke.com/"/>
+    <link href="https://jrburke.com/atom.xml" rel="self"/>
+    <link href="https://jrburke.com/"/>
     <updated>2016-04-19T21:38:06.249Z</updated>
-    <id>http://jrburke.com/</id>
+    <id>https://jrburke.com/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
     <entry>
         <title type="html"><![CDATA[The next episode]]></title>
-        <link href="http://jrburke.com/2016/04/19/the-next-episode/"/>
+        <link href="https://jrburke.com/2016/04/19/the-next-episode/"/>
         <updated>2016-04-19T21:38:06.249Z</updated>
-        <id>http://jrburke.com/2016/04/19/the-next-episode/</id>
+        <id>https://jrburke.com/2016/04/19/the-next-episode/</id>
         <content type="html"><![CDATA[<p>After joining Mozilla Messaging just over seven years ago, I start a new job later this month. I am thankful for <a href="https://infrequently.org/">Alex</a>'s introduction to <a href="http://ascher.ca/">David</a> that led to the Mozilla job.</p>
 
 <p>I moved up to Vancouver to experiment with web-based messaging. That led to a few experiments at Mozilla, most recently the Firefox OS email app front end. However, all the experiments I worked on at Mozilla were eventually shut down. It is time for me to try working on a different kind of project.</p>
@@ -29,9 +29,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.2, alameda 1.0 released]]></title>
-        <link href="http://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/"/>
+        <link href="https://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/"/>
         <updated>2016-03-17T19:22:22.207Z</updated>
-        <id>http://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/</id>
+        <id>https://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/</id>
         <content type="html"><![CDATA[<ul>
 <li><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.2</a></li>
 <li><a href="https://github.com/requirejs/alameda/releases">alameda 1.0</a></li>
@@ -109,9 +109,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Template strings, components, models and events]]></title>
-        <link href="http://jrburke.com/2016/01/19/template-strings-components-models-and-events/"/>
+        <link href="https://jrburke.com/2016/01/19/template-strings-components-models-and-events/"/>
         <updated>2016-01-20T06:26:35.443Z</updated>
-        <id>http://jrburke.com/2016/01/19/template-strings-components-models-and-events/</id>
+        <id>https://jrburke.com/2016/01/19/template-strings-components-models-and-events/</id>
         <content type="html"><![CDATA[<p><em>This is a shorter, rougher post to outline a recent experiment around UI construction. It is a bit high level, and sets some context around the <a href="https://github.com/jrburke/htemplate">htemplate</a> module</em>.</p>
 
 <p>Some nice things about the <a href="https://facebook.github.io/react/">React</a>-related world that I wanted to try for a work project:</p>
@@ -284,9 +284,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[amodro-trace and AMD loaders]]></title>
-        <link href="http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/"/>
+        <link href="https://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/"/>
         <updated>2015-04-09T20:26:35.414Z</updated>
-        <id>http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/</id>
+        <id>https://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/</id>
         <content type="html"><![CDATA[<p>A new tool, and some AMD loader rambling:</p>
 
 <p>I have started a new project around AMD modules, <a href="https://github.com/amodrojs/amodro-trace">amodro-trace</a>. It is a tool that understands AMD modules and is meant to be used in other node-based build systems. The README has more background, but the general use cases that drove it:</p>
@@ -361,9 +361,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[How to know when ES modules are done]]></title>
-        <link href="http://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/"/>
+        <link href="https://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/"/>
         <updated>2015-02-13T21:49:08.820Z</updated>
-        <id>http://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/</id>
+        <id>https://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/</id>
         <content type="html"><![CDATA[<p>There are few pieces of a module system that need to be available for it to be fully functional. I will describe them here and talk a bit about where ECMAScript (ES) modules seem to be at the moment, from an outside public perspective.</p>
 
 <p>I am not on TC-39, the committee that works on the ES language specification (otherwise known as JavaScript, JS). Just someone who has worked on <a href="http://dojotoolkit.org/">a</a> <a href="https://github.com/requirejs/cajon">few</a> <a href="http://requirejs.org/">JS</a> <a href="https://github.com/requirejs/alameda">module</a> <a href="https://github.com/jrburke/module">systems</a>.</p>

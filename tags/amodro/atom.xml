@@ -2,19 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[James Burke -- amodro]]></title>
-    <link href="http://jrburke.com/tags/amodro//atom.xml" rel="self"/>
-    <link href="http://jrburke.com/tags/amodro/"/>
+    <link href="https://jrburke.com/tags/amodro//atom.xml" rel="self"/>
+    <link href="https://jrburke.com/tags/amodro/"/>
     <updated>2015-04-09T20:26:35.414Z</updated>
-    <id>http://jrburke.com/tags/amodro/</id>
+    <id>https://jrburke.com/tags/amodro/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
     <entry>
         <title type="html"><![CDATA[amodro-trace and AMD loaders]]></title>
-        <link href="http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/"/>
+        <link href="https://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/"/>
         <updated>2015-04-09T20:26:35.414Z</updated>
-        <id>http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/</id>
+        <id>https://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/</id>
         <content type="html"><![CDATA[<p>A new tool, and some AMD loader rambling:</p>
 
 <p>I have started a new project around AMD modules, <a href="https://github.com/amodrojs/amodro-trace">amodro-trace</a>. It is a tool that understands AMD modules and is meant to be used in other node-based build systems. The README has more background, but the general use cases that drove it:</p>

@@ -2,19 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[James Burke -- volo]]></title>
-    <link href="http://jrburke.com/tags/volo//atom.xml" rel="self"/>
-    <link href="http://jrburke.com/tags/volo/"/>
+    <link href="https://jrburke.com/tags/volo//atom.xml" rel="self"/>
+    <link href="https://jrburke.com/tags/volo/"/>
     <updated>2013-06-06T04:19:32.680Z</updated>
-    <id>http://jrburke.com/tags/volo/</id>
+    <id>https://jrburke.com/tags/volo/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
     <entry>
         <title type="html"><![CDATA[volo 0.3.0 released]]></title>
-        <link href="http://jrburke.com/2013/06/05/volo-0.3.0-released/"/>
+        <link href="https://jrburke.com/2013/06/05/volo-0.3.0-released/"/>
         <updated>2013-06-06T04:19:32.680Z</updated>
-        <id>http://jrburke.com/2013/06/05/volo-0.3.0-released/</id>
+        <id>https://jrburke.com/2013/06/05/volo-0.3.0-released/</id>
         <content type="html"><![CDATA[<p>A new release for <a href="http://volojs.org">volo</a> is out that adds the following:</p>
 
 <ul>
@@ -42,9 +42,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[volo 0.2.7 released]]></title>
-        <link href="http://jrburke.com/2013/01/24/volo-0.2.7-released/"/>
+        <link href="https://jrburke.com/2013/01/24/volo-0.2.7-released/"/>
         <updated>2013-01-25T02:11:25.743Z</updated>
-        <id>http://jrburke.com/2013/01/24/volo-0.2.7-released/</id>
+        <id>https://jrburke.com/2013/01/24/volo-0.2.7-released/</id>
         <content type="html"><![CDATA[<p>A maintenance release for <a href="http://volojs.org">volo</a> that fixes some issues around branch fetching and proper ordering of version tags. <a href="https://github.com/volojs/volo/issues?milestone=10&amp;page=1&amp;state=closed">List of fixed 0.2.7 issues</a>.</p>
 
 <p>Upgrading is recommended:</p>
@@ -56,9 +56,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[volo 0.2.5 released]]></title>
-        <link href="http://jrburke.com/2012/11/26/volo-0.2.5-released/"/>
+        <link href="https://jrburke.com/2012/11/26/volo-0.2.5-released/"/>
         <updated>2012-11-26T19:48:18.497Z</updated>
-        <id>http://jrburke.com/2012/11/26/volo-0.2.5-released/</id>
+        <id>https://jrburke.com/2012/11/26/volo-0.2.5-released/</id>
         <content type="html"><![CDATA[<p>This update for <a href="http://volojs.org">volo</a> is mostly about working well with the new <a href="http://developer.github.com/changes/2012-10-14-rate-limit-changes/">GitHub rate limit changes for unauthenticated requests</a>. 0.2.5 will use GitHub auth tokens if the non-token API limit has been reached.</p>
 
 <p>The other benefit with this approach, you can now pull down private repos via <a href="https://github.com/volojs/volo/blob/master/commands/create/doc.md">volo create</a> and <a href="https://github.com/volojs/volo/blob/master/commands/add/doc.md">volo add</a>!</p>
@@ -72,9 +72,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[volo 0.2.4 released]]></title>
-        <link href="http://jrburke.com/2012/10/05/volo-0.2.4-released/"/>
+        <link href="https://jrburke.com/2012/10/05/volo-0.2.4-released/"/>
         <updated>2012-10-05T20:43:35.157Z</updated>
-        <id>http://jrburke.com/2012/10/05/volo-0.2.4-released/</id>
+        <id>https://jrburke.com/2012/10/05/volo-0.2.4-released/</id>
         <content type="html"><![CDATA[<p>Just a small update for <a href="http://volojs.org">volo</a>, but it adds a simple
 <em>volo info</em> command and includes an alias for <em>install</em> that points to <em>add</em>.</p>
 

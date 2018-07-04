@@ -2,19 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[James Burke -- meta]]></title>
-    <link href="http://jrburke.com/tags/meta//atom.xml" rel="self"/>
-    <link href="http://jrburke.com/tags/meta/"/>
+    <link href="https://jrburke.com/tags/meta//atom.xml" rel="self"/>
+    <link href="https://jrburke.com/tags/meta/"/>
     <updated>2012-09-05T23:06:36.343Z</updated>
-    <id>http://jrburke.com/tags/meta/</id>
+    <id>https://jrburke.com/tags/meta/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
     <entry>
         <title type="html"><![CDATA[New Blog]]></title>
-        <link href="http://jrburke.com/2012/09/05/new-blog/"/>
+        <link href="https://jrburke.com/2012/09/05/new-blog/"/>
         <updated>2012-09-05T23:06:36.343Z</updated>
-        <id>http://jrburke.com/2012/09/05/new-blog/</id>
+        <id>https://jrburke.com/2012/09/05/new-blog/</id>
         <content type="html"><![CDATA[<p>I will do new posts from this site, <a href="http://jrburke.com/">jrburke.com</a>. There is
 a feed link in the header if you want to track this site in an feed reader.</p>
 

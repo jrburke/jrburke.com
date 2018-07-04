@@ -2,19 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[James Burke -- bots]]></title>
-    <link href="http://jrburke.com/tags/bots//atom.xml" rel="self"/>
-    <link href="http://jrburke.com/tags/bots/"/>
+    <link href="https://jrburke.com/tags/bots//atom.xml" rel="self"/>
+    <link href="https://jrburke.com/tags/bots/"/>
     <updated>2013-06-10T04:11:55.600Z</updated>
-    <id>http://jrburke.com/tags/bots/</id>
+    <id>https://jrburke.com/tags/bots/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
     <entry>
         <title type="html"><![CDATA[Browser-driven Arduino bots]]></title>
-        <link href="http://jrburke.com/2013/06/09/browser-driven-arduino-bots/"/>
+        <link href="https://jrburke.com/2013/06/09/browser-driven-arduino-bots/"/>
         <updated>2013-06-10T04:11:55.600Z</updated>
-        <id>http://jrburke.com/2013/06/09/browser-driven-arduino-bots/</id>
+        <id>https://jrburke.com/2013/06/09/browser-driven-arduino-bots/</id>
         <content type="html"><![CDATA[<p>Want to help do something awesome? Let's connect some pipes so we can drive an <a href="http://www.arduino.cc/">Arduino</a> using a web browser on a mobile device!</p>
 
 <h2 id="problem">Problem</h2>

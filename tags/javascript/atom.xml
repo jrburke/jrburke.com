@@ -2,19 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[James Burke -- javascript]]></title>
-    <link href="http://jrburke.com/tags/javascript//atom.xml" rel="self"/>
-    <link href="http://jrburke.com/tags/javascript/"/>
+    <link href="https://jrburke.com/tags/javascript//atom.xml" rel="self"/>
+    <link href="https://jrburke.com/tags/javascript/"/>
     <updated>2016-01-20T06:26:35.443Z</updated>
-    <id>http://jrburke.com/tags/javascript/</id>
+    <id>https://jrburke.com/tags/javascript/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
     <entry>
         <title type="html"><![CDATA[Template strings, components, models and events]]></title>
-        <link href="http://jrburke.com/2016/01/19/template-strings-components-models-and-events/"/>
+        <link href="https://jrburke.com/2016/01/19/template-strings-components-models-and-events/"/>
         <updated>2016-01-20T06:26:35.443Z</updated>
-        <id>http://jrburke.com/2016/01/19/template-strings-components-models-and-events/</id>
+        <id>https://jrburke.com/2016/01/19/template-strings-components-models-and-events/</id>
         <content type="html"><![CDATA[<p><em>This is a shorter, rougher post to outline a recent experiment around UI construction. It is a bit high level, and sets some context around the <a href="https://github.com/jrburke/htemplate">htemplate</a> module</em>.</p>
 
 <p>Some nice things about the <a href="https://facebook.github.io/react/">React</a>-related world that I wanted to try for a work project:</p>
@@ -187,9 +187,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[amodro-trace and AMD loaders]]></title>
-        <link href="http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/"/>
+        <link href="https://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/"/>
         <updated>2015-04-09T20:26:35.414Z</updated>
-        <id>http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/</id>
+        <id>https://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/</id>
         <content type="html"><![CDATA[<p>A new tool, and some AMD loader rambling:</p>
 
 <p>I have started a new project around AMD modules, <a href="https://github.com/amodrojs/amodro-trace">amodro-trace</a>. It is a tool that understands AMD modules and is meant to be used in other node-based build systems. The README has more background, but the general use cases that drove it:</p>
@@ -264,9 +264,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[How to know when ES modules are done]]></title>
-        <link href="http://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/"/>
+        <link href="https://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/"/>
         <updated>2015-02-13T21:49:08.820Z</updated>
-        <id>http://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/</id>
+        <id>https://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/</id>
         <content type="html"><![CDATA[<p>There are few pieces of a module system that need to be available for it to be fully functional. I will describe them here and talk a bit about where ECMAScript (ES) modules seem to be at the moment, from an outside public perspective.</p>
 
 <p>I am not on TC-39, the committee that works on the ES language specification (otherwise known as JavaScript, JS). Just someone who has worked on <a href="http://dojotoolkit.org/">a</a> <a href="https://github.com/requirejs/cajon">few</a> <a href="http://requirejs.org/">JS</a> <a href="https://github.com/requirejs/alameda">module</a> <a href="https://github.com/jrburke/module">systems</a>.</p>
@@ -530,9 +530,9 @@ local.import(aJsStringValue).then(Function(someModule) {});
     </entry>
     <entry>
         <title type="html"><![CDATA[Referencing JavaScript]]></title>
-        <link href="http://jrburke.com/2012/11/02/referencing-javascript/"/>
+        <link href="https://jrburke.com/2012/11/02/referencing-javascript/"/>
         <updated>2012-11-02T16:40:55.062Z</updated>
-        <id>http://jrburke.com/2012/11/02/referencing-javascript/</id>
+        <id>https://jrburke.com/2012/11/02/referencing-javascript/</id>
         <content type="html"><![CDATA[<p>Referencing JavaScript. How should it be done? Is there an approach that works for module systems, package managers and project layouts?</p>
 
 <p>The following describes the approach in use by <a href="https://github.com/amdjs/amdjs-api/wiki">AMD</a>/<a href="http://requirejs.org">RequireJS</a> and <a href="http://volojs.org">volo</a>, but parts are found in other places like <a href="http://www.nodejs.org/">Node</a>, <a href="http://www.commonjs.org/">CommonJS</a> and <a href="http://dojotoolkit.org/">Dojo</a>.</p>
@@ -837,9 +837,9 @@ requirejs(['app/main']);
     </entry>
     <entry>
         <title type="html"><![CDATA[Understanding macro use cases for JavaScript]]></title>
-        <link href="http://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/"/>
+        <link href="https://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/"/>
         <updated>2012-09-15T21:56:22.032Z</updated>
-        <id>http://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/</id>
+        <id>https://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/</id>
         <content type="html"><![CDATA[<p>I just watched <a href="https://air.mozilla.org/sweetjs/">this Mozilla video on some experimental work Tim Disney is doing
 for JS macros</a>. While
 watching it, I also read came across <a href="http://calculist.org/blog/2012/04/17/homoiconicity-isnt-the-point/">Dave Herman's homoiconicity post</a>.</p>

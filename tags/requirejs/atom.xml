@@ -2,19 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[James Burke -- requirejs]]></title>
-    <link href="http://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
-    <link href="http://jrburke.com/tags/requirejs/"/>
+    <link href="https://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
+    <link href="https://jrburke.com/tags/requirejs/"/>
     <updated>2016-03-17T19:22:22.207Z</updated>
-    <id>http://jrburke.com/tags/requirejs/</id>
+    <id>https://jrburke.com/tags/requirejs/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
     <entry>
         <title type="html"><![CDATA[RequireJS 2.2, alameda 1.0 released]]></title>
-        <link href="http://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/"/>
+        <link href="https://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/"/>
         <updated>2016-03-17T19:22:22.207Z</updated>
-        <id>http://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/</id>
+        <id>https://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/</id>
         <content type="html"><![CDATA[<ul>
 <li><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.2</a></li>
 <li><a href="https://github.com/requirejs/alameda/releases">alameda 1.0</a></li>
@@ -92,9 +92,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[amodro-trace and AMD loaders]]></title>
-        <link href="http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/"/>
+        <link href="https://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/"/>
         <updated>2015-04-09T20:26:35.414Z</updated>
-        <id>http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/</id>
+        <id>https://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/</id>
         <content type="html"><![CDATA[<p>A new tool, and some AMD loader rambling:</p>
 
 <p>I have started a new project around AMD modules, <a href="https://github.com/amodrojs/amodro-trace">amodro-trace</a>. It is a tool that understands AMD modules and is meant to be used in other node-based build systems. The README has more background, but the general use cases that drove it:</p>
@@ -169,9 +169,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.15 Released]]></title>
-        <link href="http://jrburke.com/2014/09/07/requirejs-2.1.15-released/"/>
+        <link href="https://jrburke.com/2014/09/07/requirejs-2.1.15-released/"/>
         <updated>2014-09-08T01:15:05.458Z</updated>
-        <id>http://jrburke.com/2014/09/07/requirejs-2.1.15-released/</id>
+        <id>https://jrburke.com/2014/09/07/requirejs-2.1.15-released/</id>
         <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.15 is available</a>.</p>
 
 <p>Mainly fixes a regression from 2.1.14 in the r.js optimizer where <a href="https://github.com/jrburke/r.js/issues/704">some define() calls were not found</a>. The most common manifestations of the bug would be either an extra <code>define('jquery', function(){})</code> in the build output or namespaced builds not working. The fixes for 2.1.15 are just in the optimizer. Full list of changes:</p>
@@ -182,18 +182,18 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.14 Released]]></title>
-        <link href="http://jrburke.com/2014/06/02/requirejs-2.1.14-released/"/>
+        <link href="https://jrburke.com/2014/06/02/requirejs-2.1.14-released/"/>
         <updated>2014-06-02T16:58:52.221Z</updated>
-        <id>http://jrburke.com/2014/06/02/requirejs-2.1.14-released/</id>
+        <id>https://jrburke.com/2014/06/02/requirejs-2.1.14-released/</id>
         <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.14 is available</a>.</p>
 
 <p>A couple more regression fixes for 2.1.12. One to <a href="https://github.com/jrburke/requirejs/issues/1131">fix nested plugin ID normalization</a>, like "pluginA!pluginbB!resource", and one for the <a href="https://github.com/jrburke/requirejs/issues/1133">optimizer incorrectly detecting UMD wrapped code</a>.</p>]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[RequireJS 2.1.13 Released]]></title>
-        <link href="http://jrburke.com/2014/05/27/requirejs-2.1.13-released/"/>
+        <link href="https://jrburke.com/2014/05/27/requirejs-2.1.13-released/"/>
         <updated>2014-05-27T16:54:30.242Z</updated>
-        <id>http://jrburke.com/2014/05/27/requirejs-2.1.13-released/</id>
+        <id>https://jrburke.com/2014/05/27/requirejs-2.1.13-released/</id>
         <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.13 is available</a>.</p>
 
 <p>Version 2.1.12 regressed around ID normalization. <a href="https://github.com/jrburke/requirejs/issues/1129">2.1.13 fixes that regression</a>. It is recommended that you do not use 2.1.12, but use 2.1.13 instead.</p>]]></content>

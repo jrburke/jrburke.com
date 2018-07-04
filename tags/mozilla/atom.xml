@@ -2,19 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title><![CDATA[James Burke -- mozilla]]></title>
-    <link href="http://jrburke.com/tags/mozilla//atom.xml" rel="self"/>
-    <link href="http://jrburke.com/tags/mozilla/"/>
+    <link href="https://jrburke.com/tags/mozilla//atom.xml" rel="self"/>
+    <link href="https://jrburke.com/tags/mozilla/"/>
     <updated>2016-04-19T21:38:06.249Z</updated>
-    <id>http://jrburke.com/tags/mozilla/</id>
+    <id>https://jrburke.com/tags/mozilla/</id>
     <author>
     <name><![CDATA[James Burke]]></name>
     </author>
 
     <entry>
         <title type="html"><![CDATA[The next episode]]></title>
-        <link href="http://jrburke.com/2016/04/19/the-next-episode/"/>
+        <link href="https://jrburke.com/2016/04/19/the-next-episode/"/>
         <updated>2016-04-19T21:38:06.249Z</updated>
-        <id>http://jrburke.com/2016/04/19/the-next-episode/</id>
+        <id>https://jrburke.com/2016/04/19/the-next-episode/</id>
         <content type="html"><![CDATA[<p>After joining Mozilla Messaging just over seven years ago, I start a new job later this month. I am thankful for <a href="https://infrequently.org/">Alex</a>'s introduction to <a href="http://ascher.ca/">David</a> that led to the Mozilla job.</p>
 
 <p>I moved up to Vancouver to experiment with web-based messaging. That led to a few experiments at Mozilla, most recently the Firefox OS email app front end. However, all the experiments I worked on at Mozilla were eventually shut down. It is time for me to try working on a different kind of project.</p>
@@ -29,9 +29,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Template strings, components, models and events]]></title>
-        <link href="http://jrburke.com/2016/01/19/template-strings-components-models-and-events/"/>
+        <link href="https://jrburke.com/2016/01/19/template-strings-components-models-and-events/"/>
         <updated>2016-01-20T06:26:35.443Z</updated>
-        <id>http://jrburke.com/2016/01/19/template-strings-components-models-and-events/</id>
+        <id>https://jrburke.com/2016/01/19/template-strings-components-models-and-events/</id>
         <content type="html"><![CDATA[<p><em>This is a shorter, rougher post to outline a recent experiment around UI construction. It is a bit high level, and sets some context around the <a href="https://github.com/jrburke/htemplate">htemplate</a> module</em>.</p>
 
 <p>Some nice things about the <a href="https://facebook.github.io/react/">React</a>-related world that I wanted to try for a work project:</p>
@@ -204,9 +204,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Browser-driven Arduino bots]]></title>
-        <link href="http://jrburke.com/2013/06/09/browser-driven-arduino-bots/"/>
+        <link href="https://jrburke.com/2013/06/09/browser-driven-arduino-bots/"/>
         <updated>2013-06-10T04:11:55.600Z</updated>
-        <id>http://jrburke.com/2013/06/09/browser-driven-arduino-bots/</id>
+        <id>https://jrburke.com/2013/06/09/browser-driven-arduino-bots/</id>
         <content type="html"><![CDATA[<p>Want to help do something awesome? Let's connect some pipes so we can drive an <a href="http://www.arduino.cc/">Arduino</a> using a web browser on a mobile device!</p>
 
 <h2 id="problem">Problem</h2>
@@ -275,9 +275,9 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Referencing JavaScript]]></title>
-        <link href="http://jrburke.com/2012/11/02/referencing-javascript/"/>
+        <link href="https://jrburke.com/2012/11/02/referencing-javascript/"/>
         <updated>2012-11-02T16:40:55.062Z</updated>
-        <id>http://jrburke.com/2012/11/02/referencing-javascript/</id>
+        <id>https://jrburke.com/2012/11/02/referencing-javascript/</id>
         <content type="html"><![CDATA[<p>Referencing JavaScript. How should it be done? Is there an approach that works for module systems, package managers and project layouts?</p>
 
 <p>The following describes the approach in use by <a href="https://github.com/amdjs/amdjs-api/wiki">AMD</a>/<a href="http://requirejs.org">RequireJS</a> and <a href="http://volojs.org">volo</a>, but parts are found in other places like <a href="http://www.nodejs.org/">Node</a>, <a href="http://www.commonjs.org/">CommonJS</a> and <a href="http://dojotoolkit.org/">Dojo</a>.</p>
@@ -582,9 +582,9 @@ requirejs(['app/main']);
     </entry>
     <entry>
         <title type="html"><![CDATA[Understanding macro use cases for JavaScript]]></title>
-        <link href="http://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/"/>
+        <link href="https://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/"/>
         <updated>2012-09-15T21:56:22.032Z</updated>
-        <id>http://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/</id>
+        <id>https://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/</id>
         <content type="html"><![CDATA[<p>I just watched <a href="https://air.mozilla.org/sweetjs/">this Mozilla video on some experimental work Tim Disney is doing
 for JS macros</a>. While
 watching it, I also read came across <a href="http://calculist.org/blog/2012/04/17/homoiconicity-isnt-the-point/">Dave Herman's homoiconicity post</a>.</p>
