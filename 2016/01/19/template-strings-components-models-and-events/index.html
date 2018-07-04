@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="*This is a shorter, rougher post to outline a recent experiment around UI construction. It is a bit high level, and sets some context around the htemplate module*.">
+
+    <title>Template strings, components, models and events ~ James Burke</title>
+
+    <link rel="canonical" href="http://jrburke.com/2016/01/19/template-strings-components-models-and-events/">
+    <link href="http://jrburke.com/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="../../../../img/favicon.png" rel="icon">
+<link href="../../../../css/index.css" rel="stylesheet" type="text/css">
+
+<script src="../../../../js/index.js"></script>
+
+</head>
+<body class="post">
+<div class="header">
+    <div class="jrbLogo"> 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 560 980 324">
+          <a xlink:href="../../../../" title="home">    
+              <path class="logoJ" d="M266.127,682.673c-0.123-0.143-3.178-0.303-7.709-0.123l-56.63,0.061l0.093-58.319h-64.494v58.195l-27.488-0.026
+	c-1.322-0.053-2.649-0.087-3.985-0.087c-53.177,0-96.285,43.109-96.285,96.285s43.107,96.285,96.285,96.285
+	c53.178,0,95.92-43.873,95.92-97.05c0-2.002-0.068-3.986-0.187-5.955l0.05-31.559l37.603-0.346
+	c6.609,0.151,13.228-2.215,18.28-7.289C268.131,722.151,266.304,682.878,266.127,682.673z"/>
+              <ellipse class="logoDotSpace" cx="169.783" cy="605.491" rx="38.463" ry="38.514"/>
+              <circle class="logoDot" cx="169.678" cy="605.652" r="32.095"/>
+              <path class="logoLoopSpace" d="M127.305,801.112c-12.627,12.44-33.318,11.246-45.355-1.765c-12.036-13.012-11.4-33.486,1.765-45.355c15.351-13.841,53.381-14.177,53.868-13.623C137.795,740.612,140.108,788.498,127.305,801.112z"/>  
+              <text x="331.3832" y="737.5167" class="emphasized" font-size="108.4101">james burke</text>
+          </a>
+        </svg>
+    </div>        
+    <nav id="navMenu" class="closed">
+      <div class="topBar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 24" class="topBarItem1">
+          <path d="M0 0 L921 0 L930 8 H8 0 Z" class="highlight"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 24" class="topBarItem2">
+          <polygon id="navArrow" points="0,0 23,24 45,0" class="highlight"/>
+        </svg>
+      </div>
+      <div class="bottomSection">   
+        <div class="menuContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.172 36" class="menuItem"> <!-- ABOUT -->
+            <a xlink:href="../../../../about/" title="about">
+              <text transform="matrix(1 0 0 1 -2.5113 35.9203)" class="emphasized icon" font-size="46">i</text>
+            </a>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" class="menuItem">  <!-- ARCHIVES -->
+            <a xlink:href="../../../../archives/" title="archives">  
+              <rect width="33" height="33" class="icon"/>
+              <rect y="16" class="iconWhiteSpace" width="33" height="1"/>
+              <circle class="iconWhiteSpace" cx="16.561" cy="8.037" r="1.501"/>
+              <circle class="iconWhiteSpace" cx="16.561" cy="24.484" r="1.501"/>
+            </a>       
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.02 53.046" class="menuItem"> <!-- TAGS -->
+            <a xlink:href="../../../../tags/" title="tags">  
+              <polygon class="icon" points="53.02,14.849 38.171,0 23.718,5.993 0,29.711 23.335,53.046 47.053,29.328 "/>
+              <circle class="iconWhiteSpace" cx="38.777" cy="14.104" r="4.001"/>
+            </a>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.233 36.608" class="menuItem">  <!-- SEARCH -->
+            <a xlink:href="http://duckduckgo.com/?q=site%3Ajrburke.com" title="search">
+              <circle class="iconSearch" cx="15.5" cy="15.5" r="13"/>
+              <rect x="22.787" y="28.21" transform="matrix(0.7071 0.7071 -0.7071 0.7071 30.1001 -12.248)" width="14.096" height="4" class="icon"/>
+            </a>
+          </svg>       
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.006 34.006" class="menuItem"> <!-- FEEDS -->
+              <a xlink:href="http://jrburke.com/atom.xml" title="feeds">
+                <path d="M0.772,0.309v15.494c0.021-0.002,0.147-0.004,0.407-0.004c0.566,0,0.566,0.01,0,0.01c-0.26,0-0.386-0.002-0.407-0.004
+                	v17.446h32.703C33.447,15.147,18.843,0.468,0.772,0.309z" class="icon"/>
+                <path class="iconWhiteSpace" d="M22.289,33.286c0.04,0,0.055,0,0.09,0C22.34,21.3,12.718,11.577,0.772,11.368v21.918H22.289z"/>
+                <path d="M15.213,33.287c0-0.021,0.003-0.04,0.003-0.061c0-8.102-6.428-14.687-14.461-14.973v15.034H15.213z" class="icon"/>
+              </a>
+          </svg>
+        </div>  
+        <div class="bottomBar">      
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
+              <rect class="highlight" width="980" height="8"/ x="0" y="14">
+          </svg>
+        </div>
+      </div> <!-- END bottomSection -->  
+    </nav>
+</div>
+    <div class="sectionHeader">
+        <h1 class="postTitle">Template strings, components, models and events</h1>
+        <div class="datetime" data-datetime="2016-01-20T06:26:35.443Z">Wed, 20 Jan 2016 06:26:35 GMT</div>
+    </div>
+
+    <div class="sectionContent">
+        <p><em>This is a shorter, rougher post to outline a recent experiment around UI construction. It is a bit high level, and sets some context around the <a href="https://github.com/jrburke/htemplate">htemplate</a> module</em>.</p>
+
+<p>Some nice things about the <a href="https://facebook.github.io/react/">React</a>-related world that I wanted to try for a work project:</p>
+
+<ol>
+<li>A component system.</li>
+<li>Grouping the DOM building with the JS code that knows about the state (In React, this is the render method, using <code>React.createElement</code> or <a href="https://facebook.github.io/react/docs/displaying-data.html#jsx-syntax">JSX</a>).</li>
+<li>From Flux, enforcing visual updates to be triggered from model changes, not from other visual components.</li>
+</ol>
+
+<p>However, because of cultural constraints and an interest to keep the up front cost small, keep the stack small and shallow, I wanted to avoid a virtual DOM implementation and a transpiler.</p>
+
+<p>What I ended up using:</p>
+
+<ol>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements">Custom elements</a>. This makes sense for the work project since we want to test out the custom element API, help find bugs. Custom elements are enabled by default for the project, so no special shims or adapters are necessary.</p></li>
+<li><p><a href="https://github.com/jrburke/htemplate">htemplate</a>: uses <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings#Tagged_template_strings">tagged template strings</a> to allow grouping the state logic in JS with building up the DOM. I get to use ES2015 without needing any build transforms to translate it to ES5, and I wanted to avoid the JSX transforms.</p></li>
+<li><p>Adopt a cultural practice of calling the model API, then wait for the model object to update and bind the re-rendering of the custom element to events emitted from the model. The custom elements directly subscribe to the model to get changes instead of passing state down through components via a top level component.</p></li>
+</ol>
+
+<p>In order to not take the cost of re-rending stuff that has not changed, the UI would be broken down into smaller custom elements that listened for fine-grained model updates.</p>
+
+<p>This is possible because we have a front end object, called <code>model</code> which sits in front of the core backend model API, and if we notice that we need to group or constraint model update events to help scope visual updates, we have a place to do that.</p>
+
+<p>A similar idea is behind <a href="https://github.com/facebook/graphql">GraphQL</a> and <a href="https://github.com/Netflix/falcor">Falcor</a>, but this approach was done without a formal query language: construct a way to only see part of the whole model, scope data update events to subsets. Model properties/event names were used as the scoping mechanism.</p>
+
+<h2 id="customelementconstruction">Custom element construction</h2>
+
+<p>This can be done in any number of ways, but I was already using <a href="https://github.com/jrburke/element"><code>element</code></a>, so I just continued with it. However, I did not need to use the <a href="https://github.com/jrburke/element#template-loader-plugin-custom-features"><code>template</code></a> module, instead <a href="https://github.com/jrburke/htemplate"><code>htemplate</code></a> was used to construct the DOM within the components.</p>
+
+<p><code>element</code> supports building up the custom element prototype via mixins instead of inheritance, and if multiple mixins define methods for the <a href="https://github.com/jrburke/element#element-lifecycle-background">custom element lifecycle</a>, <code>element</code> will chain them together.</p>
+
+<h2 id="modelconstruction">Model construction</h2>
+
+<p><code>model</code> is an object that mixes in an event emitter. There are lots of choices for event emitters. I used <a href="https://github.com/jrburke/evt"><code>evt</code></a> because it supports a <code>.latest()</code> concept, where it will call the listener if there is a current value for the event property, and for any future updates.</p>
+
+<h2 id="bindingthemodeltotheview">Binding the model to the view</h2>
+
+<p><code>element</code> mixins are used to bind the model updates to a <code>render()</code> method on the component. A sample of the end result:</p>
+
+<ul>
+<li><code>base_render</code> sets up the relationship between htemplate and the model.</li>
+<li><code>['accounts', 'folders']</code> are the model properties that this component wants to get updates about.</li>
+<li>The function is the "renderFn" given to <code>htemplate</code>.</li>
+<li>The html`` part is the tagged template string created by htemplate.</li>
+<li>The model object is passed to the custom element as <code>this.model</code>.</li>
+</ul>
+
+<pre><code class="language-javascript">{
+  render: require('../base_render')(['accounts', 'folders'], function(html) {
+    var currentAccount = this.model.account;
+    if (!currentAccount) {
+      return;
+    }
+
+    html`
+    &lt;a data-prop="accountHeader"
+       data-dclick="toggleAccounts"
+       class="fld-acct-header closed" role="region"&gt;
+      &lt;span class="fld-acct-header-account-label"&gt;${currentAccount.name}&lt;/span&gt;
+      &lt;span class="fld-acct-header-account-header"
+            data-l10n-id="drawer-accounts-header"&gt;&lt;/span&gt;
+      &lt;span class="fld-account-switch-arrow"&gt;&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;div data-prop="fldAcctScrollInner" class="fld-acct-scrollinner"&gt;
+      &lt;div data-prop="fldAcctContainer" class="fld-acct-container"&gt;
+        &lt;!-- The list of accounts --&gt;
+        &lt;div data-prop="accountContainer"
+             data-dclick="onClickAccount"
+             class="fld-accountlist-container collapsed"&gt;
+        `;
+
+        // Add DOM for each account.
+        if (this.state.accounts) {
+          this.state.accounts.items.forEach((account) =&gt; {
+            // Highlight the account currently in use
+            var selectedClass = this.model.account &amp;&amp;
+                                this.model.account.id === account.id ?
+                                'fld-account-selected' : '';
+
+            html`
+            &lt;a class="fld-account-item ${selectedClass}"
+               data-account-id="${account.id}"&gt;
+              &lt;span class="selected-indicator"&gt;&lt;/span&gt;
+              &lt;span class="fld-account-name"&gt;${account.name}&lt;/span&gt;
+            &lt;/a&gt;
+            `;
+          });
+        }
+
+        html`
+        &lt;/div&gt;
+        &lt;!-- The list of folders for the current account. --&gt;
+        &lt;div data-prop="foldersContainer"
+             data-dclick="onClickFolder"
+             class="fld-folders-container"&gt;
+        `;
+
+          if (this.state.folders) {
+            this.state.folders.items.forEach((folder) =&gt; {
+              var extraClasses = [];
+
+              if (!folder.selectable) {
+                extraClasses.push('fld-folder-unselectable');
+              }
+
+              var depthIdx = Math.min(FOLDER_DEPTH_CLASSES.length - 1,
+                                      folder.depth);
+              extraClasses.push(FOLDER_DEPTH_CLASSES[depthIdx]);
+              if (depthIdx &gt; 0) {
+                extraClasses.push('fld-folder-depthnonzero');
+              }
+
+              if (folder === this.model.folder) {
+                extraClasses.push('fld-folder-selected');
+              }
+
+              html`
+              &lt;a class="fld-folder-item ${extraClasses.join(' ')}"
+                 data-type="${folder.type}"
+                 data-folder-id="${folder.id}"&gt;
+                &lt;span class="selected-indicator"&gt;&lt;/span&gt;
+                &lt;span dir="auto"
+                      class="fld-folder-name"&gt;${folder.name}&lt;/span&gt;
+                &lt;span class="fld-folder-unread"&gt;&lt;/span&gt;
+              &lt;/a&gt;
+              `;
+            });
+          }
+
+        html`
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    `;
+  })
+}
+</code></pre>
+
+<p>If the accounts or folders update frequently, then I could create smaller custom elements that focus on displaying those pieces based on the individual model property changes. However, for the time that this UI is shown, those model properties will rarely change, so inlining the work to show both lists in one component is fine.</p>
+
+<h2 id="htemplatenotes">htemplate notes</h2>
+
+<p>htemplate supports passing non-string values to sub-elements by setting a property on the sub-element instead of setting a string attribute. This is useful to pass down objects, like the <code>model</code> object, to sub-elements. More details in the <a href="#https://github.com/jrburke/htemplate#property-setting">Property setting section of the htemplate readme</a>.</p>
+
+<p>Editor support for syntax highlighting HTML inside the tagged template strings helps with the string legibility. It would be great to get more editors supporting it as I expect it will become  more common as tagged template strings get more visibility. Here are a couple of issues tracking that for different editors:</p>
+
+<ul>
+<li><a href="https://github.com/atom/language-javascript/pull/282">Atom editor</a></li>
+<li><a href="https://github.com/Benvie/JavaScriptNext.tmLanguage/issues/134">Sublime Text, JavaScriptNext.tmLanguage package</a></li>
+</ul>
+
+<p>If you can, help your editor improve the display of a HTML string templates.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>I like the feel of it so far. As with most technology choices, it is about the tradeoffs you can accept.</p>
+
+<p>I am fortunate to be able to use ES2015 and custom elements natively, not an option for many projects. It is fun to play in the future natively, I am excited to see those pieces become widely available across browsers.</p>
+
+<p>Not using a virtual DOM implementation requires more thought on rate of updates for a component. Instead of just letting a React render pass sort out the details, The rate of model update events should be considered more, and possibly creating smaller components that care about finer grained model updates.</p>
+
+<p>A virtual DOM can allow the developer to be more carefree about this, at the possible cost of React creating a larger set of internal objects to do a diff when the model changes only affect a small portion of the UI.</p>
+
+<p>There are some cases where I do not want to just blast the innerHTML of the custom element on every model update. For instance, a CSS animated spinner that is activated by a class change to an element. In that case, I do not want to reset the innerHTML as the animating spinner would appear to jump around and reset. In those cases the custom element may decide to check if the existing DOM has the class set correctly instead of always resetting the innerHTML. A more manual diff model.</p>
+
+<p>On the flip side, those cases are small and scoped, and the overall bootstrap code size of the project is smaller, with less build machinery in place.</p>
+
+<p>So, tradeoffs. To be clear, the React ecosystem has a lot to offer, but it has been fun exploring an alternate approach inspired by some aspects of it but with different tradeoffs.</p>
+
+        <div class="separator">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="0" x2="100" y2="0" stroke="black" stroke-width="5"/>
+          </svg>
+        </div>
+        <a href="https://github.com/jrburke/jrburke.com/issues/34">Go to comments</a>
+    </div>
+<div class="footer">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 560 980 324">
+      <a xlink:href="../../../../" title="home">
+        	<path class="logoJ" d="M266.127,682.673c-0.123-0.143-3.178-0.303-7.709-0.123l-56.63,0.061l0.093-58.319h-64.494v58.195l-27.488-0.026
+	c-1.322-0.053-2.649-0.087-3.985-0.087c-53.177,0-96.285,43.109-96.285,96.285s43.107,96.285,96.285,96.285
+	c53.178,0,95.92-43.873,95.92-97.05c0-2.002-0.068-3.986-0.187-5.955l0.05-31.559l37.603-0.346
+	c6.609,0.151,13.228-2.215,18.28-7.289C268.131,722.151,266.304,682.878,266.127,682.673z"/>
+              <ellipse class="logoDotSpace" cx="169.783" cy="605.491" rx="38.463" ry="38.514"/>
+              <circle class="logoDot" cx="169.678" cy="605.652" r="32.095"/>
+              <path class="logoLoopSpace" d="M127.305,801.112c-12.627,12.44-33.318,11.246-45.355-1.765c-12.036-13.012-11.4-33.486,1.765-45.355c15.351-13.841,53.381-14.177,53.868-13.623C137.795,740.612,140.108,788.498,127.305,801.112z"/>
+          <text x="331.3832" y="737.5167" class="emphasized" font-size="70">&copy;2012-2016</text>
+        </a>
+    </svg>
+</div>
+
+</body>
+</html>

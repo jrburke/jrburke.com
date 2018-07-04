@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="I just watched this Mozilla video on some experimental work Tim Disney is doing">
+
+    <title>Understanding macro use cases for JavaScript ~ James Burke</title>
+
+    <link rel="canonical" href="http://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/">
+    <link href="http://jrburke.com/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="../../../../img/favicon.png" rel="icon">
+<link href="../../../../css/index.css" rel="stylesheet" type="text/css">
+
+<script src="../../../../js/index.js"></script>
+
+</head>
+<body class="post">
+<div class="header">
+    <div class="jrbLogo"> 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 560 980 324">
+          <a xlink:href="../../../../" title="home">    
+              <path class="logoJ" d="M266.127,682.673c-0.123-0.143-3.178-0.303-7.709-0.123l-56.63,0.061l0.093-58.319h-64.494v58.195l-27.488-0.026
+	c-1.322-0.053-2.649-0.087-3.985-0.087c-53.177,0-96.285,43.109-96.285,96.285s43.107,96.285,96.285,96.285
+	c53.178,0,95.92-43.873,95.92-97.05c0-2.002-0.068-3.986-0.187-5.955l0.05-31.559l37.603-0.346
+	c6.609,0.151,13.228-2.215,18.28-7.289C268.131,722.151,266.304,682.878,266.127,682.673z"/>
+              <ellipse class="logoDotSpace" cx="169.783" cy="605.491" rx="38.463" ry="38.514"/>
+              <circle class="logoDot" cx="169.678" cy="605.652" r="32.095"/>
+              <path class="logoLoopSpace" d="M127.305,801.112c-12.627,12.44-33.318,11.246-45.355-1.765c-12.036-13.012-11.4-33.486,1.765-45.355c15.351-13.841,53.381-14.177,53.868-13.623C137.795,740.612,140.108,788.498,127.305,801.112z"/>  
+              <text x="331.3832" y="737.5167" class="emphasized" font-size="108.4101">james burke</text>
+          </a>
+        </svg>
+    </div>        
+    <nav id="navMenu" class="closed">
+      <div class="topBar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 24" class="topBarItem1">
+          <path d="M0 0 L921 0 L930 8 H8 0 Z" class="highlight"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 24" class="topBarItem2">
+          <polygon id="navArrow" points="0,0 23,24 45,0" class="highlight"/>
+        </svg>
+      </div>
+      <div class="bottomSection">   
+        <div class="menuContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.172 36" class="menuItem"> <!-- ABOUT -->
+            <a xlink:href="../../../../about/" title="about">
+              <text transform="matrix(1 0 0 1 -2.5113 35.9203)" class="emphasized icon" font-size="46">i</text>
+            </a>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" class="menuItem">  <!-- ARCHIVES -->
+            <a xlink:href="../../../../archives/" title="archives">  
+              <rect width="33" height="33" class="icon"/>
+              <rect y="16" class="iconWhiteSpace" width="33" height="1"/>
+              <circle class="iconWhiteSpace" cx="16.561" cy="8.037" r="1.501"/>
+              <circle class="iconWhiteSpace" cx="16.561" cy="24.484" r="1.501"/>
+            </a>       
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.02 53.046" class="menuItem"> <!-- TAGS -->
+            <a xlink:href="../../../../tags/" title="tags">  
+              <polygon class="icon" points="53.02,14.849 38.171,0 23.718,5.993 0,29.711 23.335,53.046 47.053,29.328 "/>
+              <circle class="iconWhiteSpace" cx="38.777" cy="14.104" r="4.001"/>
+            </a>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.233 36.608" class="menuItem">  <!-- SEARCH -->
+            <a xlink:href="http://duckduckgo.com/?q=site%3Ajrburke.com" title="search">
+              <circle class="iconSearch" cx="15.5" cy="15.5" r="13"/>
+              <rect x="22.787" y="28.21" transform="matrix(0.7071 0.7071 -0.7071 0.7071 30.1001 -12.248)" width="14.096" height="4" class="icon"/>
+            </a>
+          </svg>       
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.006 34.006" class="menuItem"> <!-- FEEDS -->
+              <a xlink:href="http://jrburke.com/atom.xml" title="feeds">
+                <path d="M0.772,0.309v15.494c0.021-0.002,0.147-0.004,0.407-0.004c0.566,0,0.566,0.01,0,0.01c-0.26,0-0.386-0.002-0.407-0.004
+                	v17.446h32.703C33.447,15.147,18.843,0.468,0.772,0.309z" class="icon"/>
+                <path class="iconWhiteSpace" d="M22.289,33.286c0.04,0,0.055,0,0.09,0C22.34,21.3,12.718,11.577,0.772,11.368v21.918H22.289z"/>
+                <path d="M15.213,33.287c0-0.021,0.003-0.04,0.003-0.061c0-8.102-6.428-14.687-14.461-14.973v15.034H15.213z" class="icon"/>
+              </a>
+          </svg>
+        </div>  
+        <div class="bottomBar">      
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
+              <rect class="highlight" width="980" height="8"/ x="0" y="14">
+          </svg>
+        </div>
+      </div> <!-- END bottomSection -->  
+    </nav>
+</div>
+    <div class="sectionHeader">
+        <h1 class="postTitle">Understanding macro use cases for JavaScript</h1>
+        <div class="datetime" data-datetime="2012-09-15T21:56:22.032Z">Sat, 15 Sep 2012 21:56:22 GMT</div>
+    </div>
+
+    <div class="sectionContent">
+        <p>I just watched <a href="https://air.mozilla.org/sweetjs/">this Mozilla video on some experimental work Tim Disney is doing
+for JS macros</a>. While
+watching it, I also read came across <a href="http://calculist.org/blog/2012/04/17/homoiconicity-isnt-the-point/">Dave Herman's homoiconicity post</a>.</p>
+
+<p>Interesting stuff, and helped me to better understand how macros might fit
+into JavaScript, at least at a technical level.</p>
+
+<p>My crude layman's explanation of macros: transpilers but only JS token
+types are used, versus having to make your own whole grammar, and constrained to <strike>curlies</strike>
+() {} [] as delimiters (thanks to Tim for the correction). These limitations are there in order to insert in a simplified
+parser (called the reader) between the usual JS lexer and parser stages.</p>
+
+<p>So macros seem to be useful when:</p>
+
+<ul>
+<li>you do not want a full transpiler, just some small syntax forms</li>
+<li>and using a function() to do the code reuse is not appropriate</li>
+</ul>
+
+<p>I am having trouble visualizing those use cases though. My initial reaction is
+that macros are something neat for a language enthusiast, but do not actually
+make coding, the sharing and reading of code, that much better, particularly
+since it involves a level of indirection that is subtle, the new grammar needs
+to be tracked down. I find this is the hardest part of understanding codebases,
+tracking down what different units of code are doing, where the definitions live.</p>
+
+<p>My first impulse is to say, "just make a function" that does
+what you want, using existing JS grammar.</p>
+
+<p>If a function is not enough, what you are probably wanting is a full custom
+language, so then a full grammar/transpiler makes sense.
+The use of transpilers are easier to call out in their use -- normally a different
+file extension, and by not being limited to JS token types/delimiters, you are
+more likely to create a terser grammar.</p>
+
+<p>I can see the need to make transpiler construction easier. And if someone wanted
+to create a "like JS but with some tweaks", maybe create something higher
+level than something like <a href="http://zaach.github.com/jison/">jison</a> to do that.
+I would have liked that when playing around with module syntax for JS, for
+example.</p>
+
+<p>So it is hard for me to see the case for macros, at least as described in
+that video. They seem to be a middle ground between functions and full
+transpilers whose benefits seem to be outweighed by making it more difficult
+to comprehend code written in "JavaScript".</p>
+
+<p>But I am trying to learn more about it. If anyone has pointers to the cases
+where macros shine and their use outweighs my perceived readability/code tracing
+costs, I would love to hear it. Feel free to leave a comment.</p>
+
+<p>However, do not comment with at "yeah macros are dumb". This is an exploration
+in enlightenment. I'm already skeptical of macros, so I do not need that
+reinforcement. I'm looking for more concrete use cases, pros and cons on specific
+points, not fear of change.</p>
+
+<p>Similarly, comments of the form "because, Language X has them and
+they are awesome" will likely not be informative. It is likely language X and
+JS do not share other properties and cultures that are in JS, like the
+propensity to create transpilers for JS. I want uses cases that for JS would not
+be solved via functions or a full transpiler.</p>
+
+        <div class="separator">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="0" x2="100" y2="0" stroke="black" stroke-width="5"/>
+          </svg>
+        </div>
+        <a href="https://github.com/jrburke/jrburke.com/issues/2">Go to comments</a>
+    </div>
+<div class="footer">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 560 980 324">
+      <a xlink:href="../../../../" title="home">
+        	<path class="logoJ" d="M266.127,682.673c-0.123-0.143-3.178-0.303-7.709-0.123l-56.63,0.061l0.093-58.319h-64.494v58.195l-27.488-0.026
+	c-1.322-0.053-2.649-0.087-3.985-0.087c-53.177,0-96.285,43.109-96.285,96.285s43.107,96.285,96.285,96.285
+	c53.178,0,95.92-43.873,95.92-97.05c0-2.002-0.068-3.986-0.187-5.955l0.05-31.559l37.603-0.346
+	c6.609,0.151,13.228-2.215,18.28-7.289C268.131,722.151,266.304,682.878,266.127,682.673z"/>
+              <ellipse class="logoDotSpace" cx="169.783" cy="605.491" rx="38.463" ry="38.514"/>
+              <circle class="logoDot" cx="169.678" cy="605.652" r="32.095"/>
+              <path class="logoLoopSpace" d="M127.305,801.112c-12.627,12.44-33.318,11.246-45.355-1.765c-12.036-13.012-11.4-33.486,1.765-45.355c15.351-13.841,53.381-14.177,53.868-13.623C137.795,740.612,140.108,788.498,127.305,801.112z"/>
+          <text x="331.3832" y="737.5167" class="emphasized" font-size="70">&copy;2012-2016</text>
+        </a>
+    </svg>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[James Burke -- mozilla]]></title>
+    <link href="http://jrburke.com/tags/mozilla//atom.xml" rel="self"/>
+    <link href="http://jrburke.com/tags/mozilla/"/>
+    <updated>2016-04-19T21:38:06.249Z</updated>
+    <id>http://jrburke.com/tags/mozilla/</id>
+    <author>
+    <name><![CDATA[James Burke]]></name>
+    </author>
+
+    <entry>
+        <title type="html"><![CDATA[The next episode]]></title>
+        <link href="http://jrburke.com/2016/04/19/the-next-episode/"/>
+        <updated>2016-04-19T21:38:06.249Z</updated>
+        <id>http://jrburke.com/2016/04/19/the-next-episode/</id>
+        <content type="html"><![CDATA[<p>After joining Mozilla Messaging just over seven years ago, I start a new job later this month. I am thankful for <a href="https://infrequently.org/">Alex</a>'s introduction to <a href="http://ascher.ca/">David</a> that led to the Mozilla job.</p>
+
+<p>I moved up to Vancouver to experiment with web-based messaging. That led to a few experiments at Mozilla, most recently the Firefox OS email app front end. However, all the experiments I worked on at Mozilla were eventually shut down. It is time for me to try working on a different kind of project.</p>
+
+<p>I will be cheering on the efforts at Mozilla to improve the browser, and integrate web content better with native platforms via features like service workers and web manifests. I would like to see first class placement of web experiences on native platforms that work well with background updates, offline use. A Mozilla-infused Android distribution with web content front and center, some secure messaging and ties to local communities would be neat to see.</p>
+
+<p>The web rendering developments in <a href="https://servo.org/">Servo</a> are exciting too. Do you want to learn a <a href="https://www.rust-lang.org/">neat language</a> and help them out? Check out the <a href="https://github.com/servo/servo/issues?q=is%3Aopen+sort%3Aupdated-desc+label%3AE-easy">first bugs list</a>. The Rust and Servo communities are really great.</p>
+
+<p>While I appreciate the value of platform work, it is more work for me than the flow I feel when building on web apps. So I am off to work on a web app that helps educators organize their classes. I still plan to do some light open source work on my own time, make sure I keep up maintenance releases for RequireJS related tools. But I will be busy with an exciting new job, and I will not have a lot of left over energy for a while. I will be staying in Vancouver.</p>
+
+<p>Thank you Mozilla, and the people I worked with, for seven years. It changed my life. I recommend <a href="https://careers.mozilla.org/">working at Mozilla</a> particularly if you are a platform or systems developer. Or, just <a href="https://www.mozilla.org/en-US/contribute/">contributing in some way</a> to support the great work of the <a href="https://www.mozilla.org">Mozilla Foundation</a>.</p>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Template strings, components, models and events]]></title>
+        <link href="http://jrburke.com/2016/01/19/template-strings-components-models-and-events/"/>
+        <updated>2016-01-20T06:26:35.443Z</updated>
+        <id>http://jrburke.com/2016/01/19/template-strings-components-models-and-events/</id>
+        <content type="html"><![CDATA[<p><em>This is a shorter, rougher post to outline a recent experiment around UI construction. It is a bit high level, and sets some context around the <a href="https://github.com/jrburke/htemplate">htemplate</a> module</em>.</p>
+
+<p>Some nice things about the <a href="https://facebook.github.io/react/">React</a>-related world that I wanted to try for a work project:</p>
+
+<ol>
+<li>A component system.</li>
+<li>Grouping the DOM building with the JS code that knows about the state (In React, this is the render method, using <code>React.createElement</code> or <a href="https://facebook.github.io/react/docs/displaying-data.html#jsx-syntax">JSX</a>).</li>
+<li>From Flux, enforcing visual updates to be triggered from model changes, not from other visual components.</li>
+</ol>
+
+<p>However, because of cultural constraints and an interest to keep the up front cost small, keep the stack small and shallow, I wanted to avoid a virtual DOM implementation and a transpiler.</p>
+
+<p>What I ended up using:</p>
+
+<ol>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements">Custom elements</a>. This makes sense for the work project since we want to test out the custom element API, help find bugs. Custom elements are enabled by default for the project, so no special shims or adapters are necessary.</p></li>
+<li><p><a href="https://github.com/jrburke/htemplate">htemplate</a>: uses <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings#Tagged_template_strings">tagged template strings</a> to allow grouping the state logic in JS with building up the DOM. I get to use ES2015 without needing any build transforms to translate it to ES5, and I wanted to avoid the JSX transforms.</p></li>
+<li><p>Adopt a cultural practice of calling the model API, then wait for the model object to update and bind the re-rendering of the custom element to events emitted from the model. The custom elements directly subscribe to the model to get changes instead of passing state down through components via a top level component.</p></li>
+</ol>
+
+<p>In order to not take the cost of re-rending stuff that has not changed, the UI would be broken down into smaller custom elements that listened for fine-grained model updates.</p>
+
+<p>This is possible because we have a front end object, called <code>model</code> which sits in front of the core backend model API, and if we notice that we need to group or constraint model update events to help scope visual updates, we have a place to do that.</p>
+
+<p>A similar idea is behind <a href="https://github.com/facebook/graphql">GraphQL</a> and <a href="https://github.com/Netflix/falcor">Falcor</a>, but this approach was done without a formal query language: construct a way to only see part of the whole model, scope data update events to subsets. Model properties/event names were used as the scoping mechanism.</p>
+
+<h2 id="customelementconstruction">Custom element construction</h2>
+
+<p>This can be done in any number of ways, but I was already using <a href="https://github.com/jrburke/element"><code>element</code></a>, so I just continued with it. However, I did not need to use the <a href="https://github.com/jrburke/element#template-loader-plugin-custom-features"><code>template</code></a> module, instead <a href="https://github.com/jrburke/htemplate"><code>htemplate</code></a> was used to construct the DOM within the components.</p>
+
+<p><code>element</code> supports building up the custom element prototype via mixins instead of inheritance, and if multiple mixins define methods for the <a href="https://github.com/jrburke/element#element-lifecycle-background">custom element lifecycle</a>, <code>element</code> will chain them together.</p>
+
+<h2 id="modelconstruction">Model construction</h2>
+
+<p><code>model</code> is an object that mixes in an event emitter. There are lots of choices for event emitters. I used <a href="https://github.com/jrburke/evt"><code>evt</code></a> because it supports a <code>.latest()</code> concept, where it will call the listener if there is a current value for the event property, and for any future updates.</p>
+
+<h2 id="bindingthemodeltotheview">Binding the model to the view</h2>
+
+<p><code>element</code> mixins are used to bind the model updates to a <code>render()</code> method on the component. A sample of the end result:</p>
+
+<ul>
+<li><code>base_render</code> sets up the relationship between htemplate and the model.</li>
+<li><code>['accounts', 'folders']</code> are the model properties that this component wants to get updates about.</li>
+<li>The function is the "renderFn" given to <code>htemplate</code>.</li>
+<li>The html`` part is the tagged template string created by htemplate.</li>
+<li>The model object is passed to the custom element as <code>this.model</code>.</li>
+</ul>
+
+<pre><code class="language-javascript">{
+  render: require('../base_render')(['accounts', 'folders'], function(html) {
+    var currentAccount = this.model.account;
+    if (!currentAccount) {
+      return;
+    }
+
+    html`
+    &lt;a data-prop="accountHeader"
+       data-dclick="toggleAccounts"
+       class="fld-acct-header closed" role="region"&gt;
+      &lt;span class="fld-acct-header-account-label"&gt;${currentAccount.name}&lt;/span&gt;
+      &lt;span class="fld-acct-header-account-header"
+            data-l10n-id="drawer-accounts-header"&gt;&lt;/span&gt;
+      &lt;span class="fld-account-switch-arrow"&gt;&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;div data-prop="fldAcctScrollInner" class="fld-acct-scrollinner"&gt;
+      &lt;div data-prop="fldAcctContainer" class="fld-acct-container"&gt;
+        &lt;!-- The list of accounts --&gt;
+        &lt;div data-prop="accountContainer"
+             data-dclick="onClickAccount"
+             class="fld-accountlist-container collapsed"&gt;
+        `;
+
+        // Add DOM for each account.
+        if (this.state.accounts) {
+          this.state.accounts.items.forEach((account) =&gt; {
+            // Highlight the account currently in use
+            var selectedClass = this.model.account &amp;&amp;
+                                this.model.account.id === account.id ?
+                                'fld-account-selected' : '';
+
+            html`
+            &lt;a class="fld-account-item ${selectedClass}"
+               data-account-id="${account.id}"&gt;
+              &lt;span class="selected-indicator"&gt;&lt;/span&gt;
+              &lt;span class="fld-account-name"&gt;${account.name}&lt;/span&gt;
+            &lt;/a&gt;
+            `;
+          });
+        }
+
+        html`
+        &lt;/div&gt;
+        &lt;!-- The list of folders for the current account. --&gt;
+        &lt;div data-prop="foldersContainer"
+             data-dclick="onClickFolder"
+             class="fld-folders-container"&gt;
+        `;
+
+          if (this.state.folders) {
+            this.state.folders.items.forEach((folder) =&gt; {
+              var extraClasses = [];
+
+              if (!folder.selectable) {
+                extraClasses.push('fld-folder-unselectable');
+              }
+
+              var depthIdx = Math.min(FOLDER_DEPTH_CLASSES.length - 1,
+                                      folder.depth);
+              extraClasses.push(FOLDER_DEPTH_CLASSES[depthIdx]);
+              if (depthIdx &gt; 0) {
+                extraClasses.push('fld-folder-depthnonzero');
+              }
+
+              if (folder === this.model.folder) {
+                extraClasses.push('fld-folder-selected');
+              }
+
+              html`
+              &lt;a class="fld-folder-item ${extraClasses.join(' ')}"
+                 data-type="${folder.type}"
+                 data-folder-id="${folder.id}"&gt;
+                &lt;span class="selected-indicator"&gt;&lt;/span&gt;
+                &lt;span dir="auto"
+                      class="fld-folder-name"&gt;${folder.name}&lt;/span&gt;
+                &lt;span class="fld-folder-unread"&gt;&lt;/span&gt;
+              &lt;/a&gt;
+              `;
+            });
+          }
+
+        html`
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    `;
+  })
+}
+</code></pre>
+
+<p>If the accounts or folders update frequently, then I could create smaller custom elements that focus on displaying those pieces based on the individual model property changes. However, for the time that this UI is shown, those model properties will rarely change, so inlining the work to show both lists in one component is fine.</p>
+
+<h2 id="htemplatenotes">htemplate notes</h2>
+
+<p>htemplate supports passing non-string values to sub-elements by setting a property on the sub-element instead of setting a string attribute. This is useful to pass down objects, like the <code>model</code> object, to sub-elements. More details in the <a href="#https://github.com/jrburke/htemplate#property-setting">Property setting section of the htemplate readme</a>.</p>
+
+<p>Editor support for syntax highlighting HTML inside the tagged template strings helps with the string legibility. It would be great to get more editors supporting it as I expect it will become  more common as tagged template strings get more visibility. Here are a couple of issues tracking that for different editors:</p>
+
+<ul>
+<li><a href="https://github.com/atom/language-javascript/pull/282">Atom editor</a></li>
+<li><a href="https://github.com/Benvie/JavaScriptNext.tmLanguage/issues/134">Sublime Text, JavaScriptNext.tmLanguage package</a></li>
+</ul>
+
+<p>If you can, help your editor improve the display of a HTML string templates.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>I like the feel of it so far. As with most technology choices, it is about the tradeoffs you can accept.</p>
+
+<p>I am fortunate to be able to use ES2015 and custom elements natively, not an option for many projects. It is fun to play in the future natively, I am excited to see those pieces become widely available across browsers.</p>
+
+<p>Not using a virtual DOM implementation requires more thought on rate of updates for a component. Instead of just letting a React render pass sort out the details, The rate of model update events should be considered more, and possibly creating smaller components that care about finer grained model updates.</p>
+
+<p>A virtual DOM can allow the developer to be more carefree about this, at the possible cost of React creating a larger set of internal objects to do a diff when the model changes only affect a small portion of the UI.</p>
+
+<p>There are some cases where I do not want to just blast the innerHTML of the custom element on every model update. For instance, a CSS animated spinner that is activated by a class change to an element. In that case, I do not want to reset the innerHTML as the animating spinner would appear to jump around and reset. In those cases the custom element may decide to check if the existing DOM has the class set correctly instead of always resetting the innerHTML. A more manual diff model.</p>
+
+<p>On the flip side, those cases are small and scoped, and the overall bootstrap code size of the project is smaller, with less build machinery in place.</p>
+
+<p>So, tradeoffs. To be clear, the React ecosystem has a lot to offer, but it has been fun exploring an alternate approach inspired by some aspects of it but with different tradeoffs.</p>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Browser-driven Arduino bots]]></title>
+        <link href="http://jrburke.com/2013/06/09/browser-driven-arduino-bots/"/>
+        <updated>2013-06-10T04:11:55.600Z</updated>
+        <id>http://jrburke.com/2013/06/09/browser-driven-arduino-bots/</id>
+        <content type="html"><![CDATA[<p>Want to help do something awesome? Let's connect some pipes so we can drive an <a href="http://www.arduino.cc/">Arduino</a> using a web browser on a mobile device!</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I attended the <a href="http://2013.jsconf.us/schedule">node bots hack day at JSConf 2013</a>, and it was really inspiring. We were driving Arduinos via <a href="http://nodejs.org/">Node</a> and <a href="https://github.com/rwldrn/johnny-five/">Johnny-Five</a>.</p>
+
+<p>Right now, the Node program runs on a laptop and communicates with the Arduino over a USB cable connection. There was talk of setting up connections over bluetooth or WiFi instead, but there are a couple of hurdles for it, and I want to take a slightly different path that works with a USB cable connection:</p>
+
+<p>I want to control an Arduino bot by using a <a href="https://developer.mozilla.org/en/docs/Mozilla/Firefox_OS">Firefox OS</a> device connected directly to the bot via USB. Why a Firefox OS device?</p>
+
+<ul>
+<li>it is small and relatively inexpensive.</li>
+<li>it has a bunch of sensors in it already, all accessible via JavaScript in web apps.</li>
+<li>it has a touch screen so it allows for some higher level user interactions.</li>
+<li>USB host mode should be available to some of the devices that run Firefox OS.</li>
+</ul>
+
+<p>By using a direct USB connection between the device and the Arduino, it would avoid some interference issues with trying to go over a wireless connection. For example, the node copter event was running into congested/conflicting WiFi due to the amount of copters in the room.</p>
+
+<h2 id="pathways">Pathways</h2>
+
+<p>At the hack day, <a href="https://github.com/creationix">Tim Caswell</a> got a Google Chrome <a href="https://github.com/creationix/firmata-chrome">proof of concept</a> working using the <a href="http://developer.chrome.com/apps/serial.html">chrome.serial API</a> available to Chrome apps.</p>
+
+<p>Firefox has the start of a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">"WebUSB" patch in bug 674718</a>, but the patch is old and there was discussion of difficulty getting it to work for Firefox on Windows.</p>
+
+<p>I tried a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718#c44">naive approach to updating the patch</a>, but ran into trouble because some of the code depended on nsDOMEventTargetWrapperCache which is no longer in the codebase. I do not have enough Gecko code knowledge to know the new mechanism to use. Also, there was a later comment indicating it was unclear how to access USB via the lower level Firefox OS operating system, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Platform/Gonk">Gonk</a>.</p>
+
+<p>So a possible approach to getting to the end goal:</p>
+
+<ul>
+<li>Get a real patch that would work for Firefox OS in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a>. If it only worked for Firefox OS and did not solve any Windows issues, I would still be happy with that patch. Perhaps the patch could land only enabled for Firefox OS and Android.</li>
+<li>Create a JS library that uses the WebUSB patch to do effectively what <a href="https://github.com/voodootikigod/node-serialport">node-serialport</a> does for Node, and what is needed for the firmata library.</li>
+<li>Adapt <a href="https://github.com/rwldrn/johnny-five/">Johnny-Five</a> to also run in this new environment.</li>
+</ul>
+
+<h2 id="howyoucanhelp">How you can help</h2>
+
+<p>I am very inexperienced with USB and any plumbing needed for it to work, so I am poorly suited to making progress on <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a>. I believe I confirmed USB host mode is available in the Firefox OS developer phone I am using, so at least on some of the phones, the hardware capability is there.</p>
+
+<h3 id="knowusbandandroidorgonk">Know USB and Android or Gonk?</h3>
+
+<p>If so, then you may be able to sort out the lower levels of the USB patch code in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a>.</p>
+
+<p>Firefox OS runs on top of an operating system called <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Platform/Gonk">Gonk</a>. Gonk relies on some parts from Android, and Firefox also runs on Android, so if you see a way to get the patch to run in <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox&amp;hl=en">Firefox for Android</a>, that may be useful too.</p>
+
+<h3 id="knowgeckocode">Know Gecko code?</h3>
+
+<p>If so, then you may be able to freshen up the higher levels of the patch in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a> that exposes the WebUSB capability to web apps. If you do not have time to do the patch yourself, perhaps describe the higher level steps to freshen up the patch. One issue: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718#c44">how to adapt the code the depended on nsDOMEventTargetWrapperCache</a>.</p>
+
+<h3 id="knowabetterway">Know a better way?</h3>
+
+<p>I think this is a way to get to a browser-driven Arduinos, but maybe you know of a different way? I could also be missing an important step. My main objective:</p>
+
+<ul>
+<li>Develop apps using JS/HTML/CSS that can be loaded on a mobile device.</li>
+<li>Control an Arduino with those apps, and allow user interfaces that are touch friendly.</li>
+</ul>
+
+<p>I am targeting Firefox OS because I work at Mozilla and believe in the Firefox OS mission. Firefox OS is going to be a great, low cost option for a mobile device. It is also a web-first approach. Driving Arduinos with Firefox OS devices likely means it will work for Firefox on Android, so it opens up the Android platform too.</p>
+
+<p>Using Google Chrome on an Android device might also be a route to take, but I am not sure yet if Chrome apps work on Android (chrome.serial is only available to chrome apps). In my ideal world, we get it working on Firefox (on Firefox OS and Android) and Chrome (on Android) and any JS libraries above the raw USB/serial API should try to target both. You know, the typical web with support for multiple vendors.</p>
+
+<p>It would be fine to hear about approaches use a tiny web server hooked up to the Arduino that receives connections over Bluetooth or WiFi, but I consider that a secondary goal as it involves more moving parts. Definitely interesting, but I really want to focus on hooking up the mobile device directly to the Arduino. The possibility of using the mobile device sensors with the Arduino, and using HTML/JS/CSS to drive the logic is something I really want to see in action.</p>
+
+<p>So, leave a comment via the link below, or if you have practical steps for <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a>, comment in that bug.</p>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Referencing JavaScript]]></title>
+        <link href="http://jrburke.com/2012/11/02/referencing-javascript/"/>
+        <updated>2012-11-02T16:40:55.062Z</updated>
+        <id>http://jrburke.com/2012/11/02/referencing-javascript/</id>
+        <content type="html"><![CDATA[<p>Referencing JavaScript. How should it be done? Is there an approach that works for module systems, package managers and project layouts?</p>
+
+<p>The following describes the approach in use by <a href="https://github.com/amdjs/amdjs-api/wiki">AMD</a>/<a href="http://requirejs.org">RequireJS</a> and <a href="http://volojs.org">volo</a>, but parts are found in other places like <a href="http://www.nodejs.org/">Node</a>, <a href="http://www.commonjs.org/">CommonJS</a> and <a href="http://dojotoolkit.org/">Dojo</a>.</p>
+
+<p>The following approach works well for browser-based, web development. Since browser-based development is the harder environment to support, the approaches can carry over well to other JS environments. Other environments have the capability to add more power to this approach, but it would be nice to see a baseline available across all JS environments.</p>
+
+<p>If you work on module systems, package managers/tools or project layouts, please consider this approach. There could be other ways to accomplish the same end result, but the following approach is cohesive and have been proven out in practice.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>The high level summary:</p>
+
+<ul>
+<li><strong><a href="#defaultsforsinglefilelibraries">Defaults for single file libraries</a></strong>. This encourages small reusable modules, and leads to a simpler project layout.</li>
+<li><strong><a href="#referencecodeusingstringids">Reference code using string IDs</a></strong>. These IDs are not paths, but have an easy convention to map to paths. Treat the IDs as an ID namespace, not as path entities.</li>
+<li><strong><a href="#useasimpleidtopathconvention">Use a simple ID-to-path convention</a></strong>. baseUrl + ID + ".js".</li>
+<li><strong><a href="#allowdeclarativeconfiguration">Allow declarative configuration</a></strong>. Some things do not fit in convention.</li>
+</ul>
+
+<p>More detail below, and how these points affect module systems, package managers/tools, and project layouts.</p>
+
+<h2 id="defaultsforsinglefilelibraries">Defaults for single file libraries</h2>
+
+<p>The ideal project layout should be a collection of single file JS libraries that each do one thing well. Ideally the functionality is exported as a single value, commonly a function.</p>
+
+<p>There will be libraries that want to do a few things and provide a few modules in one package. Those should be possible to support, but the defaults are optimized for single file JS libraries.</p>
+
+<p>If the defaults and conventions are around single file JS libraries, it will give a nudge to consider that direction. It is also simpler for new people to understand. With the configuration mentioned later, the system can grow as they grow.</p>
+
+<h3 id="singlefilelibsmodulesystems">Single file libs: module systems</h3>
+
+<p>Allow exporting a single function as the module value. This works in Node by assigning the export to <code>module.exports</code>. In AMD, it works by returning a value from the factory function.</p>
+
+<p>Ideally Node would have just used <code>return</code> too, but it is difficult to support in JS since <code>return</code> is not allowed at the top level of a script. Technically, it would work to use <code>return</code> in Node, since under the covers node wraps the module code in a function before evaluating it, but the source files would not lint or parse well -- source editors and tools that check syntax would complain.</p>
+
+<p>For circular dependencies, there are cases where returning the value makes it hard to resolve the cycle. The <code>exports</code> concept in CommonJS is useful for those cases, so that kind of capability should be available. However, the majority of modules in AMD and Node just set the module value, so there should be an easy way to just set the value, and in particular allow function values for modules.</p>
+
+<h3 id="singlefilelibspackagemanagers">Single file libs: package managers</h3>
+
+<p>Allow registering single file JS files as a "package". For communicating module metadata, allow an inline <code>/*package */</code> comment to express the JSON metadata instead of mandating a separate package.json file.</p>
+
+<p>volo supports this already. <a href="http://npmjs.org/">npm</a> supports this in a limited fashion, and I believe <a href="http://twitter.github.com/bower/">Bower</a> uses the same <a href="https://github.com/isaacs/read-package-json">metadata extraction library</a> as npm.</p>
+
+<p>When installing a package into a project, just install the single JS file as the name given with a ".js" extension. So <code>install foo</code> should result in just a foo.js on disk, instead of creating a folder just for foo.js.</p>
+
+<p>This is important for the "simple convention" approach later. It is also just cleaner.</p>
+
+<p>npm could improve the state of its installation artifacts. Do not encourage projects to package a readme or tests such that those things show up installed in a project. This is unnecessary noise that is not needed once the dependency is installed.</p>
+
+<p>There needs to be a way to get more info on a dependency, but that should be fetched via commands to npm, not having to scan extra local file debris. If someone wants to run tests in their project, querying npm to find or install the source repo is a better way to go about this.</p>
+
+<p>For package managers in general, there needs to be a way to allow a directory as the package install. There are cases that have binary components, and even richer packages that are made up of more than one module.</p>
+
+<p>However, the defaults should make it easy to use single file JS files. This is something Bower could improve on. Currently Bower creates a directory for each dependency, and every dependency directory has an "index.js" in it. This is bad for debugging and creates a bunch of directory and file debris that is not useful for running the application.</p>
+
+<p>If a package manager needs to track metadata for a dependency, either rely on inline <code>/*package */</code> metadata, or use a project's package.json file to store the dependency ID/version number/location, and then use that later to look up info about the dependency.</p>
+
+<h3 id="singlefilelibsprojectlayouts">Single file libs: project layouts</h3>
+
+<p>Projects should be able to specify a directory in which dependencies should go. More on this in the convention and configuration sections.</p>
+
+<h2 id="referencecodeusingstringids">Reference code using string IDs</h2>
+
+<p>This is how it is done in CommonJS/Node and in AMD/RequireJS. So to use jQuery as dependency, specify "jquery" as the dependency ID. Do not include the ".js" extension. This allows for different path resolutions.</p>
+
+<p>In Node, it may result in a nested directory IO lookup, and reading of a package.json "main" property. In AMD solutions, it may simply map directly to a 'jquery.js' under a "baseUrl", or be subject to some declarative configuration.</p>
+
+<p>IDs should allow relative references. So, a module with ID of "some/thing", can use "./other" to refer to the "some/other" module.</p>
+
+<p><strong>Module IDs are not path entities</strong>. They are keys in a module ID space. This is a subtle point, and it creeps up once multiple modules are inlined into one file, either for library distribution or for optimization purposes. Those IDs should be maintained as module IDs, and not as path entries. This is something I think is missing in Node, where internally it uses paths as the underlying key for a module. This carries over to how tools like <a href="https://github.com/substack/node-browserify">browserify</a> inlines modules.</p>
+
+<p>Since module IDs are not paths, it means resolving relative IDs using a reference module ID and not a path.</p>
+
+<h3 id="stringidsmodulesystems">String IDs: module systems</h3>
+
+<p>Use strings as IDs when referencing and defining modules. Always use those string IDs, even in built source form. This allows for supporting loader plugins.</p>
+
+<p><a href="http://requirejs.org/docs/plugins.html">Loader plugins</a> have been incredibly useful for AMD loaders, and I believe they are better than the file extension-based system that Node uses currently, since loader plugins are more direct in usage. Their use is controlled by the caller, not by some module acting at a distance.</p>
+
+<p>For example, a "<a href="https://github.com/requirejs/text">text</a>" loader plugin can load a .html file or a .txt file, and a "mustache" loader plugin could also handle the same .html file as the text plugin. How the file will be used is subject to the caller's context, not the file extension.</p>
+
+<p>Loader plugins can do conditional logic before satisfying the dependency. This opens up feature detection-based dependencies that are expressible as string IDs and participate in optimization/build steps.</p>
+
+<p>Loader plugins are a great way to implement transpilers too. Examples from the AMD/RequireJS world: <a href="https://github.com/jrburke/require-cs">CoffeeScript</a>, <a href="https://github.com/iammerrick/require-ts">TypeScript</a>.</p>
+
+<h3 id="stringidspackagemanagers">String IDs: package managers</h3>
+
+<p>Since there is a layer of indirection between the module ID and the path, this opens up some flexibility on install location. However, as mentioned in the path convention section below, using a "baseUrl" convention is useful.</p>
+
+<h3 id="stringidsprojectlayouts">String IDs: project layouts</h3>
+
+<p>The string IDs are useful when combined with the default ID-to-path convention for keeping IDs short, but easy to map to locations on disk. No need to type out the directory and ".js" for each dependency. Just look in the directory used as the "baseUrl" to find all the dependencies.</p>
+
+<h2 id="useasimpleidtopathconvention">Use a simple ID-to-path convention</h2>
+
+<p>Module IDs are not paths, but it should be easy to map an ID to a path.</p>
+
+<p>This should just be baseUrl + [module ID] + ".js".</p>
+
+<p>Why is ".js" given special status? Because this is about loading JavaScript, and .js is already the recognized file type for JavaScript. Loader plugins allow referencing of non-JS files. The loader plugin just has to turn the dependency into some sort of JavaScript result.</p>
+
+<p>For JS endpoints that are URLs that do not end in ".js", but deliver JavaScript, those can be configured via the declarative configuration. These are rare, and they may need a loader plugin to properly load if they have multiple async cycles to fully complete, like the Google APIs.</p>
+
+<p>Since libraries are encouraged to be single JS files, this simple convention makes it easy for anyone to guess where the dependency exists in a default layout. If a developer is looking inside <strong>www/js/bar.js</strong> and it references "foo", then odds are it is at <strong>www/js/foo.js</strong>, or somehow tied to <strong>www/js/foo</strong>.</p>
+
+<p>It is easier for new developers to start with JS: "just drop all scripts in this directory and refer to them without the '.js'". It also helps enforce single purpose, single file libraries.</p>
+
+<h3 id="pathconventionmodulesystems">Path convention: module systems</h3>
+
+<p>This approach means there is one IO lookup per module ID. This is important on the web, where trying multiple file/URL locations for a module ID would lead to terrible performance and confusing 404 errors in developer tools.</p>
+
+<p>This also means avoiding looking up modules in a global file location. This is not really an issue for browser environments, everything is "local" to the project. However, for non-browser JS environments, using a global file location to look up modules for specific projects is not recommended.</p>
+
+<p>Node's local node_modules approach is the right direction to go, versus the Python and Ruby models that favor the global space more. Most of my headaches when using Python and Ruby stem from this choice. While virtual environments are a way to work around that, it is a non-default behavior and a continual tax to use them.</p>
+
+<h3 id="pathconventionpackagemanagers">Path convention: package managers</h3>
+
+<p>The biggest outcome of this approach is avoiding a global installation space, and to install all dependencies locally within a project.</p>
+
+<p>This is done in npm and Node. While npm allows installing into a global directory, those packages are not visible to a specific project's require calls. So those kinds of installs are mostly useful for command line tools that are built using Node.</p>
+
+<p>The package manager should be able to read the "baseUrl" location either by a convention with project layout or via an explicit metadata property in the project's package.json. "baseUrl" is recommended as the property name, since it ties in with the runtime configuration of a module loader.</p>
+
+<p>volo supports a "baseUrl" property in the package metadata, and if specified, will install all dependencies in that directory. If no baseUrl property, then volo will use one of these locations:</p>
+
+<ul>
+<li><strong>js</strong> directory, if exists</li>
+<li><strong>scripts</strong> directory, if exists</li>
+<li>current working directory</li>
+</ul>
+
+<p>There are some dependencies that will want to be directories, since they may have binary components, or they are larger libraries that provide a few related modules.</p>
+
+<p>These directory-based libraries can be supported in one of two ways:</p>
+
+<p>1) Allow updating a config object that is used at runtime with extra info. <a href="http://jamjs.org/">Jam</a> does this. See the declarative config section below for more info on config values.</p>
+
+<p>2) Install a proxy module that points to the directory's "main" module. So if installing a package "foo" that is a directory and its package.json has a <code>"main": "index"</code> property, use this directory layout:</p>
+
+<ul>
+<li><strong>foo.js</strong> (created by the package manager)</li>
+<li><strong>foo/</strong> (fetched from the package repository)
+<ul><li>index.js</li></ul></li>
+</ul>
+
+<p>And <strong>foo.js</strong> just requires "foo/index" and returning the "foo/index" module value. Volo takes this route.</p>
+
+<h3 id="pathconventionprojectlayouts">Path convention: project layouts</h3>
+
+<p>Use the project's package.json to store a property that indicates the baseUrl. Calling it <code>baseUrl</code> matches what the runtime module system will use.</p>
+
+<p>I favor the project layout as specified in <a href="https://github.com/volojs/create-template">volojs/create-template</a>:</p>
+
+<ul>
+<li><strong>tools</strong>: directory to hold local project/build tools and assets.</li>
+<li><strong>www</strong>: the source directory, what is served up by a web server in dev.
+<ul><li><strong>js/lib</strong>: the "baseUrl" used by the project.</li></ul></li>
+<li><strong>www-built</strong>: the built version of the project. It should be possible to do most development in the www directory, and when ready for deployment and optimization, trying out the built version in www-built.</li>
+</ul>
+
+<p>The package.json for that project layout uses <code>"baseUrl": "js/lib"</code> to indicate the the place to install dependencies.</p>
+
+<h2 id="allowdeclarativeconfiguration">Allow declarative configuration</h2>
+
+<p>Not all styles fit into the default convention. We have seen this in AMD, and AMD loaders are working towards a <a href="https://github.com/amdjs/amdjs-api/wiki/Common-Config">common set of config options</a>.</p>
+
+<p>By allowing a declarative configuration, it removes the need for additional "helper libraries" that would likely be needed in the browser to configure an imperative hook for ID resolution.</p>
+
+<h3 id="declarativeconfigmodulesystems">Declarative config: module systems</h3>
+
+<p>Support a declarative set of configuration values that are used at runtime, like the ones in the <a href="https://github.com/amdjs/amdjs-api/wiki/Common-Config">AMD Common Config</a>:</p>
+
+<ul>
+<li><strong>baseUrl</strong>: sets the baseUrl for the ID-to-path conversions.</li>
+<li><strong>paths</strong>: configures a base path for a module ID prefix.</li>
+<li><strong>map</strong>: maps IDs used by some ID prefixes to other ID prefixes. It may be worth renaming this to "alias" to make it clearer how it differs from paths.</li>
+<li><strong>config</strong>: passes some configuration data to a particular module ID. This is useful for passing data that changes depending on the environment or context. User IDs and API end points are good examples.</li>
+<li><strong>packages</strong>: configures CommonJS/Node style "package" directories with a "main" property without using an adapter/proxy module.</li>
+</ul>
+
+<p>For supporting code that may not actually call the module system, RequireJS users have found <a href="http://requirejs.org/docs/api.html#config-shim">shim config</a> to be useful.</p>
+
+<p>A module system may still have an imperative hook to override final ID-to-path resolution. I can see this useful for environments like Node: use the declarative config, and if that does not translate to a file that exists, then fall back to the "scan nested node_modules directories" approach.</p>
+
+<p>However, given the IO restrictions for browser environments, a declarative config should be available as a default.</p>
+
+<h3 id="declarativeconfigpackagemanagers">Declarative config: package managers</h3>
+
+<p>Stamp the project config if installing a dependency would require a configuration entry. Examples: support "directory packages" or to set up a map/alias so that certain modules use version 1 of a library while the rest of the modules in the project use version 2.</p>
+
+<p>To do this, the package manager needs to know the location of the configuration.</p>
+
+<p>While this is not implemented yet in volo, I favor piggybacking on a "baseUrl" that is specified in a project's package.json file. By default, assume the config is in baseUrl + 'main.js'. However, allow for a configuration override via a package.json property. Perhaps call it "mainConfigFile", as <a href="http://requirejs.org/docs/optimization.html#mainConfigFile">the r.js optimizer does</a>, and it would be a path within the project to the JS file that has the configuration.</p>
+
+<p>The configuration will be passed to a runtime JS module API call, so to be able to properly extract the config, update it, and save it back, the package manager needs to handle updating a file that is written in JavaScript. This is possible by using tools like <a href="http://esprima.org/">Esprima</a> or <a href="http://marijnhaverbeke.nl/acorn/">Acorn</a>.</p>
+
+<h3 id="declarativeconfigprojectlayouts">Declarative config: project layouts</h3>
+
+<p>The baseUrl approach works well for getting started, but many projects like to keep third party dependencies separate from the application code. For that kind of project layout, set the baseUrl to a <strong>lib</strong> directory to hold third party code, and then specify an "app" paths config for an <strong>app</strong> directory that is a sibling to <strong>lib</strong> for the app code.</p>
+
+<p>The <a href="https://github.com/volojs/create-template">volojs/create-template project template</a> does this in the main <a href="https://github.com/volojs/create-template/blob/761945fac2557bc50e22bcae4984305a03e0f45d/www/js/app.js">app.js file</a>. The project
+layout:</p>
+
+<ul>
+<li><strong>www</strong>
+<ul><li><strong>index.html</strong>: uses require.js to load www/js/app.js via <code>data-main="js/app"</code></li>
+<li><strong>js</strong>
+<ul><li><strong>app.js</strong>: loaded by index.html, has the declarative config.</li>
+<li><strong>app</strong>: directory to hold app code
+<ul><li><strong>main.js</strong>: module that runs the main logic for the app.</li></ul></li>
+<li><strong>lib</strong>: directory to hold third party code.</li></ul></li></ul></li>
+</ul>
+
+<p>where app.js holds the small configuration for the app:</p>
+
+<pre><code class="language-javascript">// For any third party dependencies, like jQuery,
+// place them in the lib folder.
+
+// Configure loading modules from the lib directory,
+// except for 'app' ones, which are in a sibling
+// directory.
+requirejs.config({
+    baseUrl: 'js/lib',
+    paths: {
+        app: '../app'
+    }
+});
+
+// Start loading the main app file. Put all of
+// your application logic in there.
+requirejs(['app/main']);
+</code></pre>
+
+<p>Any app modules are stored in the <strong>app</strong> directory. The app modules refer to each other using relative module IDs.</p>
+
+<p>Some projects that use RequireJS end up with large config blocks, mostly with a paths setting for each dependency. This should be discouraged.</p>
+
+<p>With the lib baseUrl and the app paths setting, it gives the smallest amount of config that does not need continual updates and still separates third party code from the application's code.</p>
+
+<p>One of the reasons some people use big config blocks is so they can track the version number of the dependency in the file name, like <code>jquery: 'lib/jquery-1.8.2'</code>. Instead, track this information in a project's package.json file, since it is most useful to track as part of a package manager's work, to resolve version conflicts.</p>
+
+<h2 id="secondaryimplementationnotes">Secondary implementation notes</h2>
+
+<h3 id="projectorlibrarymetadata">project or library metadata</h3>
+
+<p>In the above points, a <code>package.json</code> is mentioned a few times. This is a project or library level file that holds the JSON-based metadata about the project. It is not information that is needed at runtime, but information about what the project or library needs to have installed to function at runtime.</p>
+
+<p>For single file lib support, this metadata should be allowed inline in the JS file as a comment:</p>
+
+<pre><code class="language-javascript">/*package
+{}
+*/
+</code></pre>
+
+<p>While npm relies heavily on package.json and assumes certain formats for "dependencies" and requires a "name", other tools should feel free to use package.json to store metadata.</p>
+
+<p>A tool-specific name in the package.json can be used to encapsulate info that is only appropriate for that tool, or while that tool is working out a common config format that later could be used by multiple tools. For instance, volo will look in a "volo" property to find volo-specific configuration details.</p>
+
+<p>This should be favored over creating separate .json files. Bower does this with component.json. This adds clutter. The nature of JSON key-based storage means that tool-specific info can be stored under unique keys in the package.json. Bower could use a "component" property in the package.json instead.</p>
+
+<p>One thing I wish npm did differently was to not place so much dependence on the "name" field in the package.json.</p>
+
+<p>Packages naming themselves have the same problems as modules naming themselves. The name should really be specified by the context consuming the package or module.</p>
+
+<p>A package could have a very different name depending on the package repo or context it is used. For example, the requirejs "text" module is a loader plugin. Claiming the "text" name would be bad to do in a general package repository. However, in the context of a loader plugin it makes more sense. If a repository holds JS packages that can be used for multiple contexts, like browser and Node, a single name specified by the package is too limiting and often misleading.</p>
+
+<p>One way to solve that is to store modules for a different contexts (like browser vs Node, in different package repositories. Even then, the same package could be useful in both, but need different names in each repository.</p>
+
+<p>Another approach is to allow a larger namespace in a package repo. Volo does this by using GitHub as the repo, and GitHub has a two level namespace: "owner/repo", and the name of the repo is something specified outside of the package metadata.</p>
+
+<h2 id="alternatives">Alternatives</h2>
+
+<p>Some approaches that may mitigate the need for the four main points discussed above:</p>
+
+<h3 id="everythinginadirectory">Everything in a directory</h3>
+
+<p>Do not allow single JS files, and work out a convention that is based on each dependency in a directory.</p>
+
+<p>This does not carry over well once you start coding application logic, where you have multiple single purpose modules that favor the single JS file approach for each module ID. It also creates a bunch of extra noise in a project, and feels too much like Java.</p>
+
+<p>This approach works in Node because it can do multiple IO lookup operations for a module ID. This does not work well for the browser case.</p>
+
+<h3 id="buildeverything">Build everything</h3>
+
+<p>Who cares about file debris and big configuration blocks, mandate builds to clean up the mess for browsers!</p>
+
+<p>This is not how front end projects have worked in the past. There is great simplicity, immediacy, and "view source" value in being able to just code some static files and load them directly in the browser.</p>
+
+<p>I cannot see any future module system in ECMAScript mandating builds just to use modules in the browser. We need to figure out an approach that works without needing build tools.</p>
+
+<p>Making sure a system can work without build tools helps nudge people to simpler libraries and project layouts. Once build tools become involved, it means more levels to debug and more things to set up before getting started. It leads down the path to Java and <a href="http://en.wikipedia.org/wiki/List_of_web_service_specifications">WS-Deathstar</a>. Keep the web simpler.</p>
+
+<p>Build tools are great if you want to squeeze out every last bit of performance, but they should be optional. Many folks run AMD projects without building, and they are fine with the performance.</p>
+
+<p>Build tools are also useful when trying to work out how something should work in the future, like CSS. CSS has been so neglected over the years that using LESS or SASS-like systems is alluring. Hopefully those are just intermediate efforts to better inform improvements in CSS, so that they eventually become built in to CSS itself.</p>
+
+<p>If not, hopefully module systems support loader plugins so that these CSS builders can run in the browser without needing builds.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>The above approach as been demonstrated to work, and it is in active use. While the "everything is a directory" and "build everything" do not seem like viable long range solutions, it would be great to hear of other solutions that work well in practice.</p>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Understanding macro use cases for JavaScript]]></title>
+        <link href="http://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/"/>
+        <updated>2012-09-15T21:56:22.032Z</updated>
+        <id>http://jrburke.com/2012/09/15/understanding-macro-use-cases-for-javascript/</id>
+        <content type="html"><![CDATA[<p>I just watched <a href="https://air.mozilla.org/sweetjs/">this Mozilla video on some experimental work Tim Disney is doing
+for JS macros</a>. While
+watching it, I also read came across <a href="http://calculist.org/blog/2012/04/17/homoiconicity-isnt-the-point/">Dave Herman's homoiconicity post</a>.</p>
+
+<p>Interesting stuff, and helped me to better understand how macros might fit
+into JavaScript, at least at a technical level.</p>
+
+<p>My crude layman's explanation of macros: transpilers but only JS token
+types are used, versus having to make your own whole grammar, and constrained to <strike>curlies</strike>
+() {} [] as delimiters (thanks to Tim for the correction). These limitations are there in order to insert in a simplified
+parser (called the reader) between the usual JS lexer and parser stages.</p>
+
+<p>So macros seem to be useful when:</p>
+
+<ul>
+<li>you do not want a full transpiler, just some small syntax forms</li>
+<li>and using a function() to do the code reuse is not appropriate</li>
+</ul>
+
+<p>I am having trouble visualizing those use cases though. My initial reaction is
+that macros are something neat for a language enthusiast, but do not actually
+make coding, the sharing and reading of code, that much better, particularly
+since it involves a level of indirection that is subtle, the new grammar needs
+to be tracked down. I find this is the hardest part of understanding codebases,
+tracking down what different units of code are doing, where the definitions live.</p>
+
+<p>My first impulse is to say, "just make a function" that does
+what you want, using existing JS grammar.</p>
+
+<p>If a function is not enough, what you are probably wanting is a full custom
+language, so then a full grammar/transpiler makes sense.
+The use of transpilers are easier to call out in their use -- normally a different
+file extension, and by not being limited to JS token types/delimiters, you are
+more likely to create a terser grammar.</p>
+
+<p>I can see the need to make transpiler construction easier. And if someone wanted
+to create a "like JS but with some tweaks", maybe create something higher
+level than something like <a href="http://zaach.github.com/jison/">jison</a> to do that.
+I would have liked that when playing around with module syntax for JS, for
+example.</p>
+
+<p>So it is hard for me to see the case for macros, at least as described in
+that video. They seem to be a middle ground between functions and full
+transpilers whose benefits seem to be outweighed by making it more difficult
+to comprehend code written in "JavaScript".</p>
+
+<p>But I am trying to learn more about it. If anyone has pointers to the cases
+where macros shine and their use outweighs my perceived readability/code tracing
+costs, I would love to hear it. Feel free to leave a comment.</p>
+
+<p>However, do not comment with at "yeah macros are dumb". This is an exploration
+in enlightenment. I'm already skeptical of macros, so I do not need that
+reinforcement. I'm looking for more concrete use cases, pros and cons on specific
+points, not fear of change.</p>
+
+<p>Similarly, comments of the form "because, Language X has them and
+they are awesome" will likely not be informative. It is likely language X and
+JS do not share other properties and cultures that are in JS, like the
+propensity to create transpilers for JS. I want uses cases that for JS would not
+be solved via functions or a full transpiler.</p>]]></content>
+    </entry>
+
+</feed>

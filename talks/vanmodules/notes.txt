@@ -1,0 +1,113 @@
+## state2
+
+X-men: days of future past,
+travel back in time to prevent dystopia.
+
+Luckily through approaches of existing modules systems in JS, standards can learn from them and "go back", get a do-over to hopefully do it better.
+
+So we'll travel through time a bit, talk about some characteristics of some existing module systems, and talk about how it might work in for ECMAScript modules, and what steps you can do to prepare.
+
+On time travel: only time travel I likely will do is with distributed source control, git.
+
+## state3
+
+First, disclaimer, I'm speaking just for myself. I work at Mozilla, but not on TC-39. I have given feedback, but not one of the authors.
+
+It is also not done. The TC-39 f2f this November is supposed to have a first pass at a full draft spec that includes the Module Loader bits. Declarative module forms have been around for a little bit.
+
+## state4
+
+## state5
+
+
+---------
+images
+--------
+
+img1.jpg
+http://www.flickr.com/photos/28277470@N05/9348050080/
+William Tung
+
+img2.jpg
+http://www.flickr.com/photos/grumpypants/236461078/
+sjmck
+
+
+img3.jpg
+http://www.flickr.com/photos/rwillia532/3907737095/
+Robert Williams
+
+img4.jpg
+http://www.flickr.com/photos/cayusa/2830261340/
+Bart
+
+img5.jpg
+http://www.flickr.com/photos/philman/3951796988/
+Phil Dragash
+
+img6.jpg
+http://www.flickr.com/photos/alanosaur/8105626280/
+Alan Teo
+
+----
+
+img7.jpg
+http://www.flickr.com/photos/foenix/3387626448/
+Jason Grey
+
+img8.jpg
+http://www.flickr.com/photos/rob-young/2933524113/
+Rob Young
+
+img9.jpg
+http://www.flickr.com/photos/bbyphotos/3623176917/
+BillyBy
+
+
+img10.jpg
+http://www.flickr.com/photos/imortal/8305281222/
+Marcos Teixeira de Freitas
+
+img11.jpg
+http://www.flickr.com/photos/imortal/8305226012/
+
+img12.jpg
+http://www.flickr.com/photos/imortal/8305286984/
+
+img13.jpg
+http://www.flickr.com/photos/imortal/8305279096/
+
+img14.jpg
+http://www.flickr.com/photos/imortal/8305239974/
+
+img15.jpg
+http://www.flickr.com/photos/imortal/8304189741/
+
+img16.jpg
+http://www.flickr.com/photos/imortal/8305235558/
+
+img17.jpg
+http://www.flickr.com/photos/imortal/8304182097/
+
+img18.jpg
+http://www.flickr.com/photos/imortal/8305228308/
+
+img19.jpg
+http://www.flickr.com/photos/imortal/8305223894/
+
+img20.jpg
+http://www.flickr.com/photos/imortal/8304173391/
+
+img21.jpg
+http://www.flickr.com/photos/imortal/8305337676/
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="A new tool, and some AMD loader rambling:">
+
+    <title>amodro-trace and AMD loaders ~ James Burke</title>
+
+    <link rel="canonical" href="http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/">
+    <link href="http://jrburke.com/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="../../../../img/favicon.png" rel="icon">
+<link href="../../../../css/index.css" rel="stylesheet" type="text/css">
+
+<script src="../../../../js/index.js"></script>
+
+</head>
+<body class="post">
+<div class="header">
+    <div class="jrbLogo"> 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 560 980 324">
+          <a xlink:href="../../../../" title="home">    
+              <path class="logoJ" d="M266.127,682.673c-0.123-0.143-3.178-0.303-7.709-0.123l-56.63,0.061l0.093-58.319h-64.494v58.195l-27.488-0.026
+	c-1.322-0.053-2.649-0.087-3.985-0.087c-53.177,0-96.285,43.109-96.285,96.285s43.107,96.285,96.285,96.285
+	c53.178,0,95.92-43.873,95.92-97.05c0-2.002-0.068-3.986-0.187-5.955l0.05-31.559l37.603-0.346
+	c6.609,0.151,13.228-2.215,18.28-7.289C268.131,722.151,266.304,682.878,266.127,682.673z"/>
+              <ellipse class="logoDotSpace" cx="169.783" cy="605.491" rx="38.463" ry="38.514"/>
+              <circle class="logoDot" cx="169.678" cy="605.652" r="32.095"/>
+              <path class="logoLoopSpace" d="M127.305,801.112c-12.627,12.44-33.318,11.246-45.355-1.765c-12.036-13.012-11.4-33.486,1.765-45.355c15.351-13.841,53.381-14.177,53.868-13.623C137.795,740.612,140.108,788.498,127.305,801.112z"/>  
+              <text x="331.3832" y="737.5167" class="emphasized" font-size="108.4101">james burke</text>
+          </a>
+        </svg>
+    </div>        
+    <nav id="navMenu" class="closed">
+      <div class="topBar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 24" class="topBarItem1">
+          <path d="M0 0 L921 0 L930 8 H8 0 Z" class="highlight"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 24" class="topBarItem2">
+          <polygon id="navArrow" points="0,0 23,24 45,0" class="highlight"/>
+        </svg>
+      </div>
+      <div class="bottomSection">   
+        <div class="menuContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.172 36" class="menuItem"> <!-- ABOUT -->
+            <a xlink:href="../../../../about/" title="about">
+              <text transform="matrix(1 0 0 1 -2.5113 35.9203)" class="emphasized icon" font-size="46">i</text>
+            </a>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" class="menuItem">  <!-- ARCHIVES -->
+            <a xlink:href="../../../../archives/" title="archives">  
+              <rect width="33" height="33" class="icon"/>
+              <rect y="16" class="iconWhiteSpace" width="33" height="1"/>
+              <circle class="iconWhiteSpace" cx="16.561" cy="8.037" r="1.501"/>
+              <circle class="iconWhiteSpace" cx="16.561" cy="24.484" r="1.501"/>
+            </a>       
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.02 53.046" class="menuItem"> <!-- TAGS -->
+            <a xlink:href="../../../../tags/" title="tags">  
+              <polygon class="icon" points="53.02,14.849 38.171,0 23.718,5.993 0,29.711 23.335,53.046 47.053,29.328 "/>
+              <circle class="iconWhiteSpace" cx="38.777" cy="14.104" r="4.001"/>
+            </a>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.233 36.608" class="menuItem">  <!-- SEARCH -->
+            <a xlink:href="http://duckduckgo.com/?q=site%3Ajrburke.com" title="search">
+              <circle class="iconSearch" cx="15.5" cy="15.5" r="13"/>
+              <rect x="22.787" y="28.21" transform="matrix(0.7071 0.7071 -0.7071 0.7071 30.1001 -12.248)" width="14.096" height="4" class="icon"/>
+            </a>
+          </svg>       
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.006 34.006" class="menuItem"> <!-- FEEDS -->
+              <a xlink:href="http://jrburke.com/atom.xml" title="feeds">
+                <path d="M0.772,0.309v15.494c0.021-0.002,0.147-0.004,0.407-0.004c0.566,0,0.566,0.01,0,0.01c-0.26,0-0.386-0.002-0.407-0.004
+                	v17.446h32.703C33.447,15.147,18.843,0.468,0.772,0.309z" class="icon"/>
+                <path class="iconWhiteSpace" d="M22.289,33.286c0.04,0,0.055,0,0.09,0C22.34,21.3,12.718,11.577,0.772,11.368v21.918H22.289z"/>
+                <path d="M15.213,33.287c0-0.021,0.003-0.04,0.003-0.061c0-8.102-6.428-14.687-14.461-14.973v15.034H15.213z" class="icon"/>
+              </a>
+          </svg>
+        </div>  
+        <div class="bottomBar">      
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
+              <rect class="highlight" width="980" height="8"/ x="0" y="14">
+          </svg>
+        </div>
+      </div> <!-- END bottomSection -->  
+    </nav>
+</div>
+    <div class="sectionHeader">
+        <h1 class="postTitle">amodro-trace and AMD loaders</h1>
+        <div class="datetime" data-datetime="2015-04-09T20:26:35.414Z">Thu, 09 Apr 2015 20:26:35 GMT</div>
+    </div>
+
+    <div class="sectionContent">
+        <p>A new tool, and some AMD loader rambling:</p>
+
+<p>I have started a new project around AMD modules, <a href="https://github.com/amodrojs/amodro-trace">amodro-trace</a>. It is a tool that understands AMD modules and is meant to be used in other node-based build systems. The README has more background, but the general use cases that drove it:</p>
+
+<ul>
+<li>Get a dependency tree for a module ID</li>
+<li>Allows non-file inputs</li>
+<li>Allows transpiling inputs to AMD before tracing</li>
+<li>Allows content transforms after AMD normalization</li>
+</ul>
+
+<p>Think of amodro-trace as a lower level imperative tool that something like the requirejs optimizer could use to implement its declarative API.</p>
+
+<p>amodro-trace comes from some code in the requirejs optimizer, and has some smaller unit tests. I ran it over a larger project, but still expect to fine tune some things around API and operation, so feel free to give feedback in the issues list if the use cases fit your needs but have trouble using it.</p>
+
+<p>I would also like to construct a new AMD loader, something that assumes more modern browsers and can improve on some things learned from requirejs.</p>
+
+<p>I do not expect requirejs to go away any time soon, and it will still be my recommendation for general AMD loading across a wide set of browsers. There will still be maintenance releases, but I expect to do any new work that non-trivially modifies behavior to be done under a new name. This helps set stable expectations, particularly for tools that have been built on top of requirejs.</p>
+
+<p>I still want to explore some things with AMD loaders though, particularly since an <a href="http://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/">operational ES module system is still far off</a>, and transpilers that guess at ES module syntax still benefit from good AMD loader options to back them.</p>
+
+<h2 id="amdloaderoptions">AMD loader options</h2>
+
+<p>First, a bit about some AMD loader options that I have worked on. The nice thing about AMD modules is that there are more options besides this set, and other tooling around them. This is just about where and how I have spent my time in this space.</p>
+
+<ul>
+<li><a href="http://requirejs.org/">requirejs</a>: the baseline loader. Along with its <a href="http://requirejs.org/docs/optimization.html">optimizer</a>, it has a fairly large set of tests and stability. (Side note: the code that would become requirejs started in 2009, first releases in 2010, with some ideas stretching back much earlier from Dojo.)</li>
+<li><a href="https://github.com/requirejs/cajon">cajon</a>: Built around requirejs, but bundles an XHR fetch option to allow for consuming CommonJS modules directly as well as AMD modules. Comes with the caveats of using an XHR loader though, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">CSP</a> issues.</li>
+<li><a href="https://github.com/requirejs/alameda">alameda</a>: Like requirejs, but assumes more modern browsers as a baseline (mainly means does not support IE9 and below), uses promises under the hood. There is a <a href="https://github.com/requirejs/alameda/tree/native-promise">native-promise</a> branch that does not use a promise shim, just native browser promises. alameda is used by some <a href="https://github.com/mozilla-b2g/gaia">Gaia</a> apps that use modules.</li>
+<li><a href="https://github.com/jrburke/module">module</a>: Not AMD, but what I imagine a module system would look like given what we have learned from CommonJS and AMD modules, and assuming a browser loader capability that avoids CORS/CSP issues for text fetching and evaluation. While a useful exercise, and more operational and fleshed out than an ES system, more of an experimental playground.</li>
+</ul>
+
+<h2 id="amodroloader">amodro loader</h2>
+
+<p>For a new AMD loader, I am thinking of putting it under the amodro (pronounced a-mo-dro) name. amodro-trace is the start of what I would see as its equivalent of the requirejs optimizer piece. amodro-trace currently uses requirejs under the hood for module tracing, but ideally that would migrate over time to a new loader.</p>
+
+<p>I would not want to modify any of the AMD APIs for declaring a module or for the dynamic require calls. So no changes in module syntax to allow the most reuse of existing AMD modules.</p>
+
+<p>However, I want to rethink some of the loader APIs and loader plugin APIs to do something like what an older draft of the ES-related loader had for a module lifecycle: normalize, locate, fetch, translate, instantiate. The loader plugin API as supported in requirejs-like loaders is not as granular, and supporting a more granular API would help with some issues that have come up with the loader plugins to date: it can be hard to break cycles for some loader plugins, and can make building more complicated.</p>
+
+<p>The <code>module</code> loader mentioned above makes an attempt at that sort of solution for loader plugins, and it works out well. There is a good chance existing loader plugins would still work too since their APIs can be seen as a coarser API that could be supported by the more granular API. Still a bit of work to be done there, but it seems promising.</p>
+
+<p>So I expect amodro would be like the <code>module</code> loader, but designed to work with the AMD APIs instead of the <code>module</code> API in that loader, and probably using some of the alameda ideas too.</p>
+
+<p>I may not get to it though. Just sharing my thoughts around loader work. I have a day job that I really like, and we are doing some interesting work. There are some (non-loader) ideas I want to implement there, and I am excited to try out service workers in that context.</p>
+
+<p>The <a href="http://dojotoolkit.org/">Dojo folks</a> are also thinking about this space, as well as <a href="http://unscriptable.com/">John Hann</a> and <a href="http://tbranyen.com/">Tim Branyen</a>, so other options may come out of their efforts too. It is good to have options.</p>
+
+<p>End result, more in this space worth pursuing.</p>
+
+<h2 id="moreconventionoverconfiguration">More convention over configuration</h2>
+
+<p>For AMD projects in general, and something that does not depend on any new loader work:</p>
+
+<p>We can help improve the perception of difficulties with configuration by starting to advocate more for standard project layouts that avoid big configuration blocks for the loader. Effort in this space would likely benefit an ES module solution too, as it will need to operate in the same async network space that AMD modules operate.</p>
+
+<p>To me, that means using a starting project layout that looks like <a href="https://github.com/volojs/create-template">this sample project</a>. The <code>lib</code> directory could be a <code>node_modules</code> or <code>bower_components</code> directory.</p>
+
+<p><a href="https://github.com/jrburke/adapt-pkg-main">adapt-pkg-main</a> can be used after an npm/bower install to fix up the installed dependency to work with the file layout convention that works best for general web module loading, without running into CORS or 404 issues.</p>
+
+<p>Then hopefully the package managers get better about these file layouts over time (maybe absorb what adapt-pkg-main does), and in the case of npm, <a href="https://github.com/jrburke/notobo/blob/master/docs/npm-sharp-edges.md">remove some sharp edges</a> for front end development.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>You might try <a href="https://github.com/amodrojs/amodro-trace">amodro-trace</a> if its use cases fit your needs. While it comes from some code that has had a good amount of testing, it is still a new approach on it and may have some bugs, so I am keeping the version low for now. However, it is the kind of AMD build tool I would like to support longer term: provide a primitive focused solely on the AMD tracing and normalization so that others can build on top of it.</p>
+
+<p>The requirejs optimizer was built at a time when node was not a thing yet, and more batteries needed to be included for command line JavaScript tooling. It has been a good approach for the requirejs optimizer: it runs in node, Nashorn, Rhino, xpcshell and even in the browser. It gives a bunch of communities a chance at some good AMD-based optimization options.</p>
+
+<p>However, I do not expect to keep pace with all the possible variations in build tool styles with the requirejs optimizer's more declarative options-based approach. amodro-trace should be helpful for those cases.</p>
+
+<p>Here's to more AMD loaders and tools for the future!</p>
+
+        <div class="separator">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="0" x2="100" y2="0" stroke="black" stroke-width="5"/>
+          </svg>
+        </div>
+        <a href="https://github.com/jrburke/jrburke.com/issues/33">Go to comments</a>
+    </div>
+<div class="footer">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 560 980 324">
+      <a xlink:href="../../../../" title="home">
+        	<path class="logoJ" d="M266.127,682.673c-0.123-0.143-3.178-0.303-7.709-0.123l-56.63,0.061l0.093-58.319h-64.494v58.195l-27.488-0.026
+	c-1.322-0.053-2.649-0.087-3.985-0.087c-53.177,0-96.285,43.109-96.285,96.285s43.107,96.285,96.285,96.285
+	c53.178,0,95.92-43.873,95.92-97.05c0-2.002-0.068-3.986-0.187-5.955l0.05-31.559l37.603-0.346
+	c6.609,0.151,13.228-2.215,18.28-7.289C268.131,722.151,266.304,682.878,266.127,682.673z"/>
+              <ellipse class="logoDotSpace" cx="169.783" cy="605.491" rx="38.463" ry="38.514"/>
+              <circle class="logoDot" cx="169.678" cy="605.652" r="32.095"/>
+              <path class="logoLoopSpace" d="M127.305,801.112c-12.627,12.44-33.318,11.246-45.355-1.765c-12.036-13.012-11.4-33.486,1.765-45.355c15.351-13.841,53.381-14.177,53.868-13.623C137.795,740.612,140.108,788.498,127.305,801.112z"/>
+          <text x="331.3832" y="737.5167" class="emphasized" font-size="70">&copy;2012-2016</text>
+        </a>
+    </svg>
+</div>
+
+</body>
+</html>

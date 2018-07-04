@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Front End Modules and RequireJS</title>
+
+		<meta name="description" content="Front End Modules and RequireJS">
+		<meta name="author" content="James Burke">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/one-mozilla.css" id="theme">
+
+		<style type="text/css">
+			ul {
+				list-style-position: inside
+			}
+
+		</style>
+
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+<!--
+* map config
+* multiple contexts
+* forward
+*
+
+-->
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-markdown><script type="text/template">
+					## FE Modules &amp; RequireJS
+
+					#### [James Burke](http://jrburke.com) | [github](https://github.com/jrburke) | [twitter](https://twitter.com/jrburke)
+
+					#### [Firefox OS - Gaia](https://github.com/mozilla-b2g/gaia) | [RequireJS](http://requirejs.org/) | [volo](http://volojs.org/)
+
+					[http://jrburke.com/talks/cambridge2013](http://jrburke.com/talks/cambridge2013)
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### AMD modules in RequireJS
+
+					```javascript
+					define(['a'], function(a) {
+						return function () {};
+					})
+					```
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### [Sugar](http://requirejs.org/docs/whyamd.html#sugar)
+
+					```javascript
+					define(function(require, exports, module) {
+						var a = require('a');
+						module.exports = function () {};
+					})
+					```
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### [Sugar](http://requirejs.org/docs/whyamd.html#sugar)
+
+					```javascript
+					define(function(require) {
+						var a = require('a');
+						return function () {};
+					})
+					```
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### FE compared to BE
+
+					* IO is expensive
+					* IO is async
+					* Cross domain and security forces
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### IO is expensive
+
+					* At most, one IO operation per module
+					* Convention: `baseUrl + module ID + '.js'`
+					* [configuration](https://github.com/amdjs/amdjs-api/wiki/Common-Config)
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### IO is async
+
+					* Dependency scan
+					* Execute before current module: consistent
+					* Callback-based require for dynamic deps
+
+					```javascript
+					require([someVar + '/thing'], function (mod) {});
+					```
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### Cross domain and security forces
+
+					* CORS: use script tags
+					* eval. Some tools strip, now CSP
+					* function wrapper avoids those issues
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### Just always do builds?
+
+					* Avoids actually solving problem
+					* Requires higher barrier to entry
+					* Perf: dynamic loading
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### [RequireJS in Node](http://requirejs.org/docs/node.html)
+
+					Uses node_modules if not found via config
+
+					```javascript
+					var requirejs = require('requirejs');
+
+					requirejs.config({});
+
+					requirejs(['app/main'], function (main) {});
+					```
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### AMD in Node
+
+					* [amdefine](https://github.com/jrburke/amdefine) for libraries, simple loader plugins
+					* [amdefine/intercept](https://github.com/jrburke/amdefine#amdefineintercept) for top level code
+
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### Bridging the gap
+
+					* require([])
+					* define()
+					* loader plugins
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### Bridging the gap, ES6
+
+					* require([]) - System.import()
+					* define() - loader.define, later `module 'id'`?
+					* loader plugins - ModuleLoader API
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### npm for front end
+
+					* `baseUrl + module ID + '.js'`
+					* Flatten dependencies
+					* Local name different from repo name
+					* allow config writing?
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### Advanced AMD capabilities
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### [Map config](http://requirejs.org/docs/api.html#config-map)
+
+					```javascript
+					requirejs.config({
+					    map: {
+					        'some/newmodule': {
+					            'foo': 'foo1.2'
+					        },
+					        'some/oldmodule': {
+					            'foo': 'foo1.0'
+					        }
+					    }
+					});
+					```
+				</script></section>
+
+
+				<section data-markdown><script type="text/template">
+					### Loader instances
+
+					```javascript
+					// ES6
+					var loader = new ModuleLoader({});
+
+					// RequireJS
+					var contextRequire = requirejs.config({
+						context: 'uniquName'
+					});
+					```
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### Map config + instances
+
+					* Great for unit tests
+					* Each instance can use mocks via map config
+					* [Example bootstrap](https://github.com/mozilla-b2g/gaia/blob/master/apps/clock/test/unit/test_require.js#L41)
+					* [Example use](https://github.com/mozilla-b2g/gaia/blob/master/apps/clock/test/unit/picker/picker_test.js#L9)
+				</script></section>
+
+				<section data-markdown><script type="text/template">
+					### Loader plugins
+
+					```javascript
+					var text = require('text!example.html'),
+						AccountView = require('element!account-view'),
+						coffeecriptDep = require('cs!some/thing');
+					```
+
+					* Declarative dependencies
+					* Extensible loading
+					* Participate in builds, inlining
+				</script></section>
+
+
+				<section data-markdown><script type="text/template">
+					### Thanks
+
+					[http://jrburke.com/talks/cambridge2013](http://jrburke.com/talks/cambridge2013)
+				</script></section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

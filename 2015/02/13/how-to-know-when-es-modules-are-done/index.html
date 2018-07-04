@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="There are few pieces of a module system that need to be available for it to be fully functional. I will describe them here and talk a bit about where ECMAScript (ES) modules seem to be at the moment, from an outside public perspective.">
+
+    <title>How to know when ES modules are done ~ James Burke</title>
+
+    <link rel="canonical" href="http://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/">
+    <link href="http://jrburke.com/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="../../../../img/favicon.png" rel="icon">
+<link href="../../../../css/index.css" rel="stylesheet" type="text/css">
+
+<script src="../../../../js/index.js"></script>
+
+</head>
+<body class="post">
+<div class="header">
+    <div class="jrbLogo"> 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 560 980 324">
+          <a xlink:href="../../../../" title="home">    
+              <path class="logoJ" d="M266.127,682.673c-0.123-0.143-3.178-0.303-7.709-0.123l-56.63,0.061l0.093-58.319h-64.494v58.195l-27.488-0.026
+	c-1.322-0.053-2.649-0.087-3.985-0.087c-53.177,0-96.285,43.109-96.285,96.285s43.107,96.285,96.285,96.285
+	c53.178,0,95.92-43.873,95.92-97.05c0-2.002-0.068-3.986-0.187-5.955l0.05-31.559l37.603-0.346
+	c6.609,0.151,13.228-2.215,18.28-7.289C268.131,722.151,266.304,682.878,266.127,682.673z"/>
+              <ellipse class="logoDotSpace" cx="169.783" cy="605.491" rx="38.463" ry="38.514"/>
+              <circle class="logoDot" cx="169.678" cy="605.652" r="32.095"/>
+              <path class="logoLoopSpace" d="M127.305,801.112c-12.627,12.44-33.318,11.246-45.355-1.765c-12.036-13.012-11.4-33.486,1.765-45.355c15.351-13.841,53.381-14.177,53.868-13.623C137.795,740.612,140.108,788.498,127.305,801.112z"/>  
+              <text x="331.3832" y="737.5167" class="emphasized" font-size="108.4101">james burke</text>
+          </a>
+        </svg>
+    </div>        
+    <nav id="navMenu" class="closed">
+      <div class="topBar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 24" class="topBarItem1">
+          <path d="M0 0 L921 0 L930 8 H8 0 Z" class="highlight"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 24" class="topBarItem2">
+          <polygon id="navArrow" points="0,0 23,24 45,0" class="highlight"/>
+        </svg>
+      </div>
+      <div class="bottomSection">   
+        <div class="menuContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9.172 36" class="menuItem"> <!-- ABOUT -->
+            <a xlink:href="../../../../about/" title="about">
+              <text transform="matrix(1 0 0 1 -2.5113 35.9203)" class="emphasized icon" font-size="46">i</text>
+            </a>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" class="menuItem">  <!-- ARCHIVES -->
+            <a xlink:href="../../../../archives/" title="archives">  
+              <rect width="33" height="33" class="icon"/>
+              <rect y="16" class="iconWhiteSpace" width="33" height="1"/>
+              <circle class="iconWhiteSpace" cx="16.561" cy="8.037" r="1.501"/>
+              <circle class="iconWhiteSpace" cx="16.561" cy="24.484" r="1.501"/>
+            </a>       
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.02 53.046" class="menuItem"> <!-- TAGS -->
+            <a xlink:href="../../../../tags/" title="tags">  
+              <polygon class="icon" points="53.02,14.849 38.171,0 23.718,5.993 0,29.711 23.335,53.046 47.053,29.328 "/>
+              <circle class="iconWhiteSpace" cx="38.777" cy="14.104" r="4.001"/>
+            </a>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.233 36.608" class="menuItem">  <!-- SEARCH -->
+            <a xlink:href="http://duckduckgo.com/?q=site%3Ajrburke.com" title="search">
+              <circle class="iconSearch" cx="15.5" cy="15.5" r="13"/>
+              <rect x="22.787" y="28.21" transform="matrix(0.7071 0.7071 -0.7071 0.7071 30.1001 -12.248)" width="14.096" height="4" class="icon"/>
+            </a>
+          </svg>       
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.006 34.006" class="menuItem"> <!-- FEEDS -->
+              <a xlink:href="http://jrburke.com/atom.xml" title="feeds">
+                <path d="M0.772,0.309v15.494c0.021-0.002,0.147-0.004,0.407-0.004c0.566,0,0.566,0.01,0,0.01c-0.26,0-0.386-0.002-0.407-0.004
+                	v17.446h32.703C33.447,15.147,18.843,0.468,0.772,0.309z" class="icon"/>
+                <path class="iconWhiteSpace" d="M22.289,33.286c0.04,0,0.055,0,0.09,0C22.34,21.3,12.718,11.577,0.772,11.368v21.918H22.289z"/>
+                <path d="M15.213,33.287c0-0.021,0.003-0.04,0.003-0.061c0-8.102-6.428-14.687-14.461-14.973v15.034H15.213z" class="icon"/>
+              </a>
+          </svg>
+        </div>  
+        <div class="bottomBar">      
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 22">
+              <rect class="highlight" width="980" height="8"/ x="0" y="14">
+          </svg>
+        </div>
+      </div> <!-- END bottomSection -->  
+    </nav>
+</div>
+    <div class="sectionHeader">
+        <h1 class="postTitle">How to know when ES modules are done</h1>
+        <div class="datetime" data-datetime="2015-02-13T21:49:08.820Z">Fri, 13 Feb 2015 21:49:08 GMT</div>
+    </div>
+
+    <div class="sectionContent">
+        <p>There are few pieces of a module system that need to be available for it to be fully functional. I will describe them here and talk a bit about where ECMAScript (ES) modules seem to be at the moment, from an outside public perspective.</p>
+
+<p>I am not on TC-39, the committee that works on the ES language specification (otherwise known as JavaScript, JS). Just someone who has worked on <a href="http://dojotoolkit.org/">a</a> <a href="https://github.com/requirejs/cajon">few</a> <a href="http://requirejs.org/">JS</a> <a href="https://github.com/requirejs/alameda">module</a> <a href="https://github.com/jrburke/module">systems</a>.</p>
+
+<p>This is a long piece. A table of contents for the top level sections:</p>
+
+<ul>
+<li><a href="#modulesystempieces">Module system pieces</a></li>
+<li><a href="#interlockingpieces">Interlocking pieces</a></li>
+<li><a href="#wherearewenow">Where are we now?</a></li>
+<li><a href="#hazardsonthewaytodone">Hazards on the way to done</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+
+<h2 id="modulesystempieces">Module system pieces</h2>
+
+<p>There are three main pieces of a module system:</p>
+
+<ul>
+<li><a href="#staticmoduledefinition">Static module definition</a></li>
+<li><a href="#executiontimemodulecapabilities">Execution-time module capabilities</a></li>
+<li><a href="#moduleloader">Module loader</a></li>
+</ul>
+
+<p>Some might argue that these pieces are separable and could be specified by different standards groups. So an "ES module system" may not be the right term, as ES may only specify one or two pieces.</p>
+
+<p>For me, they are all part of a coherent module system, so I will be referring to the future direction for them as the "ES module system", even if the URLs for each specification end up on different domains.</p>
+
+<h3 id="staticmoduledefinition">Static module definition</h3>
+
+<p>This is how you statically declare a piece of code as a module with dependencies. In this context <strong><em>static</em></strong> means: does not change depending on the execution environment. Static dependencies can be parsed out of a module without actually running the module in a JS environment, the loader just needs to parse the text of the module to find them.</p>
+
+<p>In AMD modules, it looks like this:</p>
+
+<pre><code class="language-javascript">define(function(require, exports, module) {
+  // Statically parsable dependencies.
+  var glow = require('glow'),
+      add = require('math').add;
+});
+</code></pre>
+
+<p>In CommonJS and Node (for shorthand's sake referred to as "CJS" for the rest of this post), there is a similar idea, just without the define() wrapper.</p>
+
+<p>It is a bit more nuanced in CJS systems: the require(StringLiteral) calls are not parsed prior to execution, one of the major reasons that format is not fully suitable for a full module system on the front end, where async networking is involved. You can get some front end functionality by using something like browserify or webpack to do the static search for dependencies, but just for bundling. Fine enough for libraries but starts to break down on the app level where you want to incrementally load functionality as the user goes to use it, use a dynamic router.</p>
+
+<p>In ES, it looks like this currently:</p>
+
+<pre><code class="language-javascript">// Statically parsable dependencies.
+import glow from 'glow';
+import { add } from 'math';
+</code></pre>
+
+<p>ES also statically indicates the named export keys too:</p>
+
+<pre><code class="language-javascript">// Statically parsable dependencies.
+import glow from 'glow';
+import { add } from 'math';
+
+// Statically indicate this module will have a 'default'
+// and 'other' export keys.
+export default function() {};
+export other funtion() {};
+</code></pre>
+
+<p>While this helps statically match up any keys given to the exported values to the ones used in import statements, the export value is not statically exported, just an indication of its name.</p>
+
+<p>For AMD/CJS systems, there really is just one exported value per module, but it could be an object with multiple properties. There is no static analysis of the export value in those systems.</p>
+
+<p>This part of the ES module system is the piece that is the most specified at the moment.</p>
+
+<h4 id="inlinemodules">Inline modules</h4>
+
+<p>However, the ES system does not allow for what will be called "inline modules" for the purposes of this post. Inline modules are just the ability to statically declare more than one module in a file. This is commonly used for bundling modules together, but <a href="https://github.com/jrburke/module/blob/master/docs/inlining.md">has other purposes</a>.</p>
+
+<p>In AMD, those are just named <code>define()</code>s:</p>
+
+<pre><code class="language-javascript">define('glow', function(require, exports, module) {
+  return function glow() {
+  };
+});
+
+define('app', function(require, exports, module) {
+  // Statically declare dependencies.
+  var glow = require('glow'),
+      add = require('math').add;
+});
+</code></pre>
+
+<p>For CJS, there are conventions for doing this via tools like browserify and webpack, but they are much less declarative. The module IDs are converted to array indices/numbers. This makes dynamic module loading harder.</p>
+
+<p>For ES there is nothing for this. The last I heard, the hope was for capabilities like HTTP2 and zip bundles so that no new language syntax is needed, however I believe <a href="https://github.com/jrburke/module/blob/master/docs/inlining.md">that is not sufficient</a>.</p>
+
+<p>In the AMD/CJS world, it has become more common to deal with nested groups of modules bundled together. An example would be some browserified base libraries that are then combined with some AMD modules in an app. The browserified ones have a conceptual inner module structure that should not be visible outside the module.</p>
+
+<p>AMD and CJS do not do well with this right now. I have considered supporting something like this in my AMD loaders to allow for it:</p>
+
+<pre><code class="language-javascript">define(function(require, exports, module, define) {
+  // The define passed in here is a local
+  // define for modules only visible to
+  // this module.
+});
+</code></pre>
+
+<p>There are some interesting characterstics around how to define the module this way when it can have async resolved dependencies. That has been more fully explored in <a href="https://github.com/jrburke/module">this module experiment</a>, so I believe it can work.</p>
+
+<p>The end result, I see modules now as units of code that can be nested. Similar to how functions work, but instead of identifiers for names, module ID strings are used, and their export may be resolved asynchronously, so a bit of syntax is needed for that.</p>
+
+<p>The other option I have heard for ES would be to compile down the module into ES5 code, and use the ES module loader lifecycle hooks to get that into an ES6 module loader.</p>
+
+<p>That option looks like a leaky abstraction. In addition, there are some tricks with the way ES6 imports are mutable slots and the syntax around getting to the execution-time module capabilities that require some extra thought.</p>
+
+<h3 id="executiontimemodulecapabilities">Execution-time module capabilities</h3>
+
+<p>There are some properties and capabilities that need to be exposed during the execution of a module. This means it cannot be statically determined, it is only known once the module is executing in a JS engine.</p>
+
+<p>In the AMD world, the execution-time capabilities come in these forms:</p>
+
+<ul>
+<li><code>module.id</code> - the module's normalized ID for the module loader instance.</li>
+<li><code>module.url</code> - the URL or path to the module.</li>
+<li><code>require([aJsStringValue], function(c) {})</code> - dynamically get a handle on modules. Load them if need be, but in the loader that loaded this module. Should also handle relative IDs.</li>
+<li><code>require.toUrl('./d')</code> - Converts module ID './d' to a full path, useful for assets related to the module, like images or style sheets.</li>
+</ul>
+
+<p>In Node:</p>
+
+<ul>
+<li><code>module.id/module.url</code> - they end up being the same, but conceptually should be different.</li>
+<li><code>__filename</code> - could be derived from module.url.</li>
+<li><code>__dirname</code> - could be derived from module.url.</li>
+<li><code>require(aJsStringValue)</code> - dynamically, synchronously load and execute module in the loader that loaded this module.</li>
+<li><code>require.resolve(AJsStingValue)</code> - converts module ID to a path.</li>
+</ul>
+
+<p>(Synchronous return from that dynamic require is one of the reasons the CJS system is not the right fit for a general purpose front end module system in the browser.)</p>
+
+<p>In ES, this piece is not formally specified yet. In the ES world, I believe this is referred to as the "module meta", if you come across that phrase. The most recent hint of how it might be done in ES looked something like:</p>
+
+<pre><code class="language-javascript">import local from this;
+console.log('Normalized module ID is: ' + local.id);
+console.log('Normalized module URL is: ' + local.url);
+local.import(aJsStringValue).then(Function(someModule) {});
+</code></pre>
+
+<p>I am making up the name of the properties for id, url, and import. I am not sure what their real names will be, just that <code>from this</code>, or some <code>from</code>-based form, was being considered as the way to aquire this functionality.</p>
+
+<h3 id="moduleloader">Module loader</h3>
+
+<p>This is an API that runs at execution time. It kicks off module loading, and allows ways to resolve module IDs to paths, handles the loading and proper execution order of the modules, caches the module values.</p>
+
+<p>In AMD, the main module loader API is <code>require([String], function(e) {})</code>. There is usually something like <code>require</code> for top-level, default loader loading, and each module can get its own local <code>require</code>. Some AMD loaders can create multiple module loader instances.</p>
+
+<p>It is common for AMD loaders to support the idea of a loader plugin, a module that provides a <code>normalize</code> and <code>load</code> method that are plugged in to the AMD loader's <code>normalize</code> and <code>load</code> lifecycle steps.</p>
+
+<p>This allows extending the base loader to handle transpiled code without requiring plugins to be loaded up front, before main module loading starts.</p>
+
+<p>In CJS, <code>require(String)</code> is the main API to the module loader. There is a way to extend the loader capabilities via <code>require('module')._extensions['.fileExtension'] = function() {}</code>. This requires the extension to be installed before modules that depend on it are loaded. This works fine in Node's synchronous module execution environment, but does not translate to async loading in the browser.</p>
+
+<p>For ES, this part is still being defined. There was a <a href="https://github.com/jorendorff/js-loaders">previous sketch for it</a>, but it seems like that is being redone now. I do not feel it is useful to link to the current attempt at the sketch because it is incomplete, and they likely want to work on it themselves to get it in a more usuable state before getting a lot of feedback about it.</p>
+
+<p>The previous sketch did have the concept of a module loading lifecycle, and a way for userland code to plug in to that lifecycle, and I can see this concept carrying forward in some fashion:</p>
+
+<ul>
+<li><code>normalize</code>: normalize module IDs.</li>
+<li><code>locate</code>: translating an ID to a URL/path.</li>
+<li><code>fetch</code>: getting the text contents of the module from the URL/path.</li>
+<li><code>translate</code>: allows translating the text into JavaScript that can be executed.</li>
+<li><code>instantiate</code>: allows a way for legacy module syntaxes to be converted into a form usable by the ES loader.</li>
+</ul>
+
+<p>The granularity of these steps are better than the ones in AMD loader plugins, which just have a concept of <code>normalize</code> and <code>load</code>. <code>load</code> is really <code>locate</code>, <code>fetch</code>, <code>translate</code>, <code>instantiate</code> in one method. It would be good to have more granular steps.</p>
+
+<p>However, there was no built in way in the ES loader to know how to load the hooks as part of normal module loading.</p>
+
+<p>For AMD systems, module IDs of the form <code>pluginId!resourceId</code> meant the loader would load the module for <code>pluginId</code>, then wire it into the loader lifecycle, then delegate to that plugin's lifecycle methods for IDs that begin with <code>pluginId!</code>.</p>
+
+<p>That approach avoids a two-tiered loading system in a web page where the all the loader plugins are loaded first, and then continue with the rest of module loading. The two tiered approach is slower and breaks encapsulation. Any package that used a loader plugin would need to somehow get the plugin registered in the correct loader instance up front. It also gets tricky if those loader plugins have regular JS module dependencies.</p>
+
+<h2 id="interlockingpieces">Interlocking pieces</h2>
+
+<p>While the three pieces of a module system could in some way be considered separate, they all have interlocking pieces, and those pieces need to fit well together.</p>
+
+<h3 id="moduleids">Module IDs</h3>
+
+<p>The rules around the module IDs needs to be understood for the pieces to work well together. If someone is just working with the static module definition part and just uses a plain path for the ID, that will likely conflict with the module loader part, since the IDs should be separate string concepts from paths to support conceptual string namespaces for things like loader plugins and packages that do not have direct path equivalents.</p>
+
+<h3 id="loaderextensions">Loader extensions</h3>
+
+<p>This is tied a bit into the module ID coordination, but also involves module loader load order and how much a given module needs to know about how loader extensions (like transpilers) get wired into the system.</p>
+
+<p>One option is to say that is something that is configured and wired up separately from the modules themselves, out of band, like via package config and some coordinated way to get those registered with a loader up front. This breaks encapsulation though, and makes it hard for the plugins to use modules for their own dependencies. The loader plugin approach in AMD is a much more sane way to go about it.</p>
+
+<h3 id="executiontimemodulecapabilitiesvsstaticmoduledefinition">Execution-time module capabilities vs static module definition</h3>
+
+<p>In the ES sketch above, <code>from this</code> for the execution-time module capabilities is a specific language construct that needs to be built into the static module definition.</p>
+
+<h3 id="loadersandexecutiontimemodulecapabilities">Loaders and execution-time module capabilities</h3>
+
+<p>The execution-time module capabilities also relate to methods on the module loader, like the capability to dynamically load code.</p>
+
+<h2 id="wherearewenow">Where are we now?</h2>
+
+<p>I believe the plan is for the ES6 spec is to just contain the static module definition piece, and for the other bits to be specified in separate specifications coming later.</p>
+
+<p>The trouble is people are starting to use the static module definition piece via transpilers, but without having the other interlocking pieces sorted out.</p>
+
+<p>The transpilers often just compile down to AMD or CJS modules for actual use, and these have some differences with the likely final ES plan. The main issues are:</p>
+
+<h3 id="moduleidsarenotsortedout">Module IDs are not sorted out</h3>
+
+<p>AMD has a stricter separation to module ID vs path, where CJS as practiced in Node is more file path based. IDs really need to be different things than paths. For regular JS modules, they can have an easy simple transform to a path, but need to be conceptually different.</p>
+
+<h3 id="exportmodelsaredifferent">Export models are different</h3>
+
+<p>The ES export module is different than AMD/CJS. In ES all exports are named. The name <code>default</code> just has some extra syntax sugar for <code>import</code>, but no sugar when the module is referenced via the execution-time module capabilities. Expect to be typing <code>.default</code> for that.</p>
+
+<p>AMD/CJS exports are really just single exports, but those systems are nice enough to create an export object if you want to use the <code>exports.foo = ''</code> form of adding properties to the export object.</p>
+
+<h3 id="noexecutiontimemodulecapabilities">No execution-time module capabilities</h3>
+
+<p>There is no ES specification for the execution-time module capabilities. So there is no way with the ES syntax and APIs to build a dynamic router. You will need to know the AMD/CJS system you are using underneath to do that part.</p>
+
+<p>What is meant by "dynamic router"? A module that looks at a piece of runtime path information (typically a URL segment), then translates that to a module ID for a view and dynamically loads that view via module APIs (either <code>require([varName])</code> in AMD or <code>require(varName)</code> in CJS).</p>
+
+<p>Dynamic routers are really handy to avoid loading all possible routes and views up front, helps with performance.</p>
+
+<p>Using the module ID via <code>module.id</code> is useful in cases where there are global spaces, like the DOM, and the module wants to construct class names, DOM data that will be in that global space. Basing its values on the module ID helps scope selectors and data access for that module.</p>
+
+<h3 id="nostaticdefinitiontoallowinlinemodules">No static definition to allow inline modules</h3>
+
+<p>This is a big missing piece in ES. Right now, expect to use AMD/CJS approaches here.</p>
+
+<h2 id="hazardsonthewaytodone">Hazards on the way to done</h2>
+
+<p>So, do not consider the ES module system done that with the publication of the ES6 spec. It just has one part of the system, and in many ways the most straight-forward piece. It is somewhat complicated by all the forms for <code>export</code> and <code>import</code>, but that was a design choice given TC-39's goals.</p>
+
+<p>The real action comes with the module loader parts: if that is worked out, you might be able to skip the ES6 static definition parts.</p>
+
+<p>So hopefully the other parts of the module system will come along. Some hazards to avoid on the way:</p>
+
+<ul>
+<li>Module IDs are not kept separate from paths/URLs, or if the loader uses paths/URLs instead of IDs for its internal keys.</li>
+<li>No solid story for inline modules.</li>
+<li>You need a script loader bootstrap even for the most basic wiring of all of the three pieces together.</li>
+<li>The module loader needs a two-stage loading mechanism where the first stage loads up all possible loader lifecycle plugins before starting the second stage to load regular modules.</li>
+<li>The <code>&lt;module&gt;</code> tag in HTML comes into existence before the module loader. Keeping with the extensible web philosophy, the module tag should just fall out of the module loader primitive and perhaps custom elements.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a> configuration is required to use plain JS modules across domains. CORS should only be required if the <code>translate</code> loader lifecycle hook wants to look at it. Otherwise, the <code>translate</code> hook is skipped for those scripts.</li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+
+<p>Making a module system for ES is hard, and it is not done yet. I wish the process would have been different to date with more dialog outside of TC-39. However, it seems like the people working on it are just not done with all the pieces. I can appreciate it is hard to talk about it until the fuller picture is worked out.</p>
+
+<p>The unfortunate part for me is seeing people starting to use the ES6 static module definition and transpiling to ES5 module systems to ship code. I think it is just too early to do that.</p>
+
+<p>In the grand tradition of languages that can transpile to JS, you can get something to work and ship code to users. You can use CoffeeScript too. So if you are having fun with the transpiling route, that is great. Just know the sharp edges.</p>
+
+<p>You are adding another layer of abstraction on top, and in the case of modules, you will likely need to directly use or know the properties of the ES5 module system you are using underneath to get the full breadth of module system functionality.</p>
+
+<p>For me, fewer layers of abstraction are better. I will be waiting until more of the ES pieces are defined and shown to work well together before considering them done and using it to ship code.</p>
+
+        <div class="separator">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="0" x2="100" y2="0" stroke="black" stroke-width="5"/>
+          </svg>
+        </div>
+        <a href="https://github.com/jrburke/jrburke.com/issues/30">Go to comments</a>
+    </div>
+<div class="footer">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 560 980 324">
+      <a xlink:href="../../../../" title="home">
+        	<path class="logoJ" d="M266.127,682.673c-0.123-0.143-3.178-0.303-7.709-0.123l-56.63,0.061l0.093-58.319h-64.494v58.195l-27.488-0.026
+	c-1.322-0.053-2.649-0.087-3.985-0.087c-53.177,0-96.285,43.109-96.285,96.285s43.107,96.285,96.285,96.285
+	c53.178,0,95.92-43.873,95.92-97.05c0-2.002-0.068-3.986-0.187-5.955l0.05-31.559l37.603-0.346
+	c6.609,0.151,13.228-2.215,18.28-7.289C268.131,722.151,266.304,682.878,266.127,682.673z"/>
+              <ellipse class="logoDotSpace" cx="169.783" cy="605.491" rx="38.463" ry="38.514"/>
+              <circle class="logoDot" cx="169.678" cy="605.652" r="32.095"/>
+              <path class="logoLoopSpace" d="M127.305,801.112c-12.627,12.44-33.318,11.246-45.355-1.765c-12.036-13.012-11.4-33.486,1.765-45.355c15.351-13.841,53.381-14.177,53.868-13.623C137.795,740.612,140.108,788.498,127.305,801.112z"/>
+          <text x="331.3832" y="737.5167" class="emphasized" font-size="70">&copy;2012-2016</text>
+        </a>
+    </svg>
+</div>
+
+</body>
+</html>

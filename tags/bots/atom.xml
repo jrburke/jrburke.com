@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[James Burke -- bots]]></title>
+    <link href="http://jrburke.com/tags/bots//atom.xml" rel="self"/>
+    <link href="http://jrburke.com/tags/bots/"/>
+    <updated>2013-06-10T04:11:55.600Z</updated>
+    <id>http://jrburke.com/tags/bots/</id>
+    <author>
+    <name><![CDATA[James Burke]]></name>
+    </author>
+
+    <entry>
+        <title type="html"><![CDATA[Browser-driven Arduino bots]]></title>
+        <link href="http://jrburke.com/2013/06/09/browser-driven-arduino-bots/"/>
+        <updated>2013-06-10T04:11:55.600Z</updated>
+        <id>http://jrburke.com/2013/06/09/browser-driven-arduino-bots/</id>
+        <content type="html"><![CDATA[<p>Want to help do something awesome? Let's connect some pipes so we can drive an <a href="http://www.arduino.cc/">Arduino</a> using a web browser on a mobile device!</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I attended the <a href="http://2013.jsconf.us/schedule">node bots hack day at JSConf 2013</a>, and it was really inspiring. We were driving Arduinos via <a href="http://nodejs.org/">Node</a> and <a href="https://github.com/rwldrn/johnny-five/">Johnny-Five</a>.</p>
+
+<p>Right now, the Node program runs on a laptop and communicates with the Arduino over a USB cable connection. There was talk of setting up connections over bluetooth or WiFi instead, but there are a couple of hurdles for it, and I want to take a slightly different path that works with a USB cable connection:</p>
+
+<p>I want to control an Arduino bot by using a <a href="https://developer.mozilla.org/en/docs/Mozilla/Firefox_OS">Firefox OS</a> device connected directly to the bot via USB. Why a Firefox OS device?</p>
+
+<ul>
+<li>it is small and relatively inexpensive.</li>
+<li>it has a bunch of sensors in it already, all accessible via JavaScript in web apps.</li>
+<li>it has a touch screen so it allows for some higher level user interactions.</li>
+<li>USB host mode should be available to some of the devices that run Firefox OS.</li>
+</ul>
+
+<p>By using a direct USB connection between the device and the Arduino, it would avoid some interference issues with trying to go over a wireless connection. For example, the node copter event was running into congested/conflicting WiFi due to the amount of copters in the room.</p>
+
+<h2 id="pathways">Pathways</h2>
+
+<p>At the hack day, <a href="https://github.com/creationix">Tim Caswell</a> got a Google Chrome <a href="https://github.com/creationix/firmata-chrome">proof of concept</a> working using the <a href="http://developer.chrome.com/apps/serial.html">chrome.serial API</a> available to Chrome apps.</p>
+
+<p>Firefox has the start of a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">"WebUSB" patch in bug 674718</a>, but the patch is old and there was discussion of difficulty getting it to work for Firefox on Windows.</p>
+
+<p>I tried a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718#c44">naive approach to updating the patch</a>, but ran into trouble because some of the code depended on nsDOMEventTargetWrapperCache which is no longer in the codebase. I do not have enough Gecko code knowledge to know the new mechanism to use. Also, there was a later comment indicating it was unclear how to access USB via the lower level Firefox OS operating system, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Platform/Gonk">Gonk</a>.</p>
+
+<p>So a possible approach to getting to the end goal:</p>
+
+<ul>
+<li>Get a real patch that would work for Firefox OS in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a>. If it only worked for Firefox OS and did not solve any Windows issues, I would still be happy with that patch. Perhaps the patch could land only enabled for Firefox OS and Android.</li>
+<li>Create a JS library that uses the WebUSB patch to do effectively what <a href="https://github.com/voodootikigod/node-serialport">node-serialport</a> does for Node, and what is needed for the firmata library.</li>
+<li>Adapt <a href="https://github.com/rwldrn/johnny-five/">Johnny-Five</a> to also run in this new environment.</li>
+</ul>
+
+<h2 id="howyoucanhelp">How you can help</h2>
+
+<p>I am very inexperienced with USB and any plumbing needed for it to work, so I am poorly suited to making progress on <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a>. I believe I confirmed USB host mode is available in the Firefox OS developer phone I am using, so at least on some of the phones, the hardware capability is there.</p>
+
+<h3 id="knowusbandandroidorgonk">Know USB and Android or Gonk?</h3>
+
+<p>If so, then you may be able to sort out the lower levels of the USB patch code in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a>.</p>
+
+<p>Firefox OS runs on top of an operating system called <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS/Platform/Gonk">Gonk</a>. Gonk relies on some parts from Android, and Firefox also runs on Android, so if you see a way to get the patch to run in <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox&amp;hl=en">Firefox for Android</a>, that may be useful too.</p>
+
+<h3 id="knowgeckocode">Know Gecko code?</h3>
+
+<p>If so, then you may be able to freshen up the higher levels of the patch in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a> that exposes the WebUSB capability to web apps. If you do not have time to do the patch yourself, perhaps describe the higher level steps to freshen up the patch. One issue: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718#c44">how to adapt the code the depended on nsDOMEventTargetWrapperCache</a>.</p>
+
+<h3 id="knowabetterway">Know a better way?</h3>
+
+<p>I think this is a way to get to a browser-driven Arduinos, but maybe you know of a different way? I could also be missing an important step. My main objective:</p>
+
+<ul>
+<li>Develop apps using JS/HTML/CSS that can be loaded on a mobile device.</li>
+<li>Control an Arduino with those apps, and allow user interfaces that are touch friendly.</li>
+</ul>
+
+<p>I am targeting Firefox OS because I work at Mozilla and believe in the Firefox OS mission. Firefox OS is going to be a great, low cost option for a mobile device. It is also a web-first approach. Driving Arduinos with Firefox OS devices likely means it will work for Firefox on Android, so it opens up the Android platform too.</p>
+
+<p>Using Google Chrome on an Android device might also be a route to take, but I am not sure yet if Chrome apps work on Android (chrome.serial is only available to chrome apps). In my ideal world, we get it working on Firefox (on Firefox OS and Android) and Chrome (on Android) and any JS libraries above the raw USB/serial API should try to target both. You know, the typical web with support for multiple vendors.</p>
+
+<p>It would be fine to hear about approaches use a tiny web server hooked up to the Arduino that receives connections over Bluetooth or WiFi, but I consider that a secondary goal as it involves more moving parts. Definitely interesting, but I really want to focus on hooking up the mobile device directly to the Arduino. The possibility of using the mobile device sensors with the Arduino, and using HTML/JS/CSS to drive the logic is something I really want to see in action.</p>
+
+<p>So, leave a comment via the link below, or if you have practical steps for <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=674718">bug 674718</a>, comment in that bug.</p>]]></content>
+    </entry>
+
+</feed>

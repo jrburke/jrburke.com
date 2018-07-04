@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Modules: stories of future past</title>
+
+		<meta name="description" content="Modules: stories of future past">
+		<meta name="author" content="James Burke">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<link rel="stylesheet" href="css/theme/one-mozilla.css" id="theme">
+		<style type="text/css">
+			body .reveal ul {
+				list-style-position: inside;
+				list-style-type: none;
+			}
+
+			body .reveal li {
+				margin: 0.2em;
+			}
+
+			h1, h2, h3, h4, a, p, li {
+				background-color: rgba(255,255,255,0.8);
+			}
+
+			html body {
+				-webkit-transition: background 0.5s linear;
+				-moz-transition: background 0.5s linear;
+				-o-transition: background 0.5s linear;
+				transition: background 0.5s linear;
+			}
+
+			#imgattr {
+				position: absolute;
+				bottom: 0.1em;
+				left: 01.em;
+				font-size: smaller;
+				font-family: "Open Sans",sans-serif;
+				color: #333333;
+				text-decoration: none;
+				z-index: 100;
+			}
+		</style>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<style>
+			html body {
+				background-position:center !important;
+				background-size: 100% !important;
+				background-repeat: no-repeat;
+			}
+		</style>
+
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+
+				<style>
+					html.state1 body {
+						background:url("images/img11.jpg");
+					}
+				</style>
+				<section data-state="state1"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305226012/"
+					data-markdown><script type="text/template">
+					## Modules
+
+					Stories of Future Past
+
+					#### [James Burke](http://jrburke.com) | [github](https://github.com/jrburke) | [twitter](https://twitter.com/jrburke)
+
+					#### [Firefox OS - Gaia](https://github.com/mozilla-b2g/gaia) | [RequireJS](http://requirejs.org/) | [volo](http://volojs.org/)
+
+					[http://jrburke.com/talks/vanmodules](http://jrburke.com/talks/vanmodules)
+				</script></section>
+
+				<style>
+					html.state2 body {
+						background:url("images/img10.jpg");
+					}
+				</style>
+				<section data-state="state2"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305281222/"
+					data-markdown><script type="text/template">
+					## Stories of future past
+
+					* Future: [not evenly distributed](http://en.wikipedia.org/wiki/William_Gibson#Visionary_influence_and_prescience), modules today
+					* Standards: go back, [avoid dystopia](http://en.wikipedia.org/wiki/Days_of_Future_Past)
+					* Future you: prepare yourself
+				</script></section>
+
+				<style>html.state3 body { background:url("images/img13.jpg");}</style>
+				<section data-state="state3"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305279096/
+"
+					data-markdown><script type="text/template">
+					## IMO
+
+					* ECMAScript (ES) modules still [under](http://wiki.ecmascript.org/doku.php?id=harmony:modules) [construction](http://wiki.ecmascript.org/doku.php?id=harmony:module_loaders)
+					* My origins: AMD
+				</script></section>
+
+				<style>html.state4 body { background:url("images/img12.jpg");}</style>
+				<section data-state="state4"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305286984/"
+					data-markdown><script type="text/template">
+					## Mainly AMD and node/CJS
+
+					* YUI
+					* old Dojo, Closure
+					* XPCOM Components.utils.import
+				</script></section>
+
+				<style>html.state5 body { background:url("images/img16.jpg");}</style>
+				<section data-state="state5"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305235558/"
+					data-markdown><script type="text/template">
+					## The breakdown
+
+					* declare
+					* reference
+					* normalize
+					* resolve
+					* fetch
+					* translate
+					* link and execute
+
+				</script></section>
+
+				<style>html.state6 body { background:url("images/img14.jpg");}</style>
+				<section data-state="state6"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
+					## Declare
+
+					```javascript
+					// node
+					var x = require('x');
+
+					exports.y = ...
+					// or
+					module.exports = function() {}
+
+					// AMD
+					define(function(require, exports, module) {
+					  var x = require('x');
+
+					  exports.y = ...
+					  // or
+					  return function() {};
+					});
+					```
+				</script></section>
+
+				<section data-state="state6"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
+					## Difference
+
+					* Node: imperative, runs at point of first require
+					* AMD: declarative, runs before factory function
+				</script></section>
+
+				<section data-state="state6"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
+					## Consequences
+
+					* Node: sync require not so great in browser
+					* AMD: weaker circular ref support, function wrapping
+				</script></section>
+
+
+				<style>html.state7 body { background:url("images/img15.jpg");}</style>
+				<section data-state="state7"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8304189741/"
+					data-markdown><script type="text/template">
+					## Reference
+
+					```javascript
+					// node
+					// static
+					var x = require('x');
+
+					// dynamic
+					var z = require(something + '/z');
+
+					// AMD
+					define(function(require, exports, module) {
+					  // static
+					  var x = require('x');
+
+					  // dynamic
+					  require([something + '/z'], function(z) {
+
+					  });
+					});
+					```
+				</script></section>
+
+				<section data-state="state7"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8304189741/"
+					data-markdown><script type="text/template">
+					## Difference
+
+					* Node: cannot solve generically in browser case
+				</script></section>
+
+
+				<style>html.state8 body { background:url("images/img17.jpg");}</style>
+				<section data-state="state8"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8304182097/"
+					data-markdown><script type="text/template">
+					## ES: Declare and Reference
+
+					```javascript
+					// static
+					// import of default export
+					import x from 'x';
+
+					// non-default import from 'lib': `export let w = 3`;
+					import { w } from 'lib';
+
+					// named export
+					export let y = ...;
+					// and/or
+					// default export
+					export default function() {};
+
+					// dynamic
+					System.import(something + '/z', function(z) {
+					});
+					```
+				</script></section>
+
+				<section data-state="state8"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8304182097/"
+					data-markdown><script type="text/template">
+					## Properties
+
+					* Similar to AMD resolution, but no function wrapper
+					* import/export top level, no nesting
+					* import/export are mutable slots
+					* Solves cycle support, via new syntax
+					* Dynamic resolution in runtime callback API
+				</script></section>
+
+				<style>html.state9 body { background:url("images/img18.jpg");}</style>
+				<section data-state="state9"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305228308/"
+					data-markdown><script type="text/template">
+					## Normalize
+
+					```javascript
+					// Module 'a/b' asks for ./c
+					import c from './c'
+					```
+
+					* Node: path-based: relative to a/b's .js file
+					* AMD: module ID based: relative to 'a/b' module ID
+					* ES: Pluggable, likely module ID based by default
+				</script></section>
+
+				<style>html.state10 body { background:url("images/img19.jpg");}</style>
+				<section data-state="state10"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305223894/"
+					data-markdown><script type="text/template">
+					## Resolve: ID-to-path
+
+					```javascript
+					// convert 'a/b/c' to path on disk
+					```
+
+					* Node: nested multiple IO node_modules
+					* AMD:  `baseURL + moduleID + '.js'`, [declarative config](https://github.com/amdjs/amdjs-api/wiki/Common-Config)
+					* ES: Likely `baseURL + moduleID + '.js'` by default,
+					  controlled by JS env. Has loader hook.
+					* ES in browser: could have declarative config?
+				</script></section>
+
+			<style>html.state11 body { background:url("images/img20.jpg");}</style>
+				<section data-state="state11"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8304173391/"
+					data-markdown><script type="text/template">
+					## Fetch: get file contents
+
+					* Node: synchronous IO
+					* AMD:  async, usually network IO.
+					* ES: async by default. Loader hook assumes async.
+				</script></section>
+
+			<style>html.state11b body { background:url("images/img21.jpg");}</style>
+				<section data-state="state11b"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305337676/"
+					data-markdown><script type="text/template">
+					## Translate
+
+					* Node: require('module')._extensions['.ext']
+					* AMD:  loader plugins: 'text!a.html', loader hooks
+					* ES: Imperative loader hook
+				</script></section>
+
+			<style>html.state12 body { background:url("images/img10.jpg");}</style>
+
+				<section data-state="state12"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305281222/"
+					data-markdown><script type="text/template">
+					## Link / Execute
+
+					* Node: usual JS evaluation
+					* AMD:  usual JS evaluation
+					* ES: linking, check import/export names, then eval
+				</script></section>
+
+			<style>html.state13 body { background:url("images/img11.jpg");}</style>
+				<section data-state="state13"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305226012/"
+					data-markdown><script type="text/template">
+					## Migration patterns
+
+					* Node: use ES Module Loader hooks for backcompat, ID-to-path resolution
+					* AMD: likely small script for loader plugin syntax, adapter old API. Browser env might have good declartive config?
+					* ES: module inlining still funky
+				</script></section>
+
+			<style>html.state14 body { background:url("images/img14.jpg");}</style>
+				<section data-state="state14"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
+					## What can we do now?
+
+					* ID resolution
+					* Make it easy: `baseURL + moduleID + '.js'`
+					* Better package managers
+				</script></section>
+
+				<section data-state="state14"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
+					## Hey, package managers
+
+					* Favor ease of runtime use over your use
+					* Single file deps at `baseURL + moduleID + '.js'`
+					* Your metadata in app `package.json` or `.metadata` dir
+					* Front end: commit app-level deps.
+				</script></section>
+
+				<section data-state="state14"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
+					## Packages still OK
+
+					* Adapter module at `baseURL + moduleID + '.js'`
+
+					```javascript
+					// node
+					module.exports = require('x/main');
+					// AMD
+					define(['x/main'], function(x) {return x});
+					// ES
+					export default from 'x/main'; // maybe?
+					```
+				</script></section>
+
+				<section data-state="state14"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
+					## Example app layout
+
+					* [volojs/create-template](https://github.com/volojs/create-template)
+					* [volo](http://volojs.org)
+					* [front end library best practices](https://github.com/volojs/volo/wiki/Library-best-practices)
+				</script></section>
+
+			</div>
+
+		</div>
+
+		<a id="imgattr" target="_blank" href=""></a>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+
+
+			var imgAttrNode = document.getElementById('imgattr');
+			function updateAttrLink(event) {
+				var desc = event.currentSlide.getAttribute('data-attr-desc'),
+					link = event.currentSlide.getAttribute('data-attr');
+
+				imgAttrNode.href = link;
+				imgAttrNode.textContent = 'img: ' + desc;
+			}
+
+			Reveal.addEventListener('ready', updateAttrLink);
+			Reveal.addEventListener('slidechanged', updateAttrLink);
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Module Frontiers</title>
+
+		<meta name="description" content="Modules: stories of future past">
+		<meta name="author" content="Module Frontiers">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<link rel="stylesheet" href="css/theme/one-mozilla.css" id="theme">
+		<style type="text/css">
+			body .reveal ul {
+				list-style-position: inside;
+				list-style-type: none;
+			}
+
+			body .reveal li {
+				margin: 0.2em;
+			}
+
+			h1, h2, h3, h4, p, li {
+				background-color: rgba(255,255,255,0.95);
+			}
+
+			html body {
+				background: black;
+				-webkit-transition: background 0.5s linear;
+				-moz-transition: background 0.5s linear;
+				-o-transition: background 0.5s linear;
+				transition: background 0.5s linear;
+			}
+
+			#imgattr {
+				position: absolute;
+				bottom: 0.1em;
+				left: 01.em;
+				font-size: smaller;
+				font-family: "Open Sans",sans-serif;
+				color: grey;
+				background:;
+				text-decoration: none;
+				z-index: 100;
+			}
+		</style>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<style>
+			html body {
+				background-position:center !important;
+				background-size: 100% !important;
+				background-repeat: no-repeat;
+				background-color: white;
+			}
+		</style>
+
+<!-- Resolution target: 1920x1080 2500 x 1406
+.5625 -->
+
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+
+				<style>
+					html.state1 body {
+						background-image: url("images/shutterstock_93628708_small.jpg");
+					}
+				</style>
+				<section data-state="state1"
+					data-markdown><script type="text/template">
+					## Module Frontiers
+
+					#### [James Burke](http://jrburke.com) | [github](https://github.com/jrburke) | [twitter](https://twitter.com/jrburke)
+
+					#### [Firefox OS - Gaia](https://github.com/mozilla-b2g/gaia) | [RequireJS](http://requirejs.org/) | [volo](http://volojs.org/)
+
+					[http://jrburke.com/talks/dotjs2013](http://jrburke.com/talks/dotjs2013)
+				</script></section>
+
+				<section data-state="state1"
+					data-markdown><script type="text/template">
+					## IMO
+
+					* Not on TC-39, not speaking for Mozilla
+					* My origins: RequireJS, AMD
+				</script></section>
+
+				<style>html.state2 body { background-image: url("images/shutterstock_82996114_small.jpg");}</style>
+				<section data-state="state2"
+					data-markdown><script type="text/template">
+					## The Known Lands
+
+					ECMAScript 6
+
+					* [Module Syntax](http://wiki.ecmascript.org/doku.php?id=harmony:modules)
+					* [Module Loaders](http://wiki.ecmascript.org/doku.php?id=harmony:module_loaders)
+				</script></section>
+
+				<section data-state="state2"
+					data-markdown><script type="text/template">
+					## ES: Module declaration
+
+					```javascript
+					// ! ES has important semantic diffs with AMD/CommonJS/Node analogs
+
+					// Import of default export. AMD, CommonJS/Node: require('x')
+					import x from 'x';
+
+					// Non-default import from 'lib'. AMD, CommonJS/Node: require('lib').y
+					import { w } from 'lib';
+
+					// Named export. AMD, CommonJS/Node: exports.y
+					export let y = ...;
+					// and/or
+					// Default export. AMD: return, Node: module.exports
+					export default function() {};
+
+					// Dynamic
+					// AMD: require([something + '/z']) Node: require(something + '/z')? sync
+					System.import(something + '/z', function(z) {});
+
+					```
+				</script></section>
+
+				<section data-state="state2"
+					data-markdown><script type="text/template">
+					## Module Loader
+
+					From [js-loaders](https://github.com/jorendorff/js-loaders): **System.import('adventure')**
+
+					* **System.normalize** - IDs to normalized form
+					* **System.locate** - ID to URL
+					* **System.fetch** - get the source at URL
+					* **System.translate** - convert source to JS
+					* **System.instantiate** - custom module translation
+
+					[AMD loader plugins](http://requirejs.org/docs/plugins.html):
+
+					* **normalize**
+					* **load** - locate, fetch, translate, instantiate
+				</script></section>
+
+				<section data-state="state1"
+					data-markdown><script type="text/template">
+					## The Frontiers
+
+					* JS environments
+					* Our apps
+				</script></section>
+
+				<style>html.state3 body { background-image: url("images/shutterstock_152099564_small.jpg");}</style>
+				<section data-state="state3"
+					data-markdown><script type="text/template">
+					## JS environments
+
+					Browser makers, us
+				</script></section>
+
+				<section data-state="state3"
+					data-markdown><script type="text/template">
+					## ID normalization
+
+					* `./ and ../`
+					* Allow URLs? Maybe not
+					* Loader plugin syntax? `'text!template.html'`
+
+				</script></section>
+
+				<section data-state="state3"
+					data-markdown><script type="text/template">
+					## Declarative loader config
+
+					* [AMD has a set](https://github.com/amdjs/amdjs-api/wiki/Common-Config)
+					* paths, map, module config [not packages]
+					* shim - LEGACY 4EVAR?
+				</script></section>
+
+				<section data-state="state3"
+					data-markdown><script type="text/template">
+					## Inline module syntax
+
+					`module 'id' {}` would be sweet
+
+					* Needs more time
+				</script></section>
+
+				<section data-state="state3"
+					data-markdown><script type="text/template">
+					## Inline module syntax
+
+					* `<module>`, `<script type="module">`
+					* zip/archive URLs
+					* `loader.define(id, srcString)`
+				</script></section>
+
+				<style>html.state4 body { background-image: url("images/shutterstock_131897297_small.jpg");}</style>
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## Our apps
+
+					* Bridging ES6 and AMD, Node worlds
+					* Project layout
+					* Package managers
+				</script></section>
+
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## Bridging worlds, AMD
+
+					* **ES6->AMD**: [es6-module-transpiler](https://github.com/square/es6-module-transpiler)
+					* **AMD->ES6**: Command line tool, trivial transform
+					* **Combo**: Bootstrap: AMD-style config, plugins, adapter
+				</script></section>
+
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## Bridging worlds, Node
+
+					* [es6-module-transpiler](https://github.com/square/es6-module-transpiler)
+					* Loader hooks
+				</script></section>
+
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## Project Layout
+
+					* `baseURL + moduleID + '.js'`
+					* `import x from 'x'` -> `baseURL + 'x.js'`
+				</script></section>
+
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## [Convention](https://github.com/volojs/create-template)
+
+					```javascript
+					* index.html
+					* app/ -> main.js, view.js
+					* lib/ -> jquery.js, underscore.js
+					* app.js:
+
+					requirejs.config({
+					    baseUrl: 'lib',
+					    paths: {
+					        app: '../app'
+					    }
+					});
+
+					// Start loading app.
+					requirejs(['app/main']);
+
+					// app/main uses relative IDs for other
+					// app modules: './view'
+					```
+				</script></section>
+
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## Package managers
+
+					`baseURL + moduleID + '.js'`
+
+					* Single file deps: `baseURL + moduleID + '.js'`
+					* Your metadata in app `package.json` or `.metadata` dir
+				</script></section>
+
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## Package managers
+
+					Packages directories still OK
+
+					* Adapter module at `baseURL + moduleID + '.js'`
+
+					```javascript
+					// node
+					module.exports = require('x/main');
+					// AMD
+					define(['x/main'], function(x) {return x});
+					// ES
+					export default from 'x/main'; //maybe?
+					```
+				</script></section>
+
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## Package managers
+
+					* Local vs repo name
+					* 'underscore' -> 'lodash', branches, forks
+				</script></section>
+
+
+
+
+				<section data-state="state1"
+					data-markdown><script type="text/template">
+					# Fin
+
+					* ES6: declaration and loader basics looking good
+					* Next: declarative config, inlining, loader plugins
+					* `baseURL + moduleID + '.js'`
+
+					[http://jrburke.com/talks/dotjs2013](http://jrburke.com/talks/dotjs2013)
+				</script></section>
+			</div>
+
+		</div>
+
+		<a id="imgattr" target="_blank" href=""></a>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+
+			/*
+			var imgAttrNode = document.getElementById('imgattr');
+			function updateAttrLink(event) {
+				var desc = event.currentSlide.getAttribute('data-attr-desc'),
+					link = event.currentSlide.getAttribute('data-attr');
+
+				imgAttrNode.href = link;
+				imgAttrNode.textContent = 'img: ' + desc;
+			}
+
+			Reveal.addEventListener('ready', updateAttrLink);
+			Reveal.addEventListener('slidechanged', updateAttrLink);
+			*/
+		</script>
+
+	</body>
+</html>

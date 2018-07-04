@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title><![CDATA[James Burke -- requirejs]]></title>
+    <link href="http://jrburke.com/tags/requirejs//atom.xml" rel="self"/>
+    <link href="http://jrburke.com/tags/requirejs/"/>
+    <updated>2016-03-17T19:22:22.207Z</updated>
+    <id>http://jrburke.com/tags/requirejs/</id>
+    <author>
+    <name><![CDATA[James Burke]]></name>
+    </author>
+
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.2, alameda 1.0 released]]></title>
+        <link href="http://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/"/>
+        <updated>2016-03-17T19:22:22.207Z</updated>
+        <id>http://jrburke.com/2016/03/17/requirejs-2.2-alameda-1.0-released/</id>
+        <content type="html"><![CDATA[<ul>
+<li><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.2</a></li>
+<li><a href="https://github.com/requirejs/alameda/releases">alameda 1.0</a></li>
+</ul>
+
+<p>RequireJS has a new <strong>minor</strong> version rev, prompted by a couple things:</p>
+
+<p>1) The RequireJS project has transitioned over to the jQuery Foundation. New legal stuff for the copyright, and now just MIT license vs both MIT and BSD 2 dual license. According to the lawyer advice, MIT on its own is more permissive than BSD 2, so it should be a superset of all the possible use cases when BSD 2 might be used in the consuming project. Same permissable, free use as before, just simpler on the license front.</p>
+
+<p>If you want to contribute to the codebase, you can <a href="http://requirejs.org/docs/contributing.html">sign the jQuery Foundation CLA</a>, which is generally useful. It clears the path for contributing to all of the other great jQuery Foundation projects.</p>
+
+<p>2) Some larger changes for some new features. It should all be backwards compatible, but with the addition of the new features, it felt appropriate to indicate this was more than a patch version release.</p>
+
+<p>This is not the same 2.2 release that I had in the planning phases for a couple of years, just a recalibration on existing needs, and wanting to better follow <a href="http://semver.org/">semver</a>.</p>
+
+<h2 id="notablerequirejsloaderchangeshttpsgithubcomrequirejsrequirejsissuesqmilestone3a220is3aclosed"><a href="https://github.com/requirejs/requirejs/issues?q=milestone%3A2.2.0+is%3Aclosed">Notable RequireJS loader changes</a></h2>
+
+<h3 id="urlargscanbeafunctionhttprequirejsorgdocsapihtmlconfigurlargs"><a href="http://requirejs.org/docs/api.html#config-urlArgs">urlArgs can be a function</a></h3>
+
+<p>This allows finer tuning of querystring arguments, for things like different version strings for different files.</p>
+
+<h3 id="pluginidsfordatamainhttpsgithubcomrequirejsrequirejsissues1472"><a href="https://github.com/requirejs/requirejs/issues/1472">plugin IDs for data-main</a></h3>
+
+<p>This sort of data-main value works now:</p>
+
+<pre><code class="language-markup">&lt;script src="require.js" data-main="lib/bootstrap!app/main"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>This assumes the baseUrl is the directory that holds the HTML document, in order to find the loader plugin.</p>
+
+<h2 id="notablerjsoptimizerchangeshttpsgithubcomrequirejsrjsmilestones220"><a href="https://github.com/requirejs/r.js/milestones/2.2.0">Notable r.js optimizer changes</a></h2>
+
+<h3 id="fasterhttpsgithubcomrequirejsrjspull900"><a href="https://github.com/requirejs/r.js/pull/900">Faster!</a></h3>
+
+<p>Thanks to the great work by <a href="https://github.com/petersondrew">@petersondrew</a>, build times are noticeably faster. Your mileage will vary depending on the type of project, but the r.js test suite runs almost twice as fast under Node.</p>
+
+<h3 id="uglify2isnowthedefaultminifier">Uglify2 is now the default minifier</h3>
+
+<p>Before 2.2, <code>optimize: 'uglify'</code> used UglifyJS 1.3.x, where <code>uglify2</code> used UglifyJS 2. This was a result of the optimizer just being around a long time, during the uglify transition to their version 2 codebase. Now that version 2 is the standard UglifyJS codebase, the use of version 1 as a default was confusing.</p>
+
+<p>So version 1 was removed from the optimizer, and now just version 2 is used. No need to update your build config. If you use <code>uglify2</code> as the optimize value, it will still work. Now the <code>uglify</code> value uses version 2 too.</p>
+
+<h3 id="generatebundlesconfighttprequirejsorgdocsapihtmlconfigbundles"><a href="http://requirejs.org/docs/api.html#config-bundles">Generate bundles config</a></h3>
+
+<p>If you want to use <a href="http://requirejs.org/docs/api.html#config-bundles">bundles config</a>, the optimizer can now generate the bundle config and insert it into a requirejs.config() call via the <code>bundlesConfigOutFile</code> config option.</p>
+
+<h2 id="alternatives">Alternatives</h2>
+
+<p>I am mostly trying to keep the RequireJS codebase fairly static, no big changes.</p>
+
+<p>If you do want to use loader that has a more modern, smaller codebase, try <a href="https://github.com/requirejs/alameda">alameda</a>. That is the codebase I would like to maintain for an AMD loader going forward, and where I would consider larger structural changes.</p>
+
+<p>If you want to do fancier custom build processes, look at <a href="https://github.com/amodrojs/amodro-trace">amodro-trace</a>. It provides a programmatic API for use in Node programs for just tracing and normalizing AMD modules.</p>
+
+<h2 id="pastandfuture">Past and future</h2>
+
+<p>The primordial parts of the RequireJS loader started to take form in September 2009, with many usable releases through October 2011, when 1.0 was tagged. It is now 2016.</p>
+
+<p>So, 6 &amp; 1/2 years. I was hoping the need for these userland loaders would just last for a few years then a native loader and module system would obsolete the need for them. Funny how our desires for the future often outpace reality.</p>
+
+<p>I am still hopeful that will happen at some point, so I am not investing a lot of energy to reimagining how an AMD loader might work. I would like to see a native module system actually ship before seeing if it made sense to make new tools around it.</p>
+
+<p>That said, I like the smaller, modern core of alameda. I look forward to using it if a project calls for an AMD loader, although I am happy to work on projects that would not require it.</p>
+
+<p>I want to keep the RequireJS codebase fairly stable. I still expect to do occasional patch version releases for RequireJS, maybe 2-3 a year. Particularly since alameda has a higher barrier to use: promise support in the browser and IE10+ for script loading. As time moves forward though, those constraints should be less of a concern.</p>
+
+<p>I will not post here about every point release for the loaders. These places track the releases:</p>
+
+<ul>
+<li><a href="http://requirejs.org/docs/download.html#releasenotes">RequireJS release notes</a></li>
+<li><a href="https://github.com/requirejs/alameda/releases">alameda releases</a></li>
+</ul>
+
+<p>Thanks for your time and use of the libraries. The goal for them was to be useful, help inform the future. They have lived longer than I would have wagered at the beginning. Here's to hoping they are not around for another 6 &amp; 1/2 years! Please hasten their retirement by finishing a native JS module system!</p>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[amodro-trace and AMD loaders]]></title>
+        <link href="http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/"/>
+        <updated>2015-04-09T20:26:35.414Z</updated>
+        <id>http://jrburke.com/2015/04/09/amodro-trace-and-amd-loaders/</id>
+        <content type="html"><![CDATA[<p>A new tool, and some AMD loader rambling:</p>
+
+<p>I have started a new project around AMD modules, <a href="https://github.com/amodrojs/amodro-trace">amodro-trace</a>. It is a tool that understands AMD modules and is meant to be used in other node-based build systems. The README has more background, but the general use cases that drove it:</p>
+
+<ul>
+<li>Get a dependency tree for a module ID</li>
+<li>Allows non-file inputs</li>
+<li>Allows transpiling inputs to AMD before tracing</li>
+<li>Allows content transforms after AMD normalization</li>
+</ul>
+
+<p>Think of amodro-trace as a lower level imperative tool that something like the requirejs optimizer could use to implement its declarative API.</p>
+
+<p>amodro-trace comes from some code in the requirejs optimizer, and has some smaller unit tests. I ran it over a larger project, but still expect to fine tune some things around API and operation, so feel free to give feedback in the issues list if the use cases fit your needs but have trouble using it.</p>
+
+<p>I would also like to construct a new AMD loader, something that assumes more modern browsers and can improve on some things learned from requirejs.</p>
+
+<p>I do not expect requirejs to go away any time soon, and it will still be my recommendation for general AMD loading across a wide set of browsers. There will still be maintenance releases, but I expect to do any new work that non-trivially modifies behavior to be done under a new name. This helps set stable expectations, particularly for tools that have been built on top of requirejs.</p>
+
+<p>I still want to explore some things with AMD loaders though, particularly since an <a href="http://jrburke.com/2015/02/13/how-to-know-when-es-modules-are-done/">operational ES module system is still far off</a>, and transpilers that guess at ES module syntax still benefit from good AMD loader options to back them.</p>
+
+<h2 id="amdloaderoptions">AMD loader options</h2>
+
+<p>First, a bit about some AMD loader options that I have worked on. The nice thing about AMD modules is that there are more options besides this set, and other tooling around them. This is just about where and how I have spent my time in this space.</p>
+
+<ul>
+<li><a href="http://requirejs.org/">requirejs</a>: the baseline loader. Along with its <a href="http://requirejs.org/docs/optimization.html">optimizer</a>, it has a fairly large set of tests and stability. (Side note: the code that would become requirejs started in 2009, first releases in 2010, with some ideas stretching back much earlier from Dojo.)</li>
+<li><a href="https://github.com/requirejs/cajon">cajon</a>: Built around requirejs, but bundles an XHR fetch option to allow for consuming CommonJS modules directly as well as AMD modules. Comes with the caveats of using an XHR loader though, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">CSP</a> issues.</li>
+<li><a href="https://github.com/requirejs/alameda">alameda</a>: Like requirejs, but assumes more modern browsers as a baseline (mainly means does not support IE9 and below), uses promises under the hood. There is a <a href="https://github.com/requirejs/alameda/tree/native-promise">native-promise</a> branch that does not use a promise shim, just native browser promises. alameda is used by some <a href="https://github.com/mozilla-b2g/gaia">Gaia</a> apps that use modules.</li>
+<li><a href="https://github.com/jrburke/module">module</a>: Not AMD, but what I imagine a module system would look like given what we have learned from CommonJS and AMD modules, and assuming a browser loader capability that avoids CORS/CSP issues for text fetching and evaluation. While a useful exercise, and more operational and fleshed out than an ES system, more of an experimental playground.</li>
+</ul>
+
+<h2 id="amodroloader">amodro loader</h2>
+
+<p>For a new AMD loader, I am thinking of putting it under the amodro (pronounced a-mo-dro) name. amodro-trace is the start of what I would see as its equivalent of the requirejs optimizer piece. amodro-trace currently uses requirejs under the hood for module tracing, but ideally that would migrate over time to a new loader.</p>
+
+<p>I would not want to modify any of the AMD APIs for declaring a module or for the dynamic require calls. So no changes in module syntax to allow the most reuse of existing AMD modules.</p>
+
+<p>However, I want to rethink some of the loader APIs and loader plugin APIs to do something like what an older draft of the ES-related loader had for a module lifecycle: normalize, locate, fetch, translate, instantiate. The loader plugin API as supported in requirejs-like loaders is not as granular, and supporting a more granular API would help with some issues that have come up with the loader plugins to date: it can be hard to break cycles for some loader plugins, and can make building more complicated.</p>
+
+<p>The <code>module</code> loader mentioned above makes an attempt at that sort of solution for loader plugins, and it works out well. There is a good chance existing loader plugins would still work too since their APIs can be seen as a coarser API that could be supported by the more granular API. Still a bit of work to be done there, but it seems promising.</p>
+
+<p>So I expect amodro would be like the <code>module</code> loader, but designed to work with the AMD APIs instead of the <code>module</code> API in that loader, and probably using some of the alameda ideas too.</p>
+
+<p>I may not get to it though. Just sharing my thoughts around loader work. I have a day job that I really like, and we are doing some interesting work. There are some (non-loader) ideas I want to implement there, and I am excited to try out service workers in that context.</p>
+
+<p>The <a href="http://dojotoolkit.org/">Dojo folks</a> are also thinking about this space, as well as <a href="http://unscriptable.com/">John Hann</a> and <a href="http://tbranyen.com/">Tim Branyen</a>, so other options may come out of their efforts too. It is good to have options.</p>
+
+<p>End result, more in this space worth pursuing.</p>
+
+<h2 id="moreconventionoverconfiguration">More convention over configuration</h2>
+
+<p>For AMD projects in general, and something that does not depend on any new loader work:</p>
+
+<p>We can help improve the perception of difficulties with configuration by starting to advocate more for standard project layouts that avoid big configuration blocks for the loader. Effort in this space would likely benefit an ES module solution too, as it will need to operate in the same async network space that AMD modules operate.</p>
+
+<p>To me, that means using a starting project layout that looks like <a href="https://github.com/volojs/create-template">this sample project</a>. The <code>lib</code> directory could be a <code>node_modules</code> or <code>bower_components</code> directory.</p>
+
+<p><a href="https://github.com/jrburke/adapt-pkg-main">adapt-pkg-main</a> can be used after an npm/bower install to fix up the installed dependency to work with the file layout convention that works best for general web module loading, without running into CORS or 404 issues.</p>
+
+<p>Then hopefully the package managers get better about these file layouts over time (maybe absorb what adapt-pkg-main does), and in the case of npm, <a href="https://github.com/jrburke/notobo/blob/master/docs/npm-sharp-edges.md">remove some sharp edges</a> for front end development.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>You might try <a href="https://github.com/amodrojs/amodro-trace">amodro-trace</a> if its use cases fit your needs. While it comes from some code that has had a good amount of testing, it is still a new approach on it and may have some bugs, so I am keeping the version low for now. However, it is the kind of AMD build tool I would like to support longer term: provide a primitive focused solely on the AMD tracing and normalization so that others can build on top of it.</p>
+
+<p>The requirejs optimizer was built at a time when node was not a thing yet, and more batteries needed to be included for command line JavaScript tooling. It has been a good approach for the requirejs optimizer: it runs in node, Nashorn, Rhino, xpcshell and even in the browser. It gives a bunch of communities a chance at some good AMD-based optimization options.</p>
+
+<p>However, I do not expect to keep pace with all the possible variations in build tool styles with the requirejs optimizer's more declarative options-based approach. amodro-trace should be helpful for those cases.</p>
+
+<p>Here's to more AMD loaders and tools for the future!</p>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.15 Released]]></title>
+        <link href="http://jrburke.com/2014/09/07/requirejs-2.1.15-released/"/>
+        <updated>2014-09-08T01:15:05.458Z</updated>
+        <id>http://jrburke.com/2014/09/07/requirejs-2.1.15-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.15 is available</a>.</p>
+
+<p>Mainly fixes a regression from 2.1.14 in the r.js optimizer where <a href="https://github.com/jrburke/r.js/issues/704">some define() calls were not found</a>. The most common manifestations of the bug would be either an extra <code>define('jquery', function(){})</code> in the build output or namespaced builds not working. The fixes for 2.1.15 are just in the optimizer. Full list of changes:</p>
+
+<ul>
+<li><a href="https://github.com/jrburke/r.js/issues?q=milestone%3A2.1.15+is%3Aclosed">Fixed r.js optimizer issues</a></li>
+</ul>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.14 Released]]></title>
+        <link href="http://jrburke.com/2014/06/02/requirejs-2.1.14-released/"/>
+        <updated>2014-06-02T16:58:52.221Z</updated>
+        <id>http://jrburke.com/2014/06/02/requirejs-2.1.14-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.14 is available</a>.</p>
+
+<p>A couple more regression fixes for 2.1.12. One to <a href="https://github.com/jrburke/requirejs/issues/1131">fix nested plugin ID normalization</a>, like "pluginA!pluginbB!resource", and one for the <a href="https://github.com/jrburke/requirejs/issues/1133">optimizer incorrectly detecting UMD wrapped code</a>.</p>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RequireJS 2.1.13 Released]]></title>
+        <link href="http://jrburke.com/2014/05/27/requirejs-2.1.13-released/"/>
+        <updated>2014-05-27T16:54:30.242Z</updated>
+        <id>http://jrburke.com/2014/05/27/requirejs-2.1.13-released/</id>
+        <content type="html"><![CDATA[<p><a href="http://www.requirejs.org/docs/download.html">RequireJS 2.1.13 is available</a>.</p>
+
+<p>Version 2.1.12 regressed around ID normalization. <a href="https://github.com/jrburke/requirejs/issues/1129">2.1.13 fixes that regression</a>. It is recommended that you do not use 2.1.12, but use 2.1.13 instead.</p>]]></content>
+    </entry>
+
+</feed>

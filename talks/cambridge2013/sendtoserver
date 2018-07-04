@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rsync -av ./published/ tagneto.org@s139035.gridserver.com:/home/139035/users/.home/domains/jrburke.com/html/
+
